@@ -1,0 +1,125 @@
+#main .resume-page {
+	h1,h2,h3,h4,h5 {
+	    font-size: 1.2em;
+	}
+	header {
+		height: inherit;
+		min-height: 40vh;
+		.header-title {
+			padding-left: 0.2em;
+			bottom: 2em;
+		}
+	}
+}
+#resume {
+
+	.table-row {
+		padding-bottom: 1.2em;
+	}
+
+	.section-title {
+		text-align: left;
+		padding-bottom: 0.5em;
+		color: darken($d_color, 0%) !important;
+	}
+
+	.section-content {
+		h1,h2,h3,h4,h5 {
+		    font-size: 1em;
+		}
+	}
+
+	.resume-highlight-list {
+		padding-top: 0.5em;
+		li:before {
+			left: -1.5em;
+			top: 0.3em;
+			display: inline-block;
+			position: absolute;
+			font-family: FontAwesome;
+			font-size: 10pt;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			content: "\f054";
+			color: #ccc;
+		}
+		li {
+			position: relative;
+			margin-bottom: 0.94em;
+			line-height: 1.5;
+			font-size: 14pt;
+		}
+	}
+
+	.badge-info {
+		background-color: #586994;
+	}
+}
+
+$resumewidth: 95%;
+
+@media screen and (max-width: $mq) {
+	#main .resume-page {
+		h1,h2,h3,h4,h5 {
+		    font-size: 1.2em;
+		}
+		header {
+			height: inherit;
+			min-height: 24vh;
+			.header-title {
+				bottom: 6vh;
+			}
+		}
+	}
+
+	#resume {
+		width: $resumewidth;
+		padding-left: 1.4em;
+		.table-row {
+			display: block;
+		}
+	}
+}
+
+@media screen and (min-width: $mq) {
+	#main .resume-page {
+		header .header-title {
+			width: $resumewidth;
+			max-width: 1000px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: flex-end;
+
+			h1 {
+				margin: 0;
+				flex: 0 1 68%;
+				text-align: left;
+			}
+		}
+	}
+	#resume {
+		width: $resumewidth;
+		max-width: 1000px;
+
+		.section-title {
+			flex: 0 0 32%;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: flex-end;
+			padding-right: 4em;
+		}
+		.section-content {
+			flex: 1 1 auto;
+		}
+
+		.resume-highlight-list {
+			li {
+				margin-bottom: 0.94em;
+				line-height: 1.5;
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+$header_bg_color: darken(desaturate($c_color, 0), 0);
+
+#main .project-page {
+	header {
+		height: 65vh;
+		background-image: linear-gradient(45deg, $header_bg_color, adjust-hue($header_bg_color, -50deg));
+		background-image: linear-gradient(45deg, #5171e0, adjust-hue(#5171e0, -50deg));
+		.header-title {
+			bottom: 3.6em;
+			display: flex;
+			flex-flow: column wrap;
+			align-items: flex-start;
+			width: 92%;
+			max-width: 1080px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		h1, 
+		h2 {
+			width: initial;
+			display: inline-block;
+			text-align: left;
+			background:darken(desaturate(#65c, 38%), 33%);
+			background: $a_color;
+			padding: 0 0.3em;
+			margin:0;
+			margin-bottom: 2px;
+			color:white;
+			a {
+				color:white;
+			}
+		}
+	}
+	.container {
+		text-align: left;
+	}
+}
+
+@media screen and (min-width: $mq) {
+	#main .project-page {
+		header {
+			height: 76vh;
+		}
+	}
+}

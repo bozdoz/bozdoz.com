@@ -1,0 +1,54 @@
+#main .page {
+	padding-bottom: 4em;
+	header {
+		height: 40vh;
+
+		.header-title {
+			bottom: 2.6em;
+		}
+
+		h1, 
+		h2 {
+			width:95%;
+			text-align: center;
+			color:#333;
+		}
+
+		h2 {
+			color:lighten(#333, 50%);
+		}
+	}
+}
+
+.project-list li {
+	margin-bottom: 15px;
+	position: relative;
+	padding-left: 1.5em;
+
+	&:before {
+		left: 0em;
+		top: 0.5em;
+		display: inline-block;
+		position: absolute;
+		font-family: FontAwesome;
+		font-size: 10pt;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		content: "\f054";
+		color: #ccc;
+	}
+
+}
+
+@media screen and (min-width: $mq) {
+	#main .page {
+		header {
+			height: 45vh;
+			
+			.header-title {
+				bottom: 3em;
+			}
+		}
+	}
+}
