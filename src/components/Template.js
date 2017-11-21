@@ -2,17 +2,18 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import App from './App';
 import Head from './Head';
-import getPage from './getPage';
+import getMarkDown from './getMarkDown';
 import { GA_TRACKING_ID } from '../config';
 
-const getHead = ({ match }) => {
+const getHead = ({ location }) => {
 	let page;
-	if (match.path === '/') {
-		page = getPage('index');
+	if (location.pathname === '/') {
+		page = getMarkDown('index');
 	} else {
-		page = getPage( match.url ); 
+		page = getMarkDown( location.pathname ); 
 	}
 	page = page.attributes;
+
 	return (
 		<Head {...page} />
 	)

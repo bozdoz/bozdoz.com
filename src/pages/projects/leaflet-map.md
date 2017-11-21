@@ -8,7 +8,10 @@ tags:
     - JavaScript
     - LeafletJS
     - WordPress
+    - PHP
 image: /images/projects/leaflet-map.jpg
 ---
 
 This project took off after developing a WordPress site for [TEAL Architects](http://tealarchitects.com/) 
+
+#### Object-oriented Programming

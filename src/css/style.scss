@@ -284,28 +284,28 @@ $breadcrumb_color: #47A;
 }
 
 .header-link {
-	visibility: hidden;
 	float: left;
 	position: absolute;
 	left: -28px;
 	padding-right: 9px;
 	font-size: 16pt;
 	height: 100%;
-	color: #b3b3b3;
-	&:hover {
-		visibility: visible;
-		color: lighten(#b3b3b3, 5%);
-	}
 	i {
+		visibility: hidden;
 		position: relative;
 		top: 50%;
 		transform: translateY(-50%);
+		color: #b3b3b3;
+	}
+	&:hover i {
+		visibility: visible;
+		color: lighten(#b3b3b3, 5%);
 	}
 }
 
 h1, h2, h3, h4, h5 {
 	position: relative;
-	&:hover .header-link {
+	&:hover .header-link i {
 		visibility: visible;
 	}
 }

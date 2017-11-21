@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Title from './Title';
 import Breadcrumbs from './Breadcrumbs';
 
-const Page = (props) => {
+const PageLayout = (props) => {
 	const {
 		title,
 		subtitle,
@@ -44,7 +44,7 @@ const Page = (props) => {
 	);
 };
 
-Page.propTypes = {
+PageLayout.propTypes = {
 	title: PropTypes.string,
 	subtitle: PropTypes.oneOfType([
 		PropTypes.string,
@@ -54,4 +54,4 @@ Page.propTypes = {
 	className: PropTypes.string,
 };
 
-export default Page;
+export default PageLayout;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Content from './Content';
+import PlainPage from './PlainPage';
 import LinkList from './LinkList';
 
 const list = [
@@ -22,13 +22,13 @@ const list = [
 ];
 
 const Projects = (props) => (
-	<Content source="projects" {...props}>
+	<PlainPage {...props}>
 		<div className="container">
 			<ul className="project-list">
 				<LinkList list={list} />
 			</ul>
 		</div>
-	</Content>
+	</PlainPage>
 );
 
 export default Projects;

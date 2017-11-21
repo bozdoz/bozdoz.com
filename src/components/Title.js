@@ -8,7 +8,7 @@ const Title = ({ children }) => {
 	}
 	if (typeof(window) !== 'undefined' &&
 		document.title !== title) {
-		document.title = `${title} - bozdoz`;
+		document.title = `${title} - @bozdoz`;
 	}
 	return (
 		<h1>{title}</h1>

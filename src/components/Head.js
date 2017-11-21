@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const _title = '@bozdoz';
-const _description = 'Web developer in Halifax, Nova Scotia';
 const site = 'https://bozdoz.com';
 const env = process.env.NODE_ENV;
 
 const Head = (props) => {
-  const title = props.title || _title;
-  const description = props.description || _description;
+  const {
+    title,
+    description,
+    image
+  } = props;
   return (
   <head>
       <meta charSet="utf-8" />
@@ -26,19 +27,19 @@ const Head = (props) => {
 
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />
-      <meta itemProp="image" content={site} />
+      <meta itemProp="image" content={site + image} />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@bozdoz" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@bozdoz" />
-      <meta name="twitter:image" content={site} />
+      <meta name="twitter:image" content={site + image} />
 
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={site} />
-      <meta property="og:image" content={site} />
+      <meta property="og:image" content={site + image} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
 
@@ -50,14 +51,25 @@ const Head = (props) => {
         <link rel="stylesheet" href="/css/main.css" />
       }
 
-      <title>{title}</title>
+      {title === Head.defaultProps.title ?
+        <title>{title}</title>
+        :
+        <title>{`${title} - @bozdoz`}</title>
+      }
     </head>
   );
 };
 
 Head.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  image: PropTypes.string,
+};
+
+Head.defaultProps = {
+  title: '@bozdoz',
+  description: 'Web developer in Halifax, Nova Scotia',
+  image: '/images/bozdoz.jpg'
 };
 
 export default Head;

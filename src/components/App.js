@@ -6,14 +6,10 @@ import Projects from './Projects';
 import ProjectPage from './ProjectPage';
 import ResumePage from './ResumePage';
 import AboutPage from './AboutPage';
-import Content from './Content';
+import PlainPage from './PlainPage';
 import NotFoundPage from './NotFoundPage';
 import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
-
-const PlainPage = (props) => (
-	<Content source={props.match.url}  {...props} /> 
-);
 
 const App = () => (
 	<Layout>

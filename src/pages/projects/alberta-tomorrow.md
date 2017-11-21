@@ -15,3 +15,9 @@ image: /images/projects/alberta-tomorrow.jpg
 ---
 
 An educational, online land-use planning tool
+
+#### Web
+#### Mobile
+#### Design
+##### Gauges
+##### FreeHandShapes

@@ -10,7 +10,7 @@ const cache = {};
 * @param Object source
 * @return Object|Null
 */
-const getPage = (_source) => {
+const getMarkDown = (_source) => {
 	let source = _source;
 	if (source.match(/^\//)) {
 		// strip leading slash
@@ -35,4 +35,4 @@ const getPage = (_source) => {
 	return require(`../pages/${source}.md`);
 };
 
-export default getPage;
+export default getMarkDown;

@@ -41,13 +41,14 @@ class MarkDown extends React.Component {
 				.querySelectorAll(a)
 				.forEach((header) => {
 					const anchor = document.createElement('a');
-					anchor.ariaHidden = 'true';
 					anchor.className = `header-link`;
 					anchor.href = `#${header.id}`;
 					anchor.innerHTML = '<i class="fa fa-link" aria-hidden="true"></i>';
 					header.appendChild(anchor);
 				});
 		});
+
+		// maybe do some wordpress-style shortcodes
 	}
 	render () {
 		if (this.state.redirect) {

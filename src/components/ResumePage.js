@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Page from './Page';
+import PageLayout from './PageLayout';
 import { Link } from 'react-router-dom';
 
 const resume = {
@@ -59,7 +59,7 @@ ResumeSection.propTypes = {
 };
 
 const ResumePage = () => (
-	<Page className="resume-page" title="Benjamin J. DeLong">
+	<PageLayout className="resume-page" title="Benjamin J. DeLong">
 		<div id="resume" className="container-fluid">
 			<section className="table-row">
 				<div className="section-title text-success">
@@ -104,7 +104,7 @@ const ResumePage = () => (
 				</div>
 			</section>
 		</div>
-	</Page>
+	</PageLayout>
 );
 
 export default ResumePage;

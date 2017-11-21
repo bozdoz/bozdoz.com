@@ -1,10 +1,9 @@
 import React from 'react';
-import Content from './Content';
+import PlainPage from './PlainPage';
 
 const ProjectPage = (props) => (
-	<Content 
+	<PlainPage 
 		className="project-page" 
-		source={props.match.url} 
 		breadcrumbs={[
 			'Home', '/',
 			'Projects', '/projects'
