@@ -1,11 +1,14 @@
 import path from 'path';
 import express from 'express';
+import compression from 'compression';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import Template from './components/Template';
 
 const app = express();
+
+app.use(compression())
 
 app.use(express.static(path.join(__dirname, 'static')));
 
