@@ -12,10 +12,10 @@ const cache = {};
 */
 const getMarkDown = (_source) => {
 	let source = _source;
-	if (source.match(/^\//)) {
-		// strip leading slash
-		source = source.substr(1);
-	}
+	
+	// strip leading and trailing slashes
+	source = source.replace(/(^\/+|\/+$)/g, '');
+
 	if (fs.readFileSync) {
 		let content;
 		let page;	
@@ -29,6 +29,7 @@ const getMarkDown = (_source) => {
 			cache[source] = page;
 		} catch (e) {
 			// 500 error? 404?
+			return getMarkDown('404');
 		}
 		return page;
 	}

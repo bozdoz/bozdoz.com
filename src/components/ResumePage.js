@@ -24,11 +24,11 @@ const resume = {
 	'PROJECTS': {
 		'Leaflet Map WordPress Plugin': {
 			link: '/projects/leaflet-map',
-			description: 'A WordPress shortcode-based plugin to create multiple maps in posts and pages, and add multiple markers on those maps.'
+			description: 'A shortcode-based WordPress plugin to create multiple maps in posts and pages.  It has companion shortcodes to add markers, geojson, and images to those maps.  It is a solo project, and the first project where I used Object-Oriented Programming with PHP.'
 		},
 		'Typewrite Something': {
 			link: '/projects/typewrite-something',
-			description: 'An online typewriter simulator. A work in progress, a test project for Phonegap, and CasperJS test suite.'
+			description: 'I wanted to build a performant and realistic online typewriter simulator; a minimalistic web app where I learned about JavaScript and HTML5 Canvas. I further used the project as a way to learn mobile app development with Adobe Phonegap, and testing suites such as CasperJS.'
 		}
 	}
 };

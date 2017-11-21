@@ -18,7 +18,7 @@ class MarkDown extends React.Component {
 		this.container
 			.querySelectorAll('a')
 			.forEach((a) => {
-				if (a.href.match(/(localhost|bozdoz.com)/)) {
+				if (a.href.match(/^https?:\/\/(localhost|bozdoz.com)/)) {
 					// add redirect handler
 					a.addEventListener('click', (e) => {
 						e.preventDefault();
@@ -48,7 +48,11 @@ class MarkDown extends React.Component {
 				});
 		});
 
-		// maybe do some wordpress-style shortcodes
+		// todo: add header links to top of `this.container`
+		// as a list of skip-to links
+
+		// maybe do some wordpress-style shortcodes someday!! :)
+		// idea: [fa icon=link]
 	}
 	render () {
 		if (this.state.redirect) {
@@ -56,7 +60,7 @@ class MarkDown extends React.Component {
 		}
 		return (
 			<div ref={(a) => { this.container = a; }}
-				className="container" 
+				className="container markdown" 
 				dangerouslySetInnerHTML={{
 					__html: marked(this.props.content)
 				}} />

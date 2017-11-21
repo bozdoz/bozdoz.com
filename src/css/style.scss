@@ -286,13 +286,13 @@ $breadcrumb_color: #47A;
 .header-link {
 	float: left;
 	position: absolute;
-	left: -28px;
-	padding-right: 9px;
-	font-size: 16pt;
+	left: -25px;
+	font-size: 14pt;
 	height: 100%;
+	width: 25px;
 	i {
 		visibility: hidden;
-		position: relative;
+		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
 		color: #b3b3b3;

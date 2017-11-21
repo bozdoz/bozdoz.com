@@ -9,4 +9,4 @@ I have played around extensively with **LeafletJS**, creating geospatial mapping
 
 I built a small **[typewriter simulator](/projects/typewrite-something)** as a fun project.  It began as a [web app](http://typewritesomething.com), and I later made it into a [mobile app](https://play.google.com/store/apps/details?id=com.phonegap.typewritesomething).
 
-I live in **Halifax, NS** with my partner and two dogs.
+I live in Halifax, NS with my partner and two dogs.

@@ -1,5 +1,5 @@
 ---
-title: Luke Buxtond
+title: Luke Buxton
 subtitle: lukeandrewbuxton.com
 link: "https://lukeandrewbuxton.com"
 description: >

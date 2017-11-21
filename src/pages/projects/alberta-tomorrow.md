@@ -16,6 +16,12 @@ image: /images/projects/alberta-tomorrow.jpg
 
 An educational, online land-use planning tool
 
+- links
+- tech
+- what is it
+- what was your role
+- components?
+
 #### Web
 #### Mobile
 #### Design

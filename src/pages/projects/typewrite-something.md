@@ -7,7 +7,7 @@ description: >
 tags:
     - JavaScript
     - PhoneGap
-image: /images/projects/typewrite-something.png
+image: /images/projects/typewrite-something.jpg
 ---
 
 I began this project for my wife while she was visiting Singapore, and was away from her typewriters.  I thought it would be a fun JavaScript project and a chance to see what I could do with HTML5 Canvas elements.  Hopefully, I thought, she would enjoy it as well.
