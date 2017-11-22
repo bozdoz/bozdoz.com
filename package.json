@@ -6,6 +6,7 @@
   "scripts": {
     "start": "export NODE_ENV=development && npm run start:babel",
     "start:babel": "babel-node ./src/dev-server.js",
+    "start:production": "export NODE_ENV=production && node ./src/server.min.js",
     "build": "export NODE_ENV=production && webpack -p",
     "build:dev": "export NODE_ENV=development && webpack -d",
     "build:watch": "export NODE_ENV=development && webpack -d --watch",

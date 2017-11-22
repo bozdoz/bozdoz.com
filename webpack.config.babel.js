@@ -5,7 +5,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const client = {
 	entry : [
-		'webpack-hot-middleware/client',
 		'./src/client.js'
 	],
 	output: {
@@ -38,10 +37,6 @@ const client = {
 			}
 		]
 	}, 
-	devServer: {
-		historyApiFallback: true,
-		hot: true
-	},
 	plugins: [
 		new webpack.DefinePlugin({
 		  'process.env': {
@@ -55,12 +50,12 @@ console.log('NODE_ENV', process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
 	// uglify js
-	client.plugins.push(
+	/*client.plugins.push(
 		new webpack.optimize.UglifyJsPlugin()
-	);
+	);*/
 	// extract css into a file
 	client.plugins.push(
-		new ExtractTextPlugin('../css/[name].css')
+		new ExtractTextPlugin('./css/[name].css')
 	);
 	client.module.rules.push(
 		{ 
@@ -77,6 +72,7 @@ if (process.env.NODE_ENV === 'production') {
 		}
 	);
 } else {
+	client.entry.unshift('webpack-hot-middleware/client');
 	// live editing
 	client.plugins.push(
 		new webpack.HotModuleReplacementPlugin()
@@ -95,6 +91,11 @@ if (process.env.NODE_ENV === 'production') {
 	);
 	// trivial devtool sources 
 	client.devtool = 'cheap-module-eval-source-map';
+
+	client.devServer = {
+		historyApiFallback: true,
+		hot: true
+	};
 }
 
 const server = {
