@@ -1,16 +1,30 @@
 import path from 'path';
 import express from 'express';
 import compression from 'compression';
+import helmet from 'helmet';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import Template from './components/Template';
 
+const PORT = 8001;
 const app = express();
 
-app.use(compression())
+app.use(compression());
+app.use(helmet());
 
 app.use(express.static(path.join(__dirname, 'static')));
+
+// it removes trailing slash
+app.use(function(req, res, next) {
+	const _path = req.path;
+	if (_path.length > 1 && /\/$/.test(_path)) {
+		const query = req.url.slice(_path.length);
+		res.redirect(301, _path.slice(0, -1) + query);
+	} else {
+		next();
+	}
+});
 
 /**
 * app listen methods; required for executing AFTER 
@@ -41,8 +55,8 @@ function createApp () {
 		res.status(status).send(content);
 	});
 
-	app.listen(8080, function() {
-	    console.log('Live at http://localhost:8080/');
+	app.listen(PORT, function() {
+	    console.log(`Live at http://localhost:${PORT}/`);
 	});
 }
 

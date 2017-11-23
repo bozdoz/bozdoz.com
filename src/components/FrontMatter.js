@@ -12,7 +12,7 @@ class FrontMatter extends React.Component {
 	}
 	get () {
 		/* might be async someday */
-		const page = getMarkDown(this.props.source);
+		const page = this.props.markdown || getMarkDown(this.props.source);
 		const atts = page.attributes || {};
 
 		return {
@@ -57,7 +57,8 @@ class FrontMatter extends React.Component {
 }
 
 FrontMatter.propTypes = {
-	source: PropTypes.string
+	source: PropTypes.string.isRequired,
+	markdown: PropTypes.object
 };
 
 export default FrontMatter;

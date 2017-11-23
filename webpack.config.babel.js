@@ -50,9 +50,9 @@ console.log('NODE_ENV', process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'production') {
 	// uglify js
-	/*client.plugins.push(
+	client.plugins.push(
 		new webpack.optimize.UglifyJsPlugin()
-	);*/
+	);
 	// extract css into a file
 	client.plugins.push(
 		new ExtractTextPlugin('./css/[name].css')
@@ -63,16 +63,20 @@ if (process.env.NODE_ENV === 'production') {
 			use: ExtractTextPlugin.extract({
 				fallback: 'style-loader', 
 				use: [
-					'css-loader', 
-					'sass-loader', 
-					'postcss-loader'
+					'css-loader?sourceMap', 
+					'sass-loader?sourceMap', 
+					'postcss-loader?sourceMap'
 				],
 				publicPath: '/css/'
 			})
 		}
 	);
 } else {
-	client.entry.unshift('webpack-hot-middleware/client');
+	client.entry = [
+		'webpack-hot-middleware/client',
+		...client.entry
+	];
+
 	// live editing
 	client.plugins.push(
 		new webpack.HotModuleReplacementPlugin()
@@ -83,13 +87,13 @@ if (process.env.NODE_ENV === 'production') {
 			test: /\.s?css$/, 
 			use: [
 				'style-loader', 
-				'css-loader', 
-				'sass-loader', 
-				'postcss-loader'
+				'css-loader?sourceMap', 
+				'sass-loader?sourceMap', 
+				'postcss-loader?sourceMap'
 			]
 		}
 	);
-	// trivial devtool sources 
+	// devtool sources 
 	client.devtool = 'cheap-module-eval-source-map';
 
 	client.devServer = {

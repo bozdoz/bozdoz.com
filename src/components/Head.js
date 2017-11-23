@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { site } from '../config';
 
-const site = 'https://bozdoz.com';
 const env = process.env.NODE_ENV;
 
 const Head = (props) => {
@@ -43,13 +43,13 @@ const Head = (props) => {
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
 
-      <link rel="stylesheet" href="/css/font-awesome.min.css" />
-
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossOrigin="anonymous" />
-
+      
       {env === 'production' &&
         <link rel="stylesheet" href="/css/main.css" />
       }
+
+      <link rel="stylesheet" href="/css/font-awesome.min.css" />
 
       {title === Head.defaultProps.title ?
         <title>{title}</title>

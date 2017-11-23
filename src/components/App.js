@@ -15,11 +15,11 @@ const App = () => (
 	<Layout>
 		<Switch>
 			<Route exact path="/" component={IndexPage} />
-			<Route path="/projects/:id" component={ProjectPage} />
-			<Route path="/projects" component={Projects} />
-			<Route path="/resume" component={ResumePage} />
-			<Route path="/about" component={AboutPage} />
-			<Route path="/privacy" component={PlainPage} />
+			<Route exact path="/projects" component={Projects} />
+			<Route exact path="/projects/:id" component={ProjectPage} />
+			<Route exact path="/resume" component={ResumePage} />
+			<Route exact path="/about" component={AboutPage} />
+			<Route exact path="/privacy" component={PlainPage} />
 			<Route component={NotFoundPage} />
 		</Switch>
 		<ScrollToTop />

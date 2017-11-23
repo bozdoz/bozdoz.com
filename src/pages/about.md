@@ -31,4 +31,4 @@ This is a **Universal Javascript** app: The pages are generated server-side thro
 
 I've learned a lot through this project about both **React** and **Webpack**, and I've also had a lot of fun making it!  I hope you enjoy the performance and experience of this site on the front end!
 
-If you're curious, take a look at the repo: [<i class="fa fa-github"></i> https://github.com/bozdoz/bozdoz.com ](https://github.com/bozdoz/bozdoz.com)
+If you're curious, take a look at the repo: [<i class="fa fa-github"></i> github.com](https://github.com/bozdoz/bozdoz.com)

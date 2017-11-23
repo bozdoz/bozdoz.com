@@ -18,7 +18,7 @@ class MarkDown extends React.Component {
 		this.container
 			.querySelectorAll('a')
 			.forEach((a) => {
-				if (a.href.match(/^https?:\/\/(localhost|bozdoz.com)/)) {
+				if (a.href.match(/^https?:\/\/(localhost|bozdoz\.com)/)) {
 					// add redirect handler
 					a.addEventListener('click', (e) => {
 						e.preventDefault();
