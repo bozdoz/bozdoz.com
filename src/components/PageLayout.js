@@ -29,8 +29,7 @@ const PageLayout = (props) => {
 				<div className="header-image"
 					style={{
 						backgroundImage: `url(${image})`
-					}}>
-				</div>}
+					}} />}
 			<div className="header-title">
 				<Title>{title}</Title>
 			{subtitle && 

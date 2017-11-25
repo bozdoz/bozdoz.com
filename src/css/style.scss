@@ -72,20 +72,6 @@ $select_bg: $b_color;
 	flex-flow: column nowrap;
 }
 
-$link_color: $para_color;
-
-p a {
-	color: $link_color;
-	border-bottom: 0.16em solid lighten($d_color, 45%);
-	margin: 0 3px;
-	padding-bottom: 0.06em;
-	transition: color 0.2s;
-	&:hover {
-		color: lighten($link_color, 20%);
-		text-decoration: none;
-	}
-}
-
 $nav-color: desaturate(darken($b_color, 16%), 14%);
 
 #nav {
@@ -101,6 +87,11 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 	#brand-link h1 {
 		font-size: 1.14em;
 		margin:0;
+	}
+
+	#brand-link img {
+		border: 3px solid transparentize(#222, 0.85);
+		box-sizing: content-box;
 	}
 
 	#nav-footer {
@@ -308,6 +299,54 @@ h1, h2, h3, h4, h5 {
 	&:hover .header-link i {
 		visibility: visible;
 	}
+}
+
+.border {
+	border-width: 2px !important;
+}
+
+$link_color: $para_color;
+
+.markdown {
+	a {
+		color: $link_color;
+		border-bottom: 0.16em solid lighten($d_color, 45%);
+		margin: 0 3px;
+		padding-bottom: 0.06em;
+		transition: color 0.2s;
+		white-space: nowrap;
+		&:hover {
+			color: lighten($link_color, 20%);
+			text-decoration: none;
+		}
+	}
+	ul {
+		padding-left: 1em;
+		margin-bottom: 1.41575em;
+		li:before {
+			left: -1.5em;
+			top: 0.3em;
+			display: inline-block;
+			position: absolute;
+			font-family: FontAwesome;
+			font-size: 10pt;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			content: "\f054";
+			color: #ccc;
+		}
+		li {
+			position: relative;
+			margin-bottom: 0.94em;
+			line-height: 1.5;
+			font-size: 14pt;
+		}
+	}
+}
+
+.list-group-item:hover {
+	background: transparentize(adjust-hue(saturate($c_color, 60%),-20deg), 0.9);
 }
 
 // larger than small screen 900 px

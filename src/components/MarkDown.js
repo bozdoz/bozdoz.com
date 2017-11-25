@@ -14,6 +14,15 @@ class MarkDown extends React.Component {
 		});
 	}
 	componentDidMount () {
+
+		/*
+		jest renderer doesn't create
+	 	this.container (apparently)
+	 	*/
+		if (!this.container) {
+			return false;
+		}
+
 		// change links to target blank
 		this.container
 			.querySelectorAll('a')

@@ -2,11 +2,12 @@
 title: About
 ---
 
-This site is designed to showcase **[my best-loved projects in web development](/projects)**.
+This site is designed to showcase **[my best-loved projects](/projects)** in web development.
 
-It is built with **React**, **Express**, and **Webpack**.  I chose to avoid using a database to store content, and instead tried to take an approach similar to **Jekyll** (a blog-aware, static site generator).  I decided to use a predictable file structure and write my pages in **MarkDown**, which I have enjoyed using in sites like **StackOverflow** and **GitHub**. 
+It is built with **React** and **Express**.  I wanted to take a content management approach similar to **Jekyll** (a blog-aware, static site generator).  I decided to use a predictable file structure and write my pages in **MarkDown**, which I have enjoyed using in sites like StackOverflow and GitHub. 
 
 Here's an example **React** component from *this very* page:
+
 ```jsx
 import React from 'react';
 import PlainPage from './PlainPage';
@@ -23,7 +24,7 @@ const AboutPage = (props) => (
 export default AboutPage;
 ```
 
-Note how simple it would be to copy `<Contact />` anywhere I want my contact information to appear.
+> *Note how simple it would be to copy `<Contact />` anywhere I want my contact information to appear.*
 
 What I've loved about **React** is how modular/reusable it is; and what I've loved about **MarkDown** is how minimalistic it is.  I wished for a simple implementation of both languages, but generally found only a handful of examples which only dealt with *some* of the issues. This website borrowed from many examples and I made my own solutions where necessary.
 

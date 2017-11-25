@@ -23,17 +23,15 @@
 .project-list {
 	h5 {
 		font-size: 1em;
+		display: inline-block;
+		/* border-bottom: 0.16em solid lighten($d_color, 45%); */
 	}
 	img {
 		width: 100px;
 		height: auto;
 	}
 	a {
-		color: #43454b;
-		&:hover {
-			background: transparentize(saturate(adjust-hue($b_color, -20deg), 80%), 0.85);
-			text-decoration: none;
-		}
+		color: $link_color;
 	}
 	p {
 		margin: 0;

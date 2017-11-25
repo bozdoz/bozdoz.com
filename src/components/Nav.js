@@ -10,10 +10,10 @@ const tl_routes = [
 		href: '/about',
 		text: 'About'
 	},
-	{
+	/*{
 		href: '/resume',
 		text: 'Resume',
-	},
+	},*/
 ];
 
 const Nav = () => (

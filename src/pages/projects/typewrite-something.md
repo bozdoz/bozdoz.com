@@ -24,3 +24,5 @@ I looked up other typewriter simulators and thought they could be improved on.
 - Initially on CodePen
 - Adobe PhoneGap testing
 - Where you're going with it
+
+It began as a [web app](http://typewritesomething.com), and I later made it into a [mobile app](https://play.google.com/store/apps/details?id=com.phonegap.typewritesomething).
