@@ -1,4 +1,7 @@
-# bozdoz.com
+bozdoz.com
+==========
+
+[![Build Status](https://travis-ci.org/bozdoz/bozdoz.com.svg?branch=master)](https://travis-ci.org/bozdoz/bozdoz.com)
 
 This site is designed to showcase **my best-loved projects** in web development.
 

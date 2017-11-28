@@ -5,7 +5,7 @@ subtitle: Full Stack Web Developer
 
 I am in the **[top 6% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
 
-I have played around extensively with **LeafletJS**, creating geospatial mapping application plugins such as [<i class="fa fa-github"></i> WebGL Heatmap](https://github.com/ursudio/leaflet-webgl-heatmap), and [<i class="fa fa-github"></i> Freehand Shapes](https://github.com/bozdoz/leaflet-freehandshapes).
+I have played around extensively with [**Leaflet**](http://leafletjs.com/), creating geospatial map plugins such as [<i class="fa fa-github"></i> WebGL Heatmap](https://github.com/ursudio/leaflet-webgl-heatmap), and [<i class="fa fa-github"></i> Freehand Shapes](https://github.com/bozdoz/leaflet-freehandshapes).
 
 I have built several **WordPress** sites for clients, and have published a number of plugins, such as:
 

@@ -6,7 +6,7 @@ const list = [
 	{
 		id: 'alberta-tomorrow',
 		text: 'Alberta Tomorrow',
-		description: 'An educational, online land-use planning tool'
+		description: 'A classroom-focused, interactive mapping app designed to make students aware of some of the complexities involved in land-use planning'
 	},
 	{
 		id: 'luke-buxton',
@@ -22,7 +22,7 @@ const list = [
 	{
 		id: 'leaflet-map',
 		text: 'Leaflet Map',
-		description: 'Generate a LeafletJS map on your WordPress site with simple shortcodes'
+		description: 'Generate a Leaflet map on your WordPress site with simple shortcodes'
 	},
 ];
 
@@ -34,7 +34,7 @@ const Projects = (props) => (
 					<Link key={id} to={`/projects/${id}`} className="list-group-item">
 						<div className="media">
 							<img 
-								className="mr-4" 
+								className="d-flex align-self-center mr-4" 
 								src={`/images/projects/${id}-sq.jpg`} 
 								alt={text} 
 								title={text} />

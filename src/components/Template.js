@@ -5,6 +5,8 @@ import Head from './Head';
 import getMarkDown from './getMarkDown';
 import { GA_TRACKING_ID } from '../config';
 
+const env = process.env.NODE_ENV;
+
 const getHead = ({ location }) => {
 	let page;
 	if (location.pathname === '/') {
@@ -26,9 +28,11 @@ const Template = () => (
 			<div id="page">
 				<App />
 			</div>
-			<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
-			<script src="/js/main.js"></script>
-			<script src="/prism/prism.js" defer></script>
+			{env === 'production' &&
+				<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+			}
+			<script src="/js/main.js" />
+			<script src="/prism/prism.js" defer />
 		</body>
 	</html>
 );

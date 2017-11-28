@@ -3,10 +3,10 @@ title: Leaflet Map
 subtitle: A WordPress plugin for simple map shortcodes
 link: "https://wordpress.org/plugins/leaflet-map/"
 description: >
-    Generate a LeafletJS map on your WordPress site with simple shortcodes
+    Generate a Leaflet map on your WordPress site with simple shortcodes
 tags:
     - JavaScript
-    - LeafletJS
+    - Leaflet
     - WordPress
     - PHP
 image: /images/projects/leaflet-map.jpg

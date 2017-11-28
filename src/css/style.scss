@@ -125,11 +125,11 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 		font-weight: bold;
 
 		&:hover, &:active {
-			background: $nav-color;
+			background: transparentize($nav-color, 0.8);
 			text-decoration: none;
 		}
 		&.active {
-			background: transparentize(#222, 0.7);
+			background: transparentize(#222, 0.9);
 			cursor: default;
 		}
 	}
@@ -181,8 +181,11 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 
 	.page-description {
 		min-height: 6em;
+		max-width: 800px;
+		margin: 0 auto;
 		text-align: center;
 		padding: 2vh;
+		padding-top: 0;
 		display: flex;
 		flex-flow: row no-wrap;
 		align-items: center;
@@ -281,6 +284,7 @@ $breadcrumb_color: #47A;
 	font-size: 14pt;
 	height: 100%;
 	width: 25px;
+	border: none !important;
 	i {
 		visibility: hidden;
 		position: absolute;
@@ -320,6 +324,10 @@ $link_color: $para_color;
 			text-decoration: none;
 		}
 	}
+	h1,h2,h3,h4,h5 {
+		margin-top: 12px;
+		margin-bottom: 28px;
+	}
 	ul {
 		padding-left: 1em;
 		margin-bottom: 1.41575em;
@@ -342,6 +350,9 @@ $link_color: $para_color;
 			line-height: 1.5;
 			font-size: 14pt;
 		}
+	}
+	img {
+		width:100%;
 	}
 }
 
