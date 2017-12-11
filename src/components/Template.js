@@ -14,7 +14,7 @@ const getHead = ({ location }) => {
 	} else {
 		page = getMarkDown( location.pathname ); 
 	}
-	page = page.attributes;
+	page = page.attributes || {};
 
 	return (
 		<Head {...page} />

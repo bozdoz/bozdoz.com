@@ -23,6 +23,16 @@ window.gtag = function gtag () {dataLayer.push(arguments)};
 gtag('js', new Date());
 gtag('config', GA_TRACKING_ID);
 
+window.addEventListener('hashchange', function () {
+	var hash = window.location.hash;
+	if (hash && hash !== '#') {
+		gtag({
+			event: 'hashchange',
+			hash: hash
+		});
+	}
+});
+
 // hot reloading
 if (module.hot) {
 	module.hot.accept();

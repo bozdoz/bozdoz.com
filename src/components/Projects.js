@@ -11,7 +11,7 @@ const list = [
 	{
 		id: 'luke-buxton',
 		text: 'Luke Buxton',
-		description: 'Art director, animator, production, designer'
+		description: 'Art director, Animator, and Production Designer'
 
 	},
 	{
