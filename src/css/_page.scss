@@ -27,18 +27,53 @@
 		/* border-bottom: 0.16em solid lighten($d_color, 45%); */
 	}
 	img {
-		width: 100px;
 		height: auto;
+		width: 100px;
 	}
 	a {
 		color: $link_color;
+		overflow: hidden;
 	}
 	p {
 		margin: 0;
 		font-size: 0.9em;
+		// to put on top of image
+		position: relative; 
 	}
 }
 
+// mobile only
+@media screen and (max-width: $mq) {
+	.project-list {
+		img {
+			width: 100%;
+			position: absolute;
+			top:50%;
+			left:0;
+			right:0;
+			bottom:0;
+			transform: translateY(-50%);
+			opacity: 0.09;
+		}
+		a {
+			padding-top: 1.6em;
+			padding-bottom: 1.6em;
+			margin-bottom: 1.2em;
+			text-shadow: white 1px 1px 1px;
+
+			&:hover {
+				background: none;
+				border-color: $a_color;
+			}
+
+			&:hover img {
+				opacity: 0.18;
+			}
+		}
+	}
+}
+
+// laptop screen
 @media screen and (min-width: $mq) {
 	#main .page {
 		header {
