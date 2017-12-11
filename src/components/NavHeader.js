@@ -8,7 +8,7 @@ const NavHeader = () => (
 				src="https://secure.gravatar.com/avatar/008a440567c800274d0d2faa93da916c?s=64"
 				alt="Benjamin J DeLong" 
 				title="Me" /> 
-			<h1>@bozdoz</h1>
+			<h1>Benjamin J DeLong</h1>
 		</Link>
 	</div>
 );

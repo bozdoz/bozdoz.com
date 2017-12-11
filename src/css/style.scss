@@ -89,7 +89,7 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 	font-size: 14pt;
 
 	#brand-link h1 {
-		font-size: 1.14em;
+		font-size: 0.94em;
 		margin:0;
 	}
 
@@ -364,6 +364,31 @@ $link_color: $para_color;
 	background: transparentize(adjust-hue(saturate($c_color, 60%),-20deg), 0.9);
 }
 
+.contact-list {
+	li {
+		display: flex;
+		flex-flow: row nowrap; 
+		align-content: center;
+
+		& > * {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center; 
+		}
+	}
+	.fa {
+		width: 1.6em;
+		color: $c_color;
+	}
+	.pretext {
+		width: 4.6em;
+	}
+	a {
+		flex: 0 0 auto;
+	}
+	
+}
+
 // larger than small screen 900 px
 @media screen and (min-width: $mq) {
 	html, 
@@ -381,9 +406,6 @@ $link_color: $para_color;
 
 	#main {
 		flex: 1 1 $main_width;
-		.container {
-			width: 60%;
-		}
 		header {
 			height: 76vh;
 		}

@@ -10,6 +10,7 @@ const Head = (props) => {
     description,
     image
   } = props;
+
   return (
   <head>
       <meta charSet="utf-8" />
