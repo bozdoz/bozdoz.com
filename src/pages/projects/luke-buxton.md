@@ -13,13 +13,15 @@ image: /images/projects/luke-buxton.jpg
 
 ### What is it?
 
-This is a standalone site, built with Django, to manage and display various categories of artwork by illustrator, Luke Buxton.
+This is a standalone site, built with **Django**, to manage and display various categories of artwork by illustrator, Luke Buxton.
 
-His featured images are overlayed onto an photo of his laptop. This *crooked* website design presented many challenges, and made for a fun looking site.
+His featured images are overlayed onto an photo of his laptop. This *crooked* website design presented many challenges, and made for a fun site.
 
 This project was one of the first in many years where **I avoided the use of jQuery**, or any other JavaScript library. I wanted to try to do it completely on my own.  
 
-### Loading... ... ...
+It's got your typical hamburger menu in the top-left, loading animations, and lightbox slideshows.  All that, and a backend for Luke to keep his content up-to-date.  
+
+### Loading Large Images
 
 One of the biggest challenges was figuring out how to manage loading all of the large images Luke wanted displayed.
 
@@ -49,7 +51,7 @@ whenImageReady(title_src, function () {
 
 All of the loading animations are handled with a `Loader` constructor which simply appends `.load-holder` and `.load-animation` elements into any element &mdash; the **CSS** handles the rest.
 
-### Positioning the Content
+### Putting the Content into the Laptop
 
 The next part of the puzzle was figuring out how to display all of the content as if it were being displayed on the laptop in the background. 
 
@@ -132,7 +134,7 @@ for (var row = 0, len = table.length; row < len; row++) {
 }
 ```
 
-Finally, the content also needed to be rotated:
+**Finally**, the content also needed to be rotated:
 
 ```scss
 main {
@@ -144,7 +146,7 @@ main {
 
 And that sums it up!  It was a series of challenges that made for a unique look for Luke's portfolio.
 
-### Light boxes
+### Simple Custom Light Boxes
 
 Some simple lightboxes to help view the images in the galleries.
 
@@ -215,7 +217,7 @@ img#showcase-image {
 
 The `#showcase-image` element uses a vertical centering trick that I learned from [David Walsh](https://davidwalsh.name/css-vertical-center).  The lightbox opens and closes on click (no exit button) for simplicity's sake.
 
-### Ajax page loading
+### Ajax Content Loading
 
 Because the whole site content is meant to be displayed on the image of the laptop screen, it was easy to request and load the content separately.
 

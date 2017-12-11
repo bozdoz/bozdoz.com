@@ -39,6 +39,10 @@ p {
     color: $para_color;
 }
 
+pre {
+	margin-bottom: 1.41575em !important;
+}
+
 body, p {
 	font-family: $para_font;
 }
@@ -180,16 +184,17 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 	}
 
 	.page-description {
-		min-height: 6em;
+		min-height: 4.6em;
 		max-width: 800px;
 		margin: 0 auto;
-		text-align: center;
 		padding: 2vh;
 		padding-top: 0;
+		padding-bottom: 0;
 		display: flex;
 		flex-flow: row no-wrap;
 		align-items: center;
 		justify-content: center;
+		text-align: center;
 	}
 
 	.container {
@@ -221,12 +226,10 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 $tag_color: $b_color;
 
 .tag-list {
-	padding: 2vh;
 	padding-top: 0;
 	width: 95%;
 	max-width: 700px;
 	margin: 0 auto;
-	text-align: center;
 	font-size: 13pt;
 	display: flex;
 	flex-flow: row wrap;
@@ -328,6 +331,9 @@ $link_color: $para_color;
 		margin-top: 12px;
 		margin-bottom: 28px;
 	}
+	h3 {
+		font-size: 1.4em;
+	}
 	ul {
 		padding-left: 1em;
 		margin-bottom: 1.41575em;
@@ -382,9 +388,6 @@ $link_color: $para_color;
 		}
 		header {
 			height: 76vh;
-		}
-		.page-description {
-			min-height: 8em;
 		}
 	}
 

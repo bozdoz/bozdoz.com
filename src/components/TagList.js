@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TagList = ({tags}) => (
-	<ul className="tag-list">
+	<ul className="tag-list container">
 		{tags.map((tag) => (
 			<li key={tag}>#{tag}</li>
 		))}
