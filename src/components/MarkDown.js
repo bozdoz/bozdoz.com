@@ -14,6 +14,7 @@ class MarkDown extends React.Component {
 		});
 	}
 	componentDidMount () {
+		const host = window.location.host;
 
 		/*
 		jest renderer doesn't create
@@ -27,7 +28,7 @@ class MarkDown extends React.Component {
 		this.container
 			.querySelectorAll('a')
 			.forEach((a) => {
-				if (a.href.match(/^https?:\/\/(localhost|bozdoz\.com)/)) {
+				if (a.href.match( host )) {
 					// add redirect handler
 					a.addEventListener('click', (e) => {
 						e.preventDefault();
