@@ -3,7 +3,7 @@ title: Luke Buxton
 subtitle: lukeandrewbuxton.com
 link: "https://lukeandrewbuxton.com"
 description: >
-    A personal site designed for an illustrator to showcase galleries of his artwork.
+    A personal site designed for a animation designer to showcase galleries of his artwork.
 tags:
     - JavaScript
     - CSS3
@@ -13,9 +13,9 @@ image: /images/projects/luke-buxton.jpg
 
 ### What is it?
 
-This is a standalone site, built with **Django**, to manage and display various categories of artwork by illustrator, Luke Buxton.
+This is a standalone site, built with **Django**, to manage and display various categories of artwork by animation designer, Luke Buxton.
 
-His featured images are overlayed onto an photo of his laptop. This *crooked* website design presented many challenges, and made for a fun site.
+Luke pitched an idea for his online portfolio, where his illustrations sat diagonally within a photo of his laptop.  It proved to be challenging, but made for a fun site to build and to view.
 
 This project was one of the first in many years where **I avoided the use of jQuery** (I held to the idea that [I might not need jQuery](http://youmightnotneedjquery.com/)), or any other JavaScript library. I wanted to try to do it completely on my own.  
 
