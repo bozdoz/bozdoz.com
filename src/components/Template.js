@@ -22,7 +22,7 @@ const getHead = ({ location }) => {
 };
 
 const Template = () => (
-	<html lang="en">
+	<html lang="en" dir="ltr">
 		<Route render={getHead} />
 		<body>
 			<div id="page">

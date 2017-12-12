@@ -8,7 +8,7 @@ const contact_links = [
 		icon: 'twitter'
 	},
 	{
-		href: 'mailto:ben@bozdoz.com?subject=Your Site',
+		href: 'mailto:ben@bozdoz.com?subject=Your%20Site',
 		text: 'ben@bozdoz.com',
 		pre_text: ' Email: ',
 		icon: 'envelope'

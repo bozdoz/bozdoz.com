@@ -1,6 +1,5 @@
 import path from 'path';
 import express from 'express';
-import compression from 'compression';
 import helmet from 'helmet';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -10,7 +9,6 @@ import Template from './components/Template';
 const PORT = 8001;
 const app = express();
 
-app.use(compression());
 app.use(helmet());
 
 app.use(express.static(path.join(__dirname, 'static')));

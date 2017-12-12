@@ -6,10 +6,16 @@ const env = process.env.NODE_ENV;
 
 const Head = (props) => {
   const {
-    title,
     description,
     image
   } = props;
+  
+  let { title } = props;
+
+  if (title !== Head.defaultProps.title) {
+    // DRY
+    title = `${title} - @bozdoz`;
+  }
 
   return (
   <head>
@@ -17,7 +23,6 @@ const Head = (props) => {
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <meta name="theme-color" content="#000000" />
-      <link rel="shortcut icon" href="/favicon.ico" />
 
       <meta
         name="keywords"
@@ -25,10 +30,6 @@ const Head = (props) => {
       <meta
         name="description"
         content={description} />
-
-      <meta itemProp="name" content={title} />
-      <meta itemProp="description" content={description} />
-      <meta itemProp="image" content={SITE + image} />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@bozdoz" />
@@ -43,6 +44,7 @@ const Head = (props) => {
       <meta property="og:image" content={SITE + image} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
+      <meta property="og:locale" content="en_CA" />
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossOrigin="anonymous" />
       
@@ -51,12 +53,9 @@ const Head = (props) => {
       }
 
       <link rel="stylesheet" href="/css/font-awesome.min.css" />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-      {title === Head.defaultProps.title ?
-        <title>{title}</title>
-        :
-        <title>{`${title} - @bozdoz`}</title>
-      }
+      <title>{title}</title>
     </head>
   );
 };

@@ -24,7 +24,11 @@ const list = [
 	{
 		href: 'https://www.strava.com/athletes/637243',
 		title: 'Strava',
-		image: '/images/strava-white.svg'
+		image: {
+			src: '/images/strava-white.svg',
+			alt: 'Strava',
+			height: 10
+		}
 	},
 ];
 
@@ -37,7 +41,7 @@ const NavFooter = () => (
 						<i className={`fa fa-${icon}`} aria-hidden="true"></i>
 					}
 					{image &&
-						<img height="10" src={image} />
+						<img {...image} />
 					}
 				</a>
 			</li>

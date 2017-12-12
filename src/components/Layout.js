@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Layout = (props) => (
 	<div id="page-container">
-		<nav id="nav" role="navigation">
+		<nav id="nav">
 			<div id="nav-top">
 				<NavHeader />
 				<Nav />
