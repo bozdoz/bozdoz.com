@@ -17,7 +17,7 @@ This is a standalone site, built with **Django**, to manage and display various 
 
 His featured images are overlayed onto an photo of his laptop. This *crooked* website design presented many challenges, and made for a fun site.
 
-This project was one of the first in many years where **I avoided the use of jQuery**, or any other JavaScript library. I wanted to try to do it completely on my own.  
+This project was one of the first in many years where **I avoided the use of jQuery** (I held to the idea that [I might not need jQuery](http://youmightnotneedjquery.com/)), or any other JavaScript library. I wanted to try to do it completely on my own.  
 
 It's got your typical hamburger menu in the top-left, loading animations, and lightbox slideshows.  All that, and a backend for Luke to keep his content up-to-date.  
 

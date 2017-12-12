@@ -25,6 +25,9 @@ const Template = () => (
 	<html lang="en" dir="ltr">
 		<Route render={getHead} />
 		<body>
+			<noscript>
+				You need to enable JavaScript to run this app.
+			</noscript>
 			<div id="page">
 				<App />
 			</div>
