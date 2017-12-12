@@ -7,8 +7,9 @@
     "start": "export NODE_ENV=development && npm run start:babel",
     "start:babel": "babel-node ./src/dev-server.js",
     "start:production": "npm run build && pm2 start ./src/server.min.js --name='bozdoz.com'",
-    "restart": "npm run build && pm2 restart bozdoz.com && service nginx restart",
     "clean": "sudo rm -f ./src/static/css/main.css && sudo rm ./src/static/js/main.js",
+    "restart": "npm run build && pm2 restart bozdoz.com && npm run purge && service nginx restart",
+    "purge": "sudo rm -R ../cache",
     "build": "export NODE_ENV=production && webpack -p",
     "test": "jest"
   },
