@@ -35,7 +35,7 @@ const Projects = (props) => (
 						<div className="media">
 							<img 
 								className="d-flex align-self-center mr-4" 
-								src={`/images/projects/${id}-sq.jpg`} 
+								src={`/images/projects/${id}/${id}-sq.jpg`} 
 								alt={text} 
 								title={text} />
 							<div className="media-body">

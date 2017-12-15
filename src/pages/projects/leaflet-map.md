@@ -8,7 +8,7 @@ tags:
     - Leaflet
     - WordPress
     - PHP
-image: /images/projects/leaflet-map.jpg
+image: /images/projects/leaflet-map/leaflet-map.jpg
 ---
 
 ### What is it?

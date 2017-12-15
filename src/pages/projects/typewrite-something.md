@@ -7,7 +7,7 @@ description: >
 tags:
     - JavaScript
     - PhoneGap
-image: /images/projects/typewrite-something.jpg
+image: /images/projects/typewrite-something/typewrite-something.jpg
 ---
 
 ### What is it?

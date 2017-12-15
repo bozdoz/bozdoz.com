@@ -318,7 +318,6 @@ $link_color: $para_color;
 		margin: 0 3px;
 		padding-bottom: 0.06em;
 		transition: color 0.2s;
-		white-space: nowrap;
 		&:hover {
 			color: lighten($link_color, 20%);
 			text-decoration: none;
@@ -352,6 +351,9 @@ $link_color: $para_color;
 			margin-bottom: 0.94em;
 			line-height: 1.5;
 			font-size: 14pt;
+			a {
+				/* white-space: nowrap; */
+			}
 		}
 	}
 	img {

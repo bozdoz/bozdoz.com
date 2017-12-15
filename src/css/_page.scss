@@ -1,7 +1,7 @@
 #main .page {
 	padding-bottom: 4em;
 	header {
-		height: 40vh;
+		height: 45vh;
 
 		.header-title {
 			bottom: 2.6em;
@@ -44,6 +44,9 @@
 
 // mobile only
 @media screen and (max-width: $mq) {
+	main .page header {
+		max-height: 14em;
+	}
 	.project-list {
 		img {
 			width: 100%;
@@ -75,13 +78,7 @@
 
 // laptop screen
 @media screen and (min-width: $mq) {
-	#main .page {
-		header {
-			height: 45vh;
-			
-			.header-title {
-				bottom: 3em;
-			}
-		}
+	#main .page header .header-title {
+		bottom: 3em;
 	}
 }

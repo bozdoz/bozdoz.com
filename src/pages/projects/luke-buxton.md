@@ -3,12 +3,12 @@ title: Luke Buxton
 subtitle: lukeandrewbuxton.com
 link: "https://lukeandrewbuxton.com"
 description: >
-    A personal site designed for a animation designer to showcase galleries of his artwork.
+    A personal site designed for an animation designer to showcase galleries of his artwork.
 tags:
     - JavaScript
     - CSS3
     - Django
-image: /images/projects/luke-buxton.jpg
+image: /images/projects/luke-buxton/luke-buxton.jpg
 ---
 
 ### What is it?

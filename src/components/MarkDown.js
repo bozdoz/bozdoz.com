@@ -14,7 +14,7 @@ class MarkDown extends React.Component {
 		});
 	}
 	componentDidMount () {
-		const host = window.location.host;
+		const host = new RegExp(`^https?://${window.location.host}`);
 
 		/*
 		jest renderer doesn't create

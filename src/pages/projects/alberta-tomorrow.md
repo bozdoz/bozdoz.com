@@ -8,10 +8,11 @@ tags:
     - JavaScript
     - Leaflet
     - Django
+    - Django Rest Framework
     - PostGIS
     - PhoneGap
     - Varnish
-image: /images/projects/alberta-tomorrow.jpg
+image: /images/projects/alberta-tomorrow/alberta-tomorrow.jpg
 ---
 
 ### What is it?
@@ -102,10 +103,7 @@ The main nav is managed by JavaScript, while the secondary navs are mostly CSS t
 
 So with this idea, the JavaScript can set the `'#main'` element's class to `'gauges'` when the gauges section should be made visible.
 
-<div class="d-flex justify-content-between mb-4">
-    <img alt="Alberta Tomorrow Mobile App" src="/images/projects/alberta-tomorrow/mobile-1.jpg" class="mr-2" /> 
-    <img alt="Alberta Tomorrow Mobile App Gauges" src="/images/projects/alberta-tomorrow/mobile-2.jpg" />
-</div>
+![Mobile gauges](/images/projects/alberta-tomorrow/mobile.jpg)
 
 It was fun to be a part of a large project like this, focusing on performance and reliability.
 
