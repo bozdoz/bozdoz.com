@@ -17,4 +17,4 @@ I built a small [typewriter simulator](/projects/typewrite-something) which has 
 
 I live in Halifax, NS with my partner and two dogs.
 
-For more, check out [my resume](/resume), or [my projects](/projects).
+For more, check out [my projects](/projects), or [my resume](/resume).

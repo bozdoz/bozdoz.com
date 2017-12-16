@@ -24,7 +24,8 @@ class MarkDown extends React.Component {
 			return false;
 		}
 
-		// change links to target blank
+		// change links to use react router
+		// or open new tabs
 		this.container
 			.querySelectorAll('a')
 			.forEach((a) => {
