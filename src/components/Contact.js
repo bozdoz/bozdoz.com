@@ -15,7 +15,7 @@ const contact_links = [
 	},
 	{
 		href: 'https://www.linkedin.com/in/benjaminjdelong/',
-		text: 'Benjamin J DeLong',
+		text: 'Benjamin DeLong',
 		pre_text: ' LinkedIn: ',
 		icon: 'linkedin'
 	}

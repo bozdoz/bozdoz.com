@@ -138,13 +138,16 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 	}
 }
 
+$para_padding: 1.2em;
+
 #main {
 	flex: 1 1 auto;
 	background: white;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
-	overflow:auto;	
+	overflow-y: auto;	
+	overflow-x: hidden;	
 
 	header {
 		position: relative;
@@ -203,6 +206,16 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 		h1, h2 {
 			margin-top: 1.3em;
 			margin-bottom: 0.5em;
+		}
+
+		p, h1, h2, h3, h4, h5, ul {
+			margin-right: 0.4em;
+			margin-left: 0.4em;
+		}
+		p img {
+			position: relative;
+			width: calc(100% + (#{$para_padding} * 2));
+			left: -$para_padding;
 		}
 	}
 }
@@ -311,18 +324,7 @@ h1, h2, h3, h4, h5 {
 
 $link_color: $para_color;
 
-$para_padding: 1.2em;
-
 .markdown {
-	p, h1, h2, h3, h4, h5 {
-		margin-right: 0.4em;
-		margin-left: 0.4em;
-	}
-	p img {
-		position: relative;
-		width: calc(100% + (#{$para_padding} * 2));
-		left: -$para_padding;
-	}
 	a {
 		color: $link_color;
 		border-bottom: 0.16em solid lighten($d_color, 45%);
