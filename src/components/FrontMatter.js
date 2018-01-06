@@ -11,10 +11,14 @@ class FrontMatter extends React.Component {
 		this.state = this.get();
 	}
 	componentWillMount() {
-		console.log('frontmatter will mount');
+		this.setState({
+			loading: true
+		});
 	}
 	componentDidMount() {
-		console.log('frontmatter did mount');
+		this.setState({
+			loading: false
+		});
 	}
 	get () {
 		/* might be async someday */
@@ -34,7 +38,8 @@ class FrontMatter extends React.Component {
 			description, 
 			tags,
 			body, 
-			image
+			image,
+			loading
 		} = this.state;
 
 		let {
@@ -50,6 +55,7 @@ class FrontMatter extends React.Component {
 				title={title} 
 				subtitle={subtitle} 
 				image={image} 
+				loading={loading}
 				{...this.props}>
 			{description && 
 				<div className="page-description">{description}</div>

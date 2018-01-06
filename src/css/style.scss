@@ -400,7 +400,19 @@ $link_color: $para_color;
 	a {
 		flex: 0 0 auto;
 	}
-	
+}
+
+.loading {
+	position: relative;
+	&:after {
+		content:"";
+		background:rgba(180,50,200,0.5);
+		position: absolute;
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+	}
 }
 
 // larger than small screen 900 px
