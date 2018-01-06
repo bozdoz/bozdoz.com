@@ -10,6 +10,12 @@ class FrontMatter extends React.Component {
 		super(props);
 		this.state = this.get();
 	}
+	componentWillMount() {
+		console.log('frontmatter will mount');
+	}
+	componentDidMount() {
+		console.log('frontmatter did mount');
+	}
 	get () {
 		/* might be async someday */
 		const page = this.props.markdown || getMarkDown(this.props.source);
@@ -40,7 +46,11 @@ class FrontMatter extends React.Component {
 		}
 
 		return (
-			<PageLayout title={title} subtitle={subtitle} image={image} {...this.props}>
+			<PageLayout 
+				title={title} 
+				subtitle={subtitle} 
+				image={image} 
+				{...this.props}>
 			{description && 
 				<div className="page-description">{description}</div>
 			}
