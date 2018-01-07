@@ -9,8 +9,7 @@ const PageLayout = (props) => {
 		subtitle,
 		children,
 		image,
-		className,
-		loading
+		className
 	} = props;
 
 	let classname = 'page';
@@ -18,10 +17,6 @@ const PageLayout = (props) => {
 
 	if (className) {
 		classname += ` ${className}`;
-	}
-
-	if (loading) {
-		classname += ` loading`;
 	}
 
 	if (breadcrumbs) {
