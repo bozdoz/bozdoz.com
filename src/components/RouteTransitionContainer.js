@@ -22,8 +22,9 @@ class RouteTransitionContainer extends React.Component {
 		}
 	}
 	render() {
+		console.log('main loading:', this.state.loading);
 		return (
-			<main id="main" className={this.state.loading ? 'loading' : null}>
+			<main id="main" className={this.state.loading ? 'loading' : ''}>
 				{this.props.children}
 			</main>
 		);
