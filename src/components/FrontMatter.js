@@ -31,7 +31,10 @@ const getPage = ( page, req ) => {
 			.then((data) => {
 				cache[page] = data;
 				resolve(data);
-			});
+			})
+			.catch((error) => {
+	        	console.error(error);
+	        });
 		}
 	});
 }
