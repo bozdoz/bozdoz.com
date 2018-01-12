@@ -57,7 +57,7 @@ function createApp () {
 
 		setTimeout(function () {
 			res.status(status).send(content);
-		}, 1500);
+		}, 600);
 
 	});
 

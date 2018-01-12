@@ -5,18 +5,27 @@ import TagList from './TagList';
 import PageLayout from './PageLayout';
 import axios from 'axios';
 import path from 'path';
+import LoadingPage from './LoadingPage';
 
 const cache = {};
 
-const getPage = ( page ) => {
+/**
+* Gets markdown formatted page content from server
+*
+* @param string page
+* @param object req 	created by axios.CancelToken.source()
+* @return Promise
+*/
+const getPage = ( page, req ) => {
 	return new Promise((resolve) => {
-		if (cache[page]) {
+		if (false && cache[page]) {
 			resolve(cache[page]);
 		} else {
 			axios.get(path.join('/', 'pages', `${page}`), {
 		    	headers: {
 		    		'X-Requested-With': 'XMLHttpRequest'
-		    	}
+		    	},
+		    	cancelToken: req.token
 		    })
 			.then((request) => request.data)
 			.then((data) => {
@@ -57,8 +66,18 @@ class FrontMatter extends React.Component {
 		// no page
 	    if ( !this.state.page ) {
 	    	// get the page from the source!
-		    getPage( this.props.source )
+	    	// and a cancel token from axios
+	    	this.req = axios.CancelToken.source();
+
+		    getPage( this.props.source, this.req )
 		        .then((page) => this.setState({ page }));
+		}
+	}
+
+	componentWillUnmount() {
+		// abort ajax request
+		if (this.req) {
+			this.req.cancel();
 		}
 	}
 	
@@ -68,7 +87,7 @@ class FrontMatter extends React.Component {
 		// no page while ajax retrieves 
 		// between client routes
 		if (page === null) {
-			return <div>Loading...</div>;
+			return <LoadingPage {...this.props} />;
 		}
 
 		const { 

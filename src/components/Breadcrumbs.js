@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Breadcrumbs = (props) => {
-	const list = props.list;
-
+const Breadcrumbs = ({ list = [] }) => {
 	let links = [];
 	
 	for (let i = 0, len = list.length; i < len; i+=2) {
@@ -41,7 +39,7 @@ const Breadcrumbs = (props) => {
 };
 
 Breadcrumbs.propTypes = {
-	list: PropTypes.array.isRequired
+	list: PropTypes.array
 };
 
 export default Breadcrumbs;
