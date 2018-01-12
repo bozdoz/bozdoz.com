@@ -1,39 +1,90 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import getMarkDown from './getMarkDown';
 import MarkDown from './MarkDown';
 import TagList from './TagList';
 import PageLayout from './PageLayout';
+import axios from 'axios';
+import path from 'path';
+
+const cache = {};
+
+const getPage = ( page ) => {
+	return new Promise((resolve) => {
+		if (cache[page]) {
+			resolve(cache[page]);
+		} else {
+			axios.get(path.join('/', 'pages', `${page}`), {
+		    	headers: {
+		    		'X-Requested-With': 'XMLHttpRequest'
+		    	}
+		    })
+			.then((request) => request.data)
+			.then((data) => {
+				cache[page] = data;
+				resolve(data);
+			});
+		}
+	});
+}
 
 class FrontMatter extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
-		this.state = this.get();
-	}
-	get () {
-		/* might be async someday */
-		const page = this.props.markdown || getMarkDown(this.props.source);
-		const atts = page.attributes || {};
 
-		return {
-			...atts,
-			body: page.body
-		};
+		let page = props.page || null;
+
+		if (props.staticContext) {
+			// server-side rendering already has it
+			page = props.staticContext.page;
+		} else if (window.__INITIAL_HTML__) {
+			// client-side initial render
+			// gets variable set in ServerTemplate.js
+			page = window.__INITIAL_HTML__;
+			
+			// destroy variable and script
+			delete window.__INITIAL_HTML__;
+			let script = document.getElementById('initial-state');
+			script.parentNode.removeChild(script);
+
+			// cache page
+			cache[ props.source ] = page;
+		}
+		
+		this.state = { page };
+	}
+	
+	componentDidMount() {
+		// no page
+	    if ( !this.state.page ) {
+	    	// get the page from the source!
+		    getPage( this.props.source )
+		        .then((page) => this.setState({ page }));
+		}
 	}
 	
 	render () {
+		const { page } = this.state;
+
+		// no page while ajax retrieves 
+		// between client routes
+		if (page === null) {
+			return <div>Loading...</div>;
+		}
+
+		const { 
+			body,
+			attributes 
+		} = page;
+
 		const { 
 			title, 
 			link, 
 			description, 
 			tags,
-			body, 
 			image
-		} = this.state;
+		} = attributes;
 
-		let {
-			subtitle
-		} = this.state;
+		let { subtitle } = attributes;
 
 		if (link && subtitle) {
 			subtitle = (<a target="_blank" href={link}>{subtitle}</a>);
@@ -62,7 +113,7 @@ class FrontMatter extends React.Component {
 
 FrontMatter.propTypes = {
 	source: PropTypes.string.isRequired,
-	markdown: PropTypes.object
+	page: PropTypes.object
 };
 
 export default FrontMatter;

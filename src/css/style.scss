@@ -92,6 +92,12 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 		margin:0;
 	}
 
+	#brand-link h2 {
+		font-size: 0.7em;
+		margin:0;
+		color: rgba(255,255,255,0.6);
+	}
+
 	#brand-link img {
 		border: 3px solid transparentize(#222, 0.85);
 		box-sizing: content-box;

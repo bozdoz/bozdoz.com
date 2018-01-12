@@ -1,5 +1,5 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
+import { hydrate as render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import './css/style.scss';
@@ -11,7 +11,7 @@ const Client = () => (
 	</Router>
 );
 
-hydrate(
+render(
 	<Client />,
 	document.getElementById('page')
 );

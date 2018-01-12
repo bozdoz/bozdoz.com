@@ -2,12 +2,12 @@ import React from 'react';
 import FrontMatter from './FrontMatter';
 import Contact from './Contact';
 
-const NotFoundPage = ({ staticContext, markdown }) => {
+const NotFoundPage = ({ staticContext, page }) => {
 	if (staticContext) {
 		staticContext.is404 = true;
 	}
 	return (
-		<FrontMatter source="404" markdown={markdown}>
+		<FrontMatter source="404" page={page}>
 			<div className="container">
 				<Contact />
 			</div>

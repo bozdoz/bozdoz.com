@@ -1,5 +1,4 @@
 import React from 'react';
-import getMarkDown from './getMarkDown';
 import NotFoundPage from './NotFoundPage';
 import PlainPage from './PlainPage';
 
@@ -12,12 +11,15 @@ import PlainPage from './PlainPage';
 * @return Component NotFoundPage|PlainPage
 */
 const ProjectPage = (props) => {
-	const markdown = getMarkDown(props.match.url);
+	if (props.staticContext) {
+		// server-side 
+		const { page } = props.staticContext;
 
-	if (markdown.attributes.status === 404) {
-		return (
-			<NotFoundPage markdown={markdown} {...props} />
-		);
+		if (page.attributes.status === 404) {
+			return (
+				<NotFoundPage page={page} {...props} />
+			);
+		}
 	}
 
 	return (
@@ -27,7 +29,6 @@ const ProjectPage = (props) => {
 				'Home', '/',
 				'Projects', '/projects'
 			]}
-			markdown={markdown}
 			{...props} />
 	);
 };

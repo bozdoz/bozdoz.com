@@ -45,7 +45,7 @@ const PageLayout = (props) => {
 };
 
 PageLayout.propTypes = {
-	title: PropTypes.string,
+	title: PropTypes.string.isRequired,
 	subtitle: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element

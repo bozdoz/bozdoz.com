@@ -3,7 +3,6 @@ import NavHeader from './NavHeader';
 import Nav from './Nav';
 import NavFooter from './NavFooter';
 import { Link } from 'react-router-dom';
-import RouteTransitionContainer from './RouteTransitionContainer';
 
 const Layout = (props) => (
 	<div id="page-container">
@@ -14,9 +13,9 @@ const Layout = (props) => (
 			</div>
 			<NavFooter />
 		</nav>
-		<RouteTransitionContainer>
+		<main id="main">
 			{props.children}
-		</RouteTransitionContainer>
+		</main>
 	</div>
 );
 

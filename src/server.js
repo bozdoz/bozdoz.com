@@ -2,9 +2,11 @@ import path from 'path';
 import express from 'express';
 import helmet from 'helmet';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToString as render } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
-import Template from './components/Template';
+import ServerTemplate from './components/ServerTemplate';
+import fs from 'fs';
+import fm from 'front-matter';
 
 const PORT = 8001;
 const app = express();
@@ -24,6 +26,13 @@ app.use(function(req, res, next) {
 	}
 });
 
+const getMarkdown = (page) => {
+	const filename = path.join(__dirname, 'pages', `${page}.md`);
+	const content = fs.readFileSync(filename, 'utf8');
+
+	return fm(content);
+};
+
 /**
 * app listen methods; required for executing AFTER 
 * webpack script in dev-server.js
@@ -31,14 +40,35 @@ app.use(function(req, res, next) {
 * @return null
 */
 function createApp () {
+	app.get('/pages/*', function (req, res) {
+		const page = req.params['0'];
+		let status = 200;
+		let content = 'not ajax';
+
+		try {
+			if (req.xhr) {
+				content = getMarkdown(page);
+			}
+		} catch (e) {
+			// can't find a file; return 404
+			content = getMarkdown('404');
+			status = 404;
+		}
+
+		setTimeout(function () {
+			res.status(status).send(content);
+		}, 1500);
+
+	});
+
 	app.get('*', function (req, res) {
 		const context = {};
 		let status = 200;
 		let content = '<!doctype html>';
 
-		content += renderToString(
+		content += render(
 			<Router location={req.url} context={context}>
-				<Template />
+				<ServerTemplate />
 			</Router>
 		);
 
