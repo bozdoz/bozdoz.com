@@ -21,7 +21,6 @@ $header_bg_color: darken(desaturate($c_color, 0), 0);
 			width: initial;
 			display: inline-block;
 			text-align: left;
-			background:darken(desaturate(#65c, 38%), 33%);
 			background: $a_color;
 			padding: 0 0.3em;
 			margin:0;
@@ -37,7 +36,21 @@ $header_bg_color: darken(desaturate($c_color, 0), 0);
 	}
 
 	&.loading {
-		filter: saturate(50%) brightness(110%);
+		.breadcrumb {
+			display: block;
+			background: #EEE;
+			margin-bottom: 5em;
+			height: 3em;
+		}
+		h1, h2 {
+			background: $a_color;
+		}
+		h1 {
+			width:25%;
+		}
+		h2 {
+			width:30%;
+		}
 	}
 }
 

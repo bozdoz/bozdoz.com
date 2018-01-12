@@ -33,6 +33,15 @@ const getMarkdown = (page) => {
 	return fm(content);
 };
 
+const intBetween = (min, max) => (
+	Math.round((Math.random() * (max - min)) + min)
+);
+
+// simulate longer loads
+const simulateLoad = (fnc) => {
+	setTimeout(fnc, intBetween(0, 2000));
+};
+
 /**
 * app listen methods; required for executing AFTER 
 * webpack script in dev-server.js
@@ -55,10 +64,9 @@ function createApp () {
 			status = 404;
 		}
 
-		setTimeout(function () {
-			res.status(status).send(content);
-		}, 600);
-
+		// simulateLoad(() => {
+		res.status(status).send(content);
+		//});
 	});
 
 	app.get('*', function (req, res) {

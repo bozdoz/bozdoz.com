@@ -18,7 +18,7 @@ const cache = {};
 */
 const getPage = ( page, req ) => {
 	return new Promise((resolve) => {
-		if (false && cache[page]) {
+		if (cache[page]) {
 			resolve(cache[page]);
 		} else {
 			axios.get(path.join('/', 'pages', `${page}`), {
@@ -45,7 +45,10 @@ class FrontMatter extends React.Component {
 		if (props.staticContext) {
 			// server-side rendering already has it
 			page = props.staticContext.page;
-		} else if (window.__INITIAL_HTML__) {
+		} else if (
+			typeof(window) !== 'undefined' && 
+			window.__INITIAL_HTML__
+		) {
 			// client-side initial render
 			// gets variable set in ServerTemplate.js
 			page = window.__INITIAL_HTML__;
