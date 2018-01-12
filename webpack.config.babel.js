@@ -3,6 +3,8 @@ import webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+const { NODE_ENV } = process.env;
+
 const client = {
 	entry : [
 		'./src/client.js'
@@ -11,9 +13,6 @@ const client = {
 		path: path.resolve(__dirname, 'src', 'static'),
 		filename: 'js/main.js',
 		publicPath: '/'
-	},
-	node: {
-		fs: 'empty'
 	},
 	module: {
 		rules: [
@@ -27,28 +26,21 @@ const client = {
 						ignore: path.resolve(__dirname, 'node_modules')
 					}
 				}
-			},
-			{
-				test: /\.md$/,
-				use: [
-					'json-loader',
-					'front-matter-loader'
-				]
 			}
 		]
 	}, 
 	plugins: [
 		new webpack.DefinePlugin({
-		  'process.env': {
-		    NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-		  }
+			'process.env': {
+				NODE_ENV: JSON.stringify(NODE_ENV)
+			}
 		}),
 	]
 };
 
-console.log('NODE_ENV', process.env.NODE_ENV);
+console.log('NODE_ENV', NODE_ENV);
 
-if (process.env.NODE_ENV === 'production') {
+if (NODE_ENV === 'production') {
 	// uglify js
 	client.plugins.push(
 		new webpack.optimize.UglifyJsPlugin()
