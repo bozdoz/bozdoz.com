@@ -11,8 +11,24 @@ import PlainPage from './PlainPage';
 * @return Component NotFoundPage|PlainPage
 */
 const ProjectPage = (props) => {
+	
+	// client-side render
+	if (
+		typeof(window) !== 'undefined' &&
+		window.__IS_404__
+	) {
+		// gets variable set in ServerTemplate.js
+		const script = document.getElementById('404-script');
+		
+		// destroy variable and script
+		delete window.__IS_404__;
+		script.parentNode.removeChild(script);
+		return <NotFoundPage {...props} />;
+	}
+
+	// server-side render
 	if (props.staticContext) {
-		// server-side 
+		// set in ./ServerTemplate.js
 		const { page } = props.staticContext;
 
 		if (page.attributes.status === 404) {

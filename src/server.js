@@ -100,4 +100,4 @@ if (process.env.NODE_ENV === 'production') {
 	createApp();
 }
 
-export { app, createApp };
+export { app, createApp, getMarkdown };

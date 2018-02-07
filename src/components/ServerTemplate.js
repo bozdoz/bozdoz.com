@@ -35,27 +35,11 @@ const getMarkdown = (_source) => {
 	}
 };
 	
-let page;
-const getHead = ({ location, staticContext }) => {
-	if (location.pathname === '/') {
-		page = getMarkdown('index');
-	} else {
-		page = getMarkdown( location.pathname ); 
-	}
-	staticContext.page = page;
-
-	const atts = page.attributes || {};
-
-	return (
-		<Head {...atts} />
-	);
-};
-
 /**
 * Sets Initial HTML
 * Used and destroyed in FrontMatter.js
 */
-const InitialHTML = () => (
+export const InitialHTML = ({page}) => (
 	<script 
 		id="initial-state"
 		dangerouslySetInnerHTML={{
@@ -63,10 +47,50 @@ const InitialHTML = () => (
 		}} />
 );
 
+/**
+* Indicates 404 Not Found
+* Used and destroyed in ProjectPage.js
+*/
+export const Is404 = () => (
+	<script 
+		id="404-script"
+		dangerouslySetInnerHTML={{
+		__html: `window.__IS_404__ = true;`
+		}} />
+);
+
+export const getPage = ({ location, staticContext }) => {
+	let page;
+	if (location.pathname === '/') {
+		page = getMarkdown('index');
+	} else {
+		page = getMarkdown( location.pathname ); 
+	}
+	staticContext.page = page;
+
+	if (!page.attributes) {
+		page.attributes = {};
+	} 
+
+	return page;
+};
+
 const ServerTemplate = () => (
 	<html lang="en" dir="ltr">
-		<Route render={getHead} />
-		<Route component={InitialHTML} />
+		<Route render={(props) => {
+			const page = getPage(props);
+			const atts = page.attributes;
+			return (
+				<Head {...atts}>
+					<Route render={() => (
+						<InitialHTML page={page} />
+					)} />
+					{atts.status === 404 &&
+						<Route component={Is404} />
+					}
+				</Head>
+			);
+		}} />
 		<body>
 			<noscript>
 				You need to enable JavaScript to run this app.

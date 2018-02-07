@@ -105,6 +105,7 @@ class FrontMatter extends React.Component {
 			title, 
 			link, 
 			description, 
+			show_description, 
 			tags,
 			image
 		} = attributes;
@@ -122,6 +123,7 @@ class FrontMatter extends React.Component {
 				image={image} 
 				{...this.props}>
 			{description && 
+				(show_description !== false) &&
 				<div className="page-description">{description}</div>
 			}
 			{tags && 

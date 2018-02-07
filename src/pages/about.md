@@ -1,5 +1,8 @@
 ---
 title: About
+description: >
+    About this site, bozdoz.com; how and why I developed it.
+show_description: false
 ---
 
 This site is designed to showcase **[my best-loved projects](/projects)** in web development.

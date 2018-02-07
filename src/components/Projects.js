@@ -2,7 +2,7 @@ import React from 'react';
 import PlainPage from './PlainPage';
 import { Link } from 'react-router-dom';
 
-const list = [
+export const list = [
 	{
 		id: 'alberta-tomorrow',
 		text: 'Alberta Tomorrow',

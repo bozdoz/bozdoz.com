@@ -56,6 +56,7 @@ const Head = (props) => {
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
       <title>{title}</title>
+      {props.children}
     </head>
   );
 };
@@ -63,12 +64,12 @@ const Head = (props) => {
 Head.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  image: PropTypes.string,
+  image: PropTypes.string
 };
 
 Head.defaultProps = {
   title: '@bozdoz',
-  description: 'Web developer in Halifax, Nova Scotia',
+  description: 'Web developer from Halifax, Nova Scotia; specialized in JavaScript and interactive mapping applications.',
   image: '/images/bozdoz.jpg'
 };
 
