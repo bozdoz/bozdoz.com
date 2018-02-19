@@ -132,7 +132,17 @@ $header_color: #333;
 
 // laptop screen
 @media screen and (min-width: $mq) {
-	#main .page header .header-title {
-		bottom: 3em;
+	#main .page header {
+		height: 45vh;
+		.header-title {
+			bottom: 3em;
+		}
+		h1 {
+			font-size: 1.6em;
+		}
+
+		h2 {
+			font-size: 1.2em;
+		}
 	}
 }

@@ -432,6 +432,10 @@ $link_color: $para_color;
 
 // larger than small screen 900 px
 @media screen and (min-width: $mq) {
+	/* legibility */
+	body, button, input, textarea {
+	    font-size: 20px;
+	}
 	html, 
 	body, 
 	#page,
@@ -485,16 +489,17 @@ $link_color: $para_color;
 		#brand-link {
 			display: flex;
 			flex-flow: column nowrap;
-			justify-content: center;
-			flex: 1 1 auto;
+			justify-content: flex-end;
+			flex: 5 1 auto;
 			a { 
 				flex: 0 1 4em;
 			}
 		}
 
 		#side-nav {
+			padding-top: 2em;
 			flex-flow: column nowrap;
-			flex: 1 0 auto;
+			flex: 9 0 auto;
 			justify-content: flex-start;
 			li, a {
 				display: flex;
