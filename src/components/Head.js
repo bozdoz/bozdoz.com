@@ -46,13 +46,13 @@ const Head = (props) => {
       <meta property="og:site_name" content={title} />
       <meta property="og:locale" content="en_CA" />
 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossOrigin="anonymous" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossOrigin="anonymous" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossOrigin="anonymous" />
       
       {env === 'production' &&
         <link rel="stylesheet" href="/css/main.css" />
       }
 
-      <link rel="stylesheet" href="/css/font-awesome.min.css" />
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
       <title>{title}</title>

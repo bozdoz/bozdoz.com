@@ -8,9 +8,7 @@ const NotFoundPage = (props) => {
 	}
 	return (
 		<FrontMatter source="404" {...props}>
-			<div className="container">
-				<Contact />
-			</div>
+			<Contact />
 		</FrontMatter>
 	);
 };

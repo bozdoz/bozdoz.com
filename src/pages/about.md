@@ -18,9 +18,7 @@ import Contact from './Contact';
 
 const AboutPage = (props) => (
 	<PlainPage {...props}>
-		<div className="container">
-			<Contact />
-		</div>
+		<Contact />
 	</PlainPage>
 );
 

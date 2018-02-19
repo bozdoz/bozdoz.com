@@ -16,7 +16,7 @@ $header_color: #333;
 	padding-bottom: 50vh;
 	padding-bottom: calc(50vh - 2em);
 	header {
-		height: 45vh;
+		height: 32vh;
 
 		.header-title {
 			bottom: 2.6em;
@@ -24,12 +24,14 @@ $header_color: #333;
 
 		h1, 
 		h2 {
-			width:95%;
+			width:90%;
+			font-size:1.6em;
 			text-align: center;
 			color:$header_color;
 		}
 
 		h2 {
+			font-size: 1em;
 			margin-top: 0.2em;
 			color:lighten($header_color, 50%);
 		}

@@ -4,9 +4,7 @@ import Contact from './Contact';
 
 const IndexPage = (props) => (
 	<PlainPage source="index" {...props}>
-		<div className="container">
-			<Contact />
-		</div>
+		<Contact />
 	</PlainPage>
 );
 

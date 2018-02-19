@@ -102,7 +102,7 @@ const ServerTemplate = () => (
 				<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
 			}
 			<script src="/js/main.js" />
-			<script src="/prism/prism.js" defer />
+			<script src="/js/prism.js" defer />
 		</body>
 	</html>
 );

@@ -1,6 +1,6 @@
 node_modules
 npm-debug.log
 .babel_cache
-src/static/js/main.js
-src/static/css/main.css
+public/js/main.js
+public/css
 src/server.min.js

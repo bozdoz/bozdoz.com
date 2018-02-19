@@ -13,7 +13,7 @@ const app = express();
 
 app.use(helmet());
 
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // it removes trailing slash
 app.use(function(req, res, next) {

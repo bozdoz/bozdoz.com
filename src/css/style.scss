@@ -1,6 +1,7 @@
 $header_font: 'Open+Sans';
 $header_size: '700';
 $para_font: 'Roboto';
+$para_size: '400,500';
 
 $a_color: #29253d; /* gunmetal */
 $b_color: #5171E0; /* royal blue */
@@ -8,7 +9,7 @@ $c_color: #586994; /* ucla bluee */
 $d_color: #21A038; /* turquoise */
 $e_color: #51E0D8; /* turquoise */
 
-@import url('https://fonts.googleapis.com/css?family=#{$header_font}:#{$header_size}|#{$para_font}');
+@import url('https://fonts.googleapis.com/css?family=#{$header_font}:#{$header_size}|#{$para_font}:#{$para_size}');
 
 $header_font: 'Open Sans';
 
@@ -23,7 +24,7 @@ body, button, input, textarea {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: -0.002em;
     word-spacing: 0.01em;
 }
@@ -44,11 +45,16 @@ pre {
 
 body, p {
 	font-family: $para_font;
+	font-weight: 400;
+	strong {
+		font-weight: 500;
+	}
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
 	line-height: 1.4;
 	font-family: $header_font;
+	font-weight: 700;
 }
 
 ul {
@@ -131,7 +137,7 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 		transition: all .2s;
 		padding: 0.8em 0;
 		color: #FFF;
-		font-weight: bold;
+		font-weight: 500;
 
 		&:hover, &:active {
 			background: transparentize($nav-color, 0.8);
@@ -261,6 +267,9 @@ $tag_color: $b_color;
 	}
 }
 
+.container {
+	padding: 0 20px;
+}
 .container .tag-list {
 	width: 100%;
 	padding:0;
@@ -370,10 +379,10 @@ $link_color: $para_color;
 			margin-bottom: 0.94em;
 			line-height: 1.5;
 			font-size: 14pt;
-			a {
-				/* white-space: nowrap; */
-			}
 		}
+	}
+	strong {
+		color: #13151b;
 	}
 	img {
 		width:100%;
@@ -502,7 +511,7 @@ $link_color: $para_color;
 	}
 }
 
-@import '../static/prism/prism.css';
 @import 'page';
 @import 'resume';
 @import 'project';
+@import 'prism';

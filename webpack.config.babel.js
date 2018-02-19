@@ -10,7 +10,7 @@ const client = {
 		'./src/client.js'
 	],
 	output: {
-		path: path.resolve(__dirname, 'src', 'static'),
+		path: path.resolve(__dirname, 'public'),
 		filename: 'js/main.js',
 		publicPath: '/'
 	},
@@ -35,6 +35,7 @@ const client = {
 				NODE_ENV: JSON.stringify(NODE_ENV)
 			}
 		}),
+	    new webpack.optimize.OccurrenceOrderPlugin(),
 	]
 };
 
@@ -55,9 +56,9 @@ if (NODE_ENV === 'production') {
 			use: ExtractTextPlugin.extract({
 				fallback: 'style-loader', 
 				use: [
-					'css-loader?sourceMap', 
-					'sass-loader?sourceMap', 
-					'postcss-loader?sourceMap'
+					'css-loader', 
+					'sass-loader', 
+					'postcss-loader'
 				],
 				publicPath: '/css/'
 			})

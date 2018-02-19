@@ -22,16 +22,17 @@ const contact_links = [
 ];
 
 const Contact = () => (
-	<ul className="contact-list">
-		{contact_links.map(({ href, text, pre_text, icon }) => (
-			<li key={text}>
-				{icon &&
-					<i className={`fa fa-${icon}`}></i>} 
+	<div className="container">
+		<ul className="contact-list">
+			{contact_links.map(({ href, text, pre_text, icon }) => (
+				<li key={text}>
+					<i className={`fa fa-${icon}`}></i>
 					<span className="pretext">{pre_text}</span>
 					<a href={href} target="_blank">{text}</a>
-			</li>
-		))}
-	</ul>
+				</li>
+			))}
+		</ul>
+	</div>
 );
 
 export default Contact;

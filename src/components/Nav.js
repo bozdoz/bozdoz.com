@@ -1,7 +1,8 @@
 import React from 'react';
-import LinkList from './LinkList';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
-const tl_routes = [
+const list = [
 	{
 		href: '/projects',
 		text: 'Projects'
@@ -18,7 +19,16 @@ const tl_routes = [
 
 const Nav = () => (
 	<ul id="side-nav">
-		<LinkList list={tl_routes} is_nav={true} />
+		{list.map(({href, text, title}) => (
+			<li key={href}>
+				<NavLink 
+					to={href} 
+					title={title || text}
+					activeClassName="active">
+					<span className="nav-text">{text}</span>
+				</NavLink>
+			</li>
+		))}
 	</ul>
 );
 
