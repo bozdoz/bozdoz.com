@@ -2,9 +2,10 @@ import path from 'path';
 import express from 'express';
 import helmet from 'helmet';
 import React from 'react';
-import { renderToString as render } from 'react-dom/server';
+import { renderToString as render, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import ServerTemplate from './components/ServerTemplate';
+import Sitemap from './components/Sitemap';
 import fs from 'fs';
 import fm from 'front-matter';
 
@@ -67,6 +68,16 @@ function createApp () {
 		// simulateLoad(() => {
 		res.status(status).send(content);
 		//});
+	});
+
+	app.get('/sitemap.xml', function (req, res) {
+		let content = '<?xml version="1.0" encoding="UTF-8"?>';
+		content += renderToStaticMarkup(
+			<Sitemap />
+		);
+		res.header('Content-Type','text/xml')
+			.status(200)
+			.send(content);
 	});
 
 	app.get('*', function (req, res) {
