@@ -20,14 +20,16 @@ const getMarkdown = (_source) => {
 
 	try {
 		let content;
-		let _path = path.join(__dirname);
+		let pagedir = path.join(__dirname);
 
 		if (env !== 'production') {
 			// path changes when bundled
-			_path = path.join(_path, '..');
+			pagedir = path.join(pagedir, '..');
 		}
 
-		content = fs.readFileSync(path.join(_path, 'pages', `${source}.md`), 'utf8');
+		pagedir = path.join(pagedir, 'pages');
+
+		content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
 		return fm(content);
 	} catch (e) {
 		// can't find a file; return 404

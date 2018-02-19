@@ -34,15 +34,22 @@ const locations = [
 	},
 ];
 
-const basePath = path.join(__dirname, '../pages');
+let pagedir = path.join(__dirname);
+
+if (env !== 'production') {
+	// path changes when bundled
+	pagedir = path.join(pagedir, '..');
+}
+
+pagedir = path.join(pagedir, 'pages');
 
 const getPath = (loc, md) => {
 	// md file for "home/index" above
 	if (md) {
-		return path.join(basePath, md);
+		return path.join(pagedir, md);
 	}
 	// other files are purely based on their URL
-	return path.join(basePath, loc) + '.md'
+	return path.join(pagedir, loc) + '.md'
 }
 
 const getDateFormat = (date) => {
