@@ -9,6 +9,17 @@ import path from 'path';
 
 const env = process.env.NODE_ENV;
 
+let pagedir = path.join(__dirname);
+
+if (env !== 'production') {
+	// path changes when bundled
+	pagedir = path.join(pagedir, '..');
+}
+
+pagedir = path.join(pagedir, 'pages');
+
+export { pagedir };
+
 /**
 * gets frontmatter/markdown from given page
 *
@@ -19,17 +30,7 @@ const getMarkdown = (_source) => {
 	let source = _source;
 
 	try {
-		let content;
-		let pagedir = path.join(__dirname);
-
-		if (env !== 'production') {
-			// path changes when bundled
-			pagedir = path.join(pagedir, '..');
-		}
-
-		pagedir = path.join(pagedir, 'pages');
-
-		content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
+		let content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
 		return fm(content);
 	} catch (e) {
 		// can't find a file; return 404

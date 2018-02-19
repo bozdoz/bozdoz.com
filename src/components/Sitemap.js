@@ -1,6 +1,7 @@
 import React from 'react';
 import fs from 'fs';
 import path from 'path';
+import { pagedir } from './ServerTemplate';
 
 const locations = [
 	{
@@ -33,15 +34,6 @@ const locations = [
 		priority: 0.5
 	},
 ];
-
-let pagedir = path.join(__dirname);
-
-if (env !== 'production') {
-	// path changes when bundled
-	pagedir = path.join(pagedir, '..');
-}
-
-pagedir = path.join(pagedir, 'pages');
 
 const getPath = (loc, md) => {
 	// md file for "home/index" above
