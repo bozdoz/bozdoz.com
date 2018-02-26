@@ -1,5 +1,6 @@
 ---
-title: "@bozdoz"
+title: "Home"
+header: "@bozdoz"
 subtitle: Full Stack Web Developer
 ---
 

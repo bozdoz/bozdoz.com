@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SITE } from '../config';
+import { SITE, GFONT_FAMILY } from '../config';
 
 const env = process.env.NODE_ENV;
 
@@ -48,6 +48,7 @@ const Head = (props) => {
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossOrigin="anonymous" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossOrigin="anonymous" />
+      <link rel="stylesheet" href={`https://fonts.googleapis.com/css?family=${GFONT_FAMILY}`} crossOrigin="anonymous" />
       
       {env === 'production' &&
         <link rel="stylesheet" href="/css/main.css" />

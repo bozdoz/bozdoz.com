@@ -1,3 +1,5 @@
 User-agent: *
 Disallow: /resume/
 Disallow: /privacy/
+
+Sitemap: https://bozdoz.com/sitemap.xml

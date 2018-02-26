@@ -59,7 +59,7 @@ ResumeSection.propTypes = {
 };
 
 const ResumePage = () => (
-	<PageLayout className="resume-page" title="Benjamin J. DeLong">
+	<PageLayout className="resume-page" title="Resume">
 		<div id="resume" className="container-fluid">
 			<section className="table-row">
 				<div className="section-title text-success">

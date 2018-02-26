@@ -102,12 +102,10 @@ class FrontMatter extends React.Component {
 		} = page;
 
 		const { 
-			title, 
 			link, 
 			description, 
 			show_description, 
-			tags,
-			image
+			tags
 		} = attributes;
 
 		let { subtitle } = attributes;
@@ -118,9 +116,8 @@ class FrontMatter extends React.Component {
 
 		return (
 			<PageLayout 
-				title={title} 
-				subtitle={subtitle} 
-				image={image} 
+				{...attributes} 
+				subtitle={subtitle}
 				{...this.props}>
 			{description && 
 				(show_description !== false) &&

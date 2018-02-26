@@ -1,6 +1,5 @@
 import path from 'path';
 import express from 'express';
-import helmet from 'helmet';
 import React from 'react';
 import { renderToString as render, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
@@ -9,10 +8,8 @@ import Sitemap from './components/Sitemap';
 import fs from 'fs';
 import fm from 'front-matter';
 
-const PORT = 8001;
+const PORT = 8005;
 const app = express();
-
-app.use(helmet());
 
 app.use(express.static(path.join(__dirname, '../public')));
 

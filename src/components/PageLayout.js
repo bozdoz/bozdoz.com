@@ -6,6 +6,7 @@ import Breadcrumbs from './Breadcrumbs';
 const PageLayout = (props) => {
 	const {
 		title,
+		header,
 		subtitle,
 		children,
 		image,
@@ -32,7 +33,7 @@ const PageLayout = (props) => {
 						backgroundImage: `url(${image})`
 					}} />}
 			<div className="header-title">
-				<Title>{title}</Title>
+				<Title header={header}>{title}</Title>
 			{subtitle && 
 				<h2>{subtitle}</h2>
 			}
@@ -46,6 +47,7 @@ const PageLayout = (props) => {
 
 PageLayout.propTypes = {
 	title: PropTypes.string.isRequired,
+	header: PropTypes.string,
 	subtitle: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.element
