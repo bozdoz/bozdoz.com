@@ -2,7 +2,7 @@
 title: Leaflet Map
 subtitle: A WordPress plugin for simple map shortcodes
 description: >
-	A simple WordPress plugin for adding interactive Leaflet maps with shortcodes. Leaflet Map fully supports Geocoding addresses, adding Markers to maps, and adding every other 2D shape.
+    A simple WordPress plugin for adding interactive Leaflet maps with shortcodes. Leaflet Map fully supports Geocoding addresses, adding Markers to maps, and adding every other 2D shape.
 tags:
     - JavaScript
     - Leaflet
