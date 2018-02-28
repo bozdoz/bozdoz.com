@@ -74,7 +74,6 @@ export const getPage = ({ location, staticContext }) => {
 	if (!page.attributes) {
 		page.attributes = {};
 	} 
-
 	return page;
 };
 
@@ -83,11 +82,15 @@ const ServerTemplate = () => (
 		<Route render={(props) => {
 			const page = getPage(props);
 			const atts = page.attributes;
+			// conditionally load intial HTML
+			// and 404 pages
 			return (
 				<Head {...atts}>
-					<Route render={() => (
-						<InitialHTML page={page} />
-					)} />
+					{page.body && 
+						<Route render={() => (
+							<InitialHTML page={page} />
+						)} />
+					}
 					{atts.status === 404 &&
 						<Route component={Is404} />
 					}

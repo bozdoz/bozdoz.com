@@ -10,7 +10,7 @@
     "clean": "sudo rm -f ./public/css/main.css && sudo rm ./public/js/main.js",
     "restart": "npm run build && pm2 restart bozdoz.com && npm run purge && service nginx restart",
     "purge": "sudo rm -R ../cache",
-    "build": "export NODE_ENV=production && webpack -p",
+    "build": "npm install && export NODE_ENV=production && webpack -p",
     "test": "jest"
   },
   "keywords": [

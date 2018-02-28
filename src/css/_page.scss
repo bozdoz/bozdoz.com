@@ -1,4 +1,4 @@
-$header_color: #333;
+$header_color: hsl($brand-hue, 12%, 20%);
 
 @keyframes shimmer {
 	0%, 16% {
@@ -27,13 +27,13 @@ $header_color: #333;
 			width:90%;
 			font-size:1.6em;
 			text-align: center;
-			color:$header_color;
+			color: $header_color;
 		}
 
 		h2 {
 			font-size: 1em;
 			margin-top: 0.2em;
-			color:lighten($header_color, 50%);
+			color: lighten($header_color, 50%);
 		}
 	}
 
@@ -57,8 +57,8 @@ $header_color: #333;
 			width:70%;
 		}
 		h2 {
-			background:lighten($header_color, 50%);
-			width:70%;
+			background: lighten($header_color, 50%);
+			width: 70%;
 		}
 		$waiting_color: lighten($para_color, 20%);
 		.markdown {

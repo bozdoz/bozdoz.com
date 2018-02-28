@@ -24,12 +24,13 @@ const Head = (props) => {
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <meta name="theme-color" content="#000000" />
 
-      <meta
-        name="keywords"
-        content="Benjamin, DeLong, bozdoz, web developer, halifax, nova scotia" />
+      <title>{title}</title>
       <meta
         name="description"
         content={description} />
+      <meta
+        name="keywords"
+        content="Benjamin, DeLong, bozdoz, web developer, halifax, nova scotia" />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@bozdoz" />
@@ -55,8 +56,6 @@ const Head = (props) => {
       }
 
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-
-      <title>{title}</title>
       {props.children}
     </head>
   );

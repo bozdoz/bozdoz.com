@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageLayout from './PageLayout';
+import FrontMatter from './FrontMatter';
 import { Link } from 'react-router-dom';
 
 const resume = {
@@ -24,7 +24,7 @@ const resume = {
 	'PROJECTS': {
 		'Leaflet Map WordPress Plugin': {
 			link: '/projects/leaflet-map',
-			description: 'A shortcode-based WordPress plugin to create multiple maps in posts and pages.  It has companion shortcodes to add markers, geojson, and images to those maps.  It is a solo project, and the first project where I used Object-Oriented Programming with PHP.'
+			description: 'A shortcode-based WordPress plugin to create multiple Leaflet maps in posts and pages.  It has companion shortcodes to add markers, geojson, and images to those maps.  It is a solo project, and the first project where I used Object-Oriented Programming with PHP.'
 		},
 		'Typewrite Something': {
 			link: '/projects/typewrite-something',
@@ -59,7 +59,7 @@ ResumeSection.propTypes = {
 };
 
 const ResumePage = () => (
-	<PageLayout className="resume-page" title="Resume">
+	<FrontMatter className="resume-page" source="resume">
 		<div id="resume" className="container-fluid">
 			<section className="table-row">
 				<div className="section-title text-success">
@@ -104,7 +104,7 @@ const ResumePage = () => (
 				</div>
 			</section>
 		</div>
-	</PageLayout>
+	</FrontMatter>
 );
 
 export default ResumePage;

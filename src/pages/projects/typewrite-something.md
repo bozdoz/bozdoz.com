@@ -3,7 +3,7 @@ title: Typewrite Something
 subtitle: typewritesomething.com
 link: "http://typewritesomething.com"
 description: >
-    An online typewriter simulator, web app and mobile app.
+    A minimalistic typewriter simulator designed for creative writing.  It's available online and on the Google Play Store.
 tags:
     - JavaScript
     - PhoneGap

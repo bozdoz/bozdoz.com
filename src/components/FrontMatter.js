@@ -121,7 +121,9 @@ class FrontMatter extends React.Component {
 				{...this.props}>
 			{description && 
 				(show_description !== false) &&
-				<div className="page-description">{description}</div>
+				<div className="page-description">
+					<p>{description}</p>
+				</div>
 			}
 			{tags && 
 				<TagList tags={tags} />

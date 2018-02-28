@@ -1,15 +1,14 @@
-$header_font: 'Open+Sans';
-$header_size: '700';
 $para_font: 'Roboto';
-$para_size: '400,500';
+$header_font: 'Open Sans';
 
 $a_color: #29253d; /* gunmetal */
 $b_color: #5171E0; /* royal blue */
 $c_color: #586994; /* ucla bluee */
 $d_color: #21A038; /* turquoise */
-$e_color: #51E0D8; /* turquoise */
 
-$header_font: 'Open Sans';
+$nav-color: desaturate(darken($b_color, 16%), 14%);
+
+$brand-hue: hue($nav-color);
 
 $mq: 60em;
 
@@ -35,6 +34,15 @@ p {
     word-spacing: 0.03em;
     margin: 0 0 1.41575em;
     color: $para_color;
+}
+
+$anchor_color: $c_color;
+a {
+	color: $anchor_color;
+	&:hover {
+		text-decoration: none;
+		color: darken($anchor_color, 20%);
+	}
 }
 
 pre {
@@ -79,8 +87,6 @@ $select_bg: $b_color;
 	flex-flow: column nowrap;
 }
 
-$nav-color: desaturate(darken($b_color, 16%), 14%);
-
 #nav {
 	flex: 0 0 auto;
 	min-height: 55px;
@@ -103,7 +109,7 @@ $nav-color: desaturate(darken($b_color, 16%), 14%);
 	}
 
 	#brand-link img {
-		border: 3px solid transparentize(#222, 0.85);
+		border: 3px solid hsla($brand-hue, 60%, 44%, 0.4);
 		box-sizing: content-box;
 	}
 
@@ -300,7 +306,7 @@ $breadcrumb_color: #47A;
 }
 
 .text-muted {
-	color:lighten(#333, 50%);
+	color: hsl($brand-hue, 12%, 65%) !important;
 }
 
 .header-link {
@@ -359,31 +365,36 @@ $link_color: $para_color;
 	ul {
 		padding-left: 1em;
 		margin-bottom: 1.41575em;
-		li:before {
-			left: -1.5em;
-			top: 0.3em;
-			display: inline-block;
-			position: absolute;
-			font-family: FontAwesome;
-			font-size: 10pt;
-			text-rendering: auto;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			content: "\f054";
-			color: #ccc;
-		}
-		li {
-			position: relative;
-			margin-bottom: 0.94em;
-			line-height: 1.5;
-			font-size: 14pt;
-		}
 	}
 	strong {
 		color: #13151b;
 	}
 	img {
 		width:100%;
+	}
+}
+
+// arrows, not bullets (THIS IS THE MIDDLE AGES)
+.markdown,
+.resume-highlight-list {
+	li:before {
+		left: -1.5em;
+		top: 0.3em;
+		display: inline-block;
+		position: absolute;
+		font-family: FontAwesome;
+		font-size: 10pt;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		content: "\f054";
+		color: hsl($brand-hue, 12%, 80%);
+	}
+	li {
+		position: relative;
+		margin-bottom: 0.94em;
+		line-height: 1.5;
+		font-size: 14pt;
 	}
 }
 

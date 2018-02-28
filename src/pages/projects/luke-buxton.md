@@ -3,7 +3,7 @@ title: Luke Buxton
 subtitle: lukeandrewbuxton.com
 link: "https://lukeandrewbuxton.com"
 description: >
-    A personal site designed for an animation designer to showcase galleries of his artwork.
+    This is an online portfolio for Canadian Art director, Animator, and Production Designer, Luke Buxton. This site was built in Django, with Vanilla JavaScript.
 tags:
     - JavaScript
     - CSS3
@@ -13,7 +13,7 @@ image: /images/projects/luke-buxton/luke-buxton.jpg
 
 ### What is it?
 
-This is a standalone site, built with **Django**, to manage and display various categories of artwork by animation designer, Luke Buxton.
+This is a standalone **Django** site, built as an online portfolio for Canadian animation designer, Luke Buxton.
 
 Luke pitched an idea for his online portfolio, where his illustrations sat diagonally within a photo of his laptop.  It proved to be challenging, but made for a fun site to build and to view.
 

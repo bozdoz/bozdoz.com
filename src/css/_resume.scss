@@ -11,8 +11,8 @@
 		}
 	}
 }
-#resume {
 
+#resume {
 	.table-row {
 		padding-bottom: 1.2em;
 	}
@@ -20,7 +20,7 @@
 	.section-title {
 		text-align: left;
 		padding-bottom: 0.5em;
-		color: darken($d_color, 0%) !important;
+		color: desaturate(transparentize($d_color, 0.2), 20%) !important;
 	}
 
 	.section-content {
@@ -31,25 +31,6 @@
 
 	.resume-highlight-list {
 		padding-top: 0.5em;
-		li:before {
-			left: -1.5em;
-			top: 0.3em;
-			display: inline-block;
-			position: absolute;
-			font-family: FontAwesome;
-			font-size: 10pt;
-			text-rendering: auto;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			content: "\f054";
-			color: #ccc;
-		}
-		li {
-			position: relative;
-			margin-bottom: 0.94em;
-			line-height: 1.5;
-			font-size: 14pt;
-		}
 	}
 
 	.badge-info {
@@ -98,19 +79,28 @@ $resumewidth: 95%;
 @media screen and (min-width: $mq) {
 	#main .resume-page {
 		header .header-title {
+			transform: translateX(-50%);
+			left: 50%;
+		}
+			
+		header .header-title,
+		.page-description {
 			width: $resumewidth;
 			max-width: 1000px;
-			left: 50%;
-			transform: translateX(-50%);
 			display: flex;
 			flex-flow: row nowrap;
 			justify-content: flex-end;
 
-			h1 {
+			h1, p {
 				margin: 0;
 				flex: 0 1 68%;
 				text-align: left;
 			}
+		}
+
+		.page-description p {
+			margin-bottom: 2em;
+			color: hsl($brand-hue, 12%, 48%) !important;
 		}
 	}
 	#resume {
