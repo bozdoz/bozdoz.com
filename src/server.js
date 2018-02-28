@@ -11,6 +11,8 @@ import fm from 'front-matter';
 const PORT = 8005;
 const app = express();
 
+app.disable('x-powered-by');
+
 app.use(express.static(path.join(__dirname, '../public')));
 
 // it removes trailing slash
