@@ -2,6 +2,7 @@ import React from 'react';
 import fs from 'fs';
 import path from 'path';
 import { pagedir } from './ServerTemplate';
+import { list as projectlist } from './Projects';
 
 const locations = [
 	{
@@ -13,22 +14,12 @@ const locations = [
 		loc: "/projects",
 		priority: 0.8
 	},
-	{
-		loc: "/projects/luke-buxton",
-		priority: 0.8
-	},
-	{
-		loc: "/projects/alberta-tomorrow",
-		priority: 0.6
-	},
-	{
-		loc: "/projects/typewrite-something",
-		priority: 0.6
-	},
-	{
-		loc: "/projects/leaflet-map",
-		priority: 0.6
-	},
+	...projectlist.map(({id}) => (
+		{
+			loc: `/projects/${id}`,
+			priority: 0.8
+		}
+	)),
 	{
 		loc: "/about",
 		priority: 0.5

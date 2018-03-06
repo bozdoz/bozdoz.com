@@ -59,6 +59,13 @@ class MarkDown extends React.Component {
 				});
 		});
 
+		// copy img alt text to title
+		this.container
+			.querySelectorAll('img')
+			.forEach(img => {
+				img.title = img.alt;
+			});
+
 		// todo: add header links to top of `this.container`
 		// as a list of skip-to links
 
