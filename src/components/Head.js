@@ -22,7 +22,7 @@ const Head = (props) => {
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="theme-color" content="#000000" />
+      <meta name="theme-color" content="#5171E0" />
 
       <title>{title}</title>
       <meta
@@ -30,7 +30,7 @@ const Head = (props) => {
         content={description} />
       <meta
         name="keywords"
-        content="Benjamin, DeLong, bozdoz, web developer, halifax, nova scotia" />
+        content="bozdoz, Benjamin, DeLong, web developer, web design, programmer, halifax, nova scotia, ns" />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@bozdoz" />

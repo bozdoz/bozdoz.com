@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+* It sets the document title and updates/creates the 
+* Page title element (#page-title) in the page
+*
+* @param Object props: {children (String), header? (String)}
+* @return h1 DOM Element
+*/
 const Title = ({ children, header }) => {
 	const title = children;
 	if (!title) {

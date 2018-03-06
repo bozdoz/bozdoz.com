@@ -39,7 +39,9 @@ const PageLayout = (props) => {
 			}
 			</div>
 		</header>
-		{breadcrumbs && <Breadcrumbs list={breadcrumbs} />}
+		{breadcrumbs && 
+			<Breadcrumbs list={breadcrumbs} />
+		}
 		{ children }
 	</article>
 	);

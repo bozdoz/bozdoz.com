@@ -1,6 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+/**
+* It scrolls page and #main element to the top
+* when a new route is mounted
+*/
+
 class ScrollToTop extends React.Component {
     componentDidMount () {
         if (this.props.location.hash) {

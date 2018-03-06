@@ -39,7 +39,7 @@ const getMarkdown = (_source) => {
 };
 	
 /**
-* Sets Initial HTML
+* Sets Initial HTML (not needed if page.body is undefined)
 * Used and destroyed in FrontMatter.js
 */
 export const InitialHTML = ({page}) => (

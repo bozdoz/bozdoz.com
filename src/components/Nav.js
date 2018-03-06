@@ -10,11 +10,7 @@ const list = [
 	{
 		href: '/about',
 		text: 'About'
-	},
-	/*{
-		href: '/resume',
-		text: 'Resume',
-	},*/
+	}
 ];
 
 const Nav = () => (
