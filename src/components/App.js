@@ -8,6 +8,7 @@ import ResumePage from './ResumePage';
 import AboutPage from './AboutPage';
 import PlainPage from './PlainPage';
 import NotFoundPage from './NotFoundPage';
+import TagsPage from './TagsPage';
 import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
 
@@ -20,6 +21,7 @@ const App = () => (
 			<Route exact path="/resume" component={ResumePage} />
 			<Route exact path="/about" component={AboutPage} />
 			<Route exact path="/privacy" component={PlainPage} />
+			<Route path="/tags" component={TagsPage} />
 			<Route component={NotFoundPage} />
 		</Switch>
 		<ScrollToTop />

@@ -63,6 +63,9 @@ export const Is404 = () => (
 );
 
 export const getPage = ({ location, staticContext }) => {
+	/*
+	todo: tags and tag pages
+	*/
 	let page;
 	if (location.pathname === '/') {
 		page = getMarkdown('index');

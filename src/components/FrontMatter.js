@@ -1,49 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import path from 'path';
 import MarkDown from './MarkDown';
 import TagList from './TagList';
 import PageLayout from './PageLayout';
-import axios from 'axios';
-import path from 'path';
 import LoadingPage from './LoadingPage';
+import AjaxContent from './AjaxContent';
 
-const cache = {};
-
-/**
-* Gets markdown formatted page content from server
-*
-* @param string page
-* @param object req 	created by axios.CancelToken.source()
-* @return Promise
-*/
-const getPage = ( page, req ) => {
-	return new Promise((resolve) => {
-		if (cache[page]) {
-			resolve(cache[page]);
-		} else {
-			axios.get(path.join('/', 'pages', `${page}`), {
-		    	headers: {
-		    		'X-Requested-With': 'XMLHttpRequest'
-		    	},
-		    	cancelToken: req.token
-		    })
-			.then((request) => request.data)
-			.then((data) => {
-				cache[page] = data;
-				resolve(data);
-			})
-			.catch((error) => {
-	        	console.error(error);
-	        });
-		}
-	});
-}
-
-class FrontMatter extends React.Component {
+class FrontMatter extends AjaxContent {
 	constructor(props) {
 		super(props);
 
 		let page = props.page || null;
+
+		this.source = path.join('/', 'api', 'pages', props.source);
 
 		if (props.staticContext) {
 			// server-side rendering already has it
@@ -62,44 +32,27 @@ class FrontMatter extends React.Component {
 			script.parentNode.removeChild(script);
 
 			// cache page
-			cache[ props.source ] = page;
+			this.updateCache( page );
 		}
+
+		this.state = { 
+			data: page 
+		};
+	}
 		
-		this.state = { page };
-	}
-	
-	componentDidMount() {
-		// no page
-	    if ( !this.state.page ) {
-	    	// get the page from the source!
-	    	// and a cancel token from axios
-	    	this.req = axios.CancelToken.source();
-
-		    getPage( this.props.source, this.req )
-		        .then((page) => this.setState({ page }));
-		}
-	}
-
-	componentWillUnmount() {
-		// abort ajax request
-		if (this.req) {
-			this.req.cancel();
-		}
-	}
-	
 	render () {
-		const { page } = this.state;
+		const { data } = this.state;
 
 		// no page while ajax retrieves 
 		// between client routes
-		if (page === null) {
+		if (data === null) {
 			return <LoadingPage {...this.props} />;
 		}
 
 		const { 
 			body,
 			attributes 
-		} = page;
+		} = data;
 
 		const { 
 			link, 
