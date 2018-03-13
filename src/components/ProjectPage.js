@@ -1,6 +1,7 @@
 import React from 'react';
 import NotFoundPage from './NotFoundPage';
 import PlainPage from './PlainPage';
+import { Link } from 'react-router-dom';
 
 /**
 * because project page is an ambiguous match, it requires
@@ -45,7 +46,16 @@ const ProjectPage = (props) => {
 				'Home', '/',
 				'Projects', '/projects'
 			]}
-			{...props} />
+			{...props}>
+			<div className="container">
+				<hr />
+				<Link to={`/projects`} className="btn btn-default">
+					<i className="fa fa-chevron-left fa-fw color-grey font-sm" />
+					&nbsp;
+					Back to Projects
+				</Link>
+			</div>
+		</PlainPage>
 	);
 };
 

@@ -372,6 +372,16 @@ $link_color: $para_color;
 	}
 }
 
+$grey: hsl($brand-hue, 12%, 80%);
+
+.color-grey {
+	color: $grey;
+}
+
+.font-sm {
+	font-size: 10pt;
+}
+
 // arrows, not bullets (THIS IS THE MIDDLE AGES)
 .markdown,
 .resume-highlight-list {
@@ -386,7 +396,7 @@ $link_color: $para_color;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		content: "\f054";
-		color: hsl($brand-hue, 12%, 80%);
+		color: $grey;
 	}
 	li {
 		position: relative;
