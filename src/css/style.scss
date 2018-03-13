@@ -177,8 +177,6 @@ $para_padding: 1.2em;
 		}
 
 		.header-title {
-			position: absolute;
-			bottom: 5em;
 			width:100%;
 		}
 
@@ -524,6 +522,24 @@ $link_color: $para_color;
 		}
 	}
 }
+
+// page is shorter than 500px
+@media screen and (max-height: 500px) {
+	#main .page header {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+	}
+}
+
+// page is taller than 500px
+@media screen and (min-height: 500px) {
+	#main .page header .header-title {
+		position: absolute;
+		bottom: 5em;
+	}
+}
+
 
 @import 'page';
 @import 'resume';
