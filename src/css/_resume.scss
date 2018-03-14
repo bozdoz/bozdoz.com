@@ -2,6 +2,18 @@
 	h1,h2,h3,h4,h5 {
 	    font-size: 1.2em;
 	}
+	h1 {
+		font-size: 1.2em;
+	}
+	h2 {
+		font-size: 1.1em;
+	}
+	h3, h4 {
+	    font-size: 1em;
+	}
+	h5 {
+		font-size: 0.9em;
+	}
 	header {
 		height: inherit;
 		min-height: 40vh;
@@ -22,13 +34,6 @@
 		padding-bottom: 0.5em;
 		color: desaturate(transparentize($d_color, 0.2), 20%) !important;
 	}
-
-	.section-content {
-		h1,h2,h3,h4,h5 {
-		    font-size: 1em;
-		}
-	}
-
 	.resume-highlight-list {
 		padding-top: 0.5em;
 	}
@@ -46,18 +51,6 @@ $resumewidth: 95%;
 
 @media screen and (max-width: $mq) {
 	#main .resume-page {
-		h1 {
-			font-size: 1.2em;
-		}
-		h2 {
-			font-size: 1.1em;
-		}
-		h3,h4 {
-		    font-size: 1em;
-		}
-		h5 {
-			font-size: 0.9em;
-		}
 		header {
 			height: inherit;
 			min-height: 24vh;

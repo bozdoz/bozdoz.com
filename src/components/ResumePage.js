@@ -4,31 +4,54 @@ import FrontMatter from './FrontMatter';
 import { Link } from 'react-router-dom';
 
 const resume = {
-	'EXPERIENCE' : [
-		'Built, designed, and maintained 2 large-scale, data-driven websites in Django',
-		'Designed intuitive, responsive websites and user interfaces with JavaScript and CSS',
-		'Wrote and benchmarked database queries in PostgreSQL and PostGIS',
-		'Optimized server performance with NGINX and Varnish caching',
-		'Maintained websites with Continuous Integration, error tracking tools, and browser developer tools'
-	],
-	'SKILLS': {
-		'Languages': [
-			'JavaScript - jQuery, ES6, React, Node.js, Express',
-			'Python - Django',
-			'PHP - WordPress'
+	'EXPERIENCE' : {
+		"header" : "ALCES Landscape & Land-use Ltd.",
+		"subheader" : "Full Stack Web Developer",
+		"date" : "Oct. 2012 - Present",
+		"bullets": [
+			'Planned, designed, and developed 2 data-driven, map-based websites in Django, as part of a team',
+			'Translated mockups into intuitive, responsive user interfaces for web and mobile apps with JavaScript and CSS',
+			'Maintained websites with automated testing suites, Continuous Integration, and browser developer tools',
 		],
-		'Other': [
-			'PostgreSQL, PostGIS, MySQL, Cordova/Phonegap'
+	},
+	'SKILLS': [
+		{
+			"header": "Languages",
+			"bullets": [
+				'JavaScript - jQuery, ES6, React, Node.js, Express',
+				'Python - Django',
+				'PHP - WordPress',
+			]
+		},
+		{
+			"header": 'Development', 
+			"bullets": [
+				'JSHint, CasperJS, Jest, TypeScript, Vagrant'
+			],
+		},
+		{
+			"header": 'Other', 
+			"bullets": [
+				'PostgreSQL, PostGIS, MySQL, Cordova/Phonegap, GraphQL, RESTful APIs, Bash, YAML'
+			]
+		}
+	],
+	'EDUCATION': {
+		"header": "Mount Saint Vincent University",
+		"subheader": "Bachelor of Public Relations",
+		"date": "Graduate of 2010",
+		"bullets": [
+			"Courses included Audio-Visual, Web Design, Communications Theory, Marketing, and Business."
 		]
 	},
 	'PROJECTS': {
+		'Alberta Tomorrow': {
+			link: '/projects/alberta-tomorrow',
+			description: 'A classroom-focused mapping application, complete with interactive geo-spatial database queries, a predictive model, a RESTful API, and a free mobile app.'
+		},
 		'Leaflet Map WordPress Plugin': {
 			link: '/projects/leaflet-map',
 			description: 'A shortcode-based WordPress plugin to create multiple Leaflet maps in posts and pages.  It has companion shortcodes to add markers, geojson, and images to those maps.  It is a solo project, and the first project where I used Object-Oriented Programming with PHP.'
-		},
-		'Typewrite Something': {
-			link: '/projects/typewrite-something',
-			description: 'I wanted to build a performant and realistic online typewriter simulator; a minimalistic web app where I learned about JavaScript and HTML5 Canvas. I further used the project as a way to learn mobile app development with Adobe Phonegap, and testing suites such as CasperJS.'
 		}
 	}
 };
@@ -45,18 +68,31 @@ ResumeHighlightList.propTypes = {
 	list: PropTypes.array.isRequired
 };
 
-const ResumeSection = (props) => {
-	return Object.keys(props.dict).map((item) => (
-		<div key={item}>
-			<h4>{item}</h4>
-			<ResumeHighlightList list={props.dict[item]} />
-		</div>
-	));
-};
+const ResumeSection = ({header, subheader, date, bullets}) => (
+	<div>
+		{header && 
+			<h4>{header}</h4>
+		}
+		{subheader &&
+			<h5>
+				{subheader}
+				{date &&
+					<small className="ml-1 text-muted">&nbsp;&nbsp;({date})</small>
+				}
+			</h5>
+		}
+		{bullets &&
+			<ResumeHighlightList list={bullets} />
+		}
+	</div>
+);
 
 ResumeSection.propTypes = {
-	dict: PropTypes.object.isRequired
-};
+	header: PropTypes.string,
+	subheader: PropTypes.string,
+	date: PropTypes.string,
+	bullets: PropTypes.array,
+}
 
 const ResumePage = () => (
 	<FrontMatter className="resume-page" source="resume">
@@ -66,20 +102,7 @@ const ResumePage = () => (
 					<h3>EXPERIENCE</h3>
 				</div>
 				<div className="section-content">
-					<div className="experience-item">
-						<h4>
-							<span className="job-location">
-								Self-Employed
-							</span>&nbsp;|&nbsp; 
-							<span className="job-title">
-								Full Stack Web Developer
-							</span>&nbsp;
-						</h4>
-						<h5 className="job-time-period text-muted">
-							(2012 - Present)
-						</h5>
-						<ResumeHighlightList list={resume['EXPERIENCE']} />
-					</div>
+					<ResumeSection {...resume['EXPERIENCE']} />
 				</div>
 			</section>
 			<section className="table-row">
@@ -87,7 +110,17 @@ const ResumePage = () => (
 					<h3>SKILLS</h3>
 				</div>
 				<div className="section-content">
-					<ResumeSection dict={resume['SKILLS']} />
+					{resume['SKILLS'].map((skill) => (
+						<ResumeSection key={skill.header} {...skill} />
+					))}
+				</div>
+			</section>
+			<section className="table-row">
+				<div className="section-title text-success">
+					<h3>EDUCATION</h3>
+				</div>
+				<div className="section-content">
+					<ResumeSection {...resume['EDUCATION']} />
 				</div>
 			</section>
 			<section className="table-row">
