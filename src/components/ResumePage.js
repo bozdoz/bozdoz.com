@@ -72,7 +72,7 @@ const ResumePage = () => (
 								Self-Employed
 							</span>&nbsp;|&nbsp; 
 							<span className="job-title">
-								Full Stack Web Developer
+								Full-Stack Software Engineer
 							</span>&nbsp;
 						</h4>
 						<h5 className="job-time-period text-muted">
