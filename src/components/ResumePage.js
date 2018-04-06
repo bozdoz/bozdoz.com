@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const resume = {
 	'EXPERIENCE' : {
 		"header" : "ALCES Landscape & Land-use Ltd.",
-		"subheader" : "Full Stack Web Developer",
+		"subheader" : "Full-Stack Software Engineer",
 		"date" : "Oct. 2012 - Present",
 		"bullets": [
 			'Planned, designed, and developed 2 data-driven, map-based websites in Django, as part of a team',

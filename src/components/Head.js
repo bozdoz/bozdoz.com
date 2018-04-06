@@ -30,7 +30,7 @@ const Head = (props) => {
         content={description} />
       <meta
         name="keywords"
-        content="bozdoz, Benjamin, DeLong, web developer, web design, programmer, halifax, nova scotia, ns" />
+        content="bozdoz, Benjamin, DeLong, software engineer, web developer, web design, programmer, halifax, nova scotia, ns" />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@bozdoz" />
@@ -69,7 +69,7 @@ Head.propTypes = {
 
 Head.defaultProps = {
   title: '@bozdoz',
-  description: 'Web developer from Halifax, Nova Scotia; specialized in JavaScript and interactive mapping applications.',
+  description: 'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.',
   image: '/images/bozdoz.jpg'
 };
 

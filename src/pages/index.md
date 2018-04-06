@@ -1,7 +1,7 @@
 ---
 title: "Home"
 header: "@bozdoz"
-subtitle: Full Stack Web Developer
+subtitle: Full-Stack Software Engineer
 ---
 
 I am in the **[top 6% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
