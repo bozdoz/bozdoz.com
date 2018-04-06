@@ -26,7 +26,7 @@ const Head = (props) => {
 
       <meta
         name="keywords"
-        content="Benjamin, DeLong, bozdoz, web developer, halifax, nova scotia" />
+        content="Benjamin, DeLong, bozdoz, software engineer, web developer, halifax, nova scotia" />
       <meta
         name="description"
         content={description} />
@@ -69,7 +69,7 @@ Head.propTypes = {
 
 Head.defaultProps = {
   title: '@bozdoz',
-  description: 'Web developer from Halifax, Nova Scotia; specialized in JavaScript and interactive mapping applications.',
+  description: 'Software Engineer from Halifax, Nova Scotia; specialized in JavaScript and interactive mapping applications.',
   image: '/images/bozdoz.jpg'
 };
 
