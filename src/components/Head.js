@@ -69,7 +69,7 @@ Head.propTypes = {
 
 Head.defaultProps = {
   title: '@bozdoz',
-  description: 'Software Engineer from Halifax, Nova Scotia; specialized in JavaScript and interactive mapping applications.',
+  description: 'Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.',
   image: '/images/bozdoz.jpg'
 };
 
