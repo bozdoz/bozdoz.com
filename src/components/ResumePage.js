@@ -94,8 +94,11 @@ ResumeSection.propTypes = {
 	bullets: PropTypes.array,
 }
 
-const ResumePage = () => (
-	<FrontMatter className="resume-page" source="resume">
+const ResumePage = (props) => (
+	<FrontMatter 
+		className="resume-page" 
+		source="resume" 
+		{...props}>
 		<div id="resume" className="container-fluid">
 			<section className="table-row">
 				<div className="section-title text-success">
