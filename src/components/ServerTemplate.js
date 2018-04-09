@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import App from './App';
 import Head from './Head';
-import { GA_TRACKING_ID } from '../config';
+import { GA_TRACKING_ID } from '../data/site_variables';
 import fs from 'fs';
 import fm from 'front-matter';
 import path from 'path';

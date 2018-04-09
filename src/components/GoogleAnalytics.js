@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { GA_TRACKING_ID } from '../config';
+import { GA_TRACKING_ID } from '../data/site_variables';
 
 class GoogleAnalytics extends React.Component {
     componentWillUpdate ({ location, history }) {

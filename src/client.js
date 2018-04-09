@@ -3,7 +3,7 @@ import { hydrate as render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import './css/style.scss';
-import { GA_TRACKING_ID } from './config';
+import { GA_TRACKING_ID } from './data/site_variables';
 
 const Client = () => (
 	<Router>

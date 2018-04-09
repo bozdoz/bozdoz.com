@@ -34,6 +34,17 @@
 		padding-bottom: 0.5em;
 		color: desaturate(transparentize($d_color, 0.2), 20%) !important;
 	}
+
+	.section-content > div {
+		margin-bottom: 1.6em;
+		h4 {
+			margin: 0;
+		}
+	}
+	.section-content > div:last-child {
+		margin-bottom: 0;
+	}
+
 	.resume-highlight-list {
 		padding-top: 0.5em;
 	}
