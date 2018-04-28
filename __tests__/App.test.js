@@ -5,7 +5,7 @@ import { StaticRouter as Router, Route } from 'react-router-dom';
 import App from '../src/components/App';
 import { getPage, InitialHTML, Is404 } from '../src/components/ServerTemplate';
 import { list as projectlist } from '../src/components/Projects';
-import { getMarkdown as mockMarkdown } from '../src/server.js';
+import { getMarkdown as mockMarkdown } from '../src/api.js';
 
 Enzyme.configure({ adapter: new Adapter() });
 
