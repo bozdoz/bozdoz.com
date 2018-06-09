@@ -17,7 +17,9 @@ jest.mock('axios', () => {
 				resolve({
 					data: mockMarkdown(md)
 				});
-			}).catch((error) => console.error(error));
+			}).catch((error) => {
+				throw new Error(error);
+			});
 		},
 		CancelToken: {
 			source: () => 'asdf'
