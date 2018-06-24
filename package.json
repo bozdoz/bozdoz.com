@@ -44,11 +44,12 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "jsx"
     ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
-      "^.+\\.js$": "ts-jest"
+      "^.+\\.jsx?$": "ts-jest"
     },
     "testRegex": "./.*test\\.(ts|tsx|js)$",
     "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts"
