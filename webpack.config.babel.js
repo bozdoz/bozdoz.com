@@ -1,7 +1,9 @@
 import * as path from "path";
 import * as webpack from "webpack";
-import * as nodeExternals from "webpack-node-externals";
-import * as ExtractTextPlugin from "extract-text-webpack-plugin";
+import {
+  default as ExtractTextPlugin,
+  loader as ExtractTextPluginLoader
+} from "mini-css-extract-plugin";
 
 const { NODE_ENV } = process.env;
 
@@ -16,7 +18,7 @@ const client = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.jsx?$/,
         use: {
           loader: "babel-loader",
           options: {
@@ -34,7 +36,7 @@ const client = {
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".js", ".jsx"]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin()
@@ -45,14 +47,17 @@ console.log("NODE_ENV", NODE_ENV);
 
 if (NODE_ENV === "production") {
   // extract css into a file
-  client.plugins.push(new ExtractTextPlugin("./css/[name].css"));
+  client.plugins.push(new ExtractTextPlugin({
+    filename: "./css/[name].css"
+  }));
   client.module.rules.push({
     test: /\.s?css$/,
-    use: ExtractTextPlugin.extract({
-      fallback: "style-loader",
-      use: ["css-loader", "sass-loader", "postcss-loader"],
-      publicPath: "/css/"
-    })
+    use: [
+      ExtractTextPluginLoader,
+      'css-loader',
+      'sass-loader',
+      'postcss-loader',
+    ]
   });
 } else {
   client.entry = ["webpack-hot-middleware/client", ...client.entry];
@@ -84,15 +89,26 @@ const server = {
     __dirname: false
   },
   mode: NODE_ENV,
-  externals: [
-    nodeExternals({
-      modulesFromFile: true
-    })
-  ],
   entry: "./src/server.tsx",
   output: {
     path: path.join(__dirname, "src"),
     filename: "server.min.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: "babel-loader"
+      },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".jsx"]
   },
   module: client.module
 };
