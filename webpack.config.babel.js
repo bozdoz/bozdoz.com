@@ -8,8 +8,6 @@ import {
 
 const { NODE_ENV } = process.env;
 
-console.log(nodeExternals)
-
 const client = {
   entry: ["./src/client.tsx"],
   output: {
