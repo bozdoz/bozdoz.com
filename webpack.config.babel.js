@@ -1,11 +1,14 @@
 import * as path from "path";
 import * as webpack from "webpack";
+import * as nodeExternals from 'webpack-node-externals'
 import {
   default as ExtractTextPlugin,
   loader as ExtractTextPluginLoader
 } from "mini-css-extract-plugin";
 
 const { NODE_ENV } = process.env;
+
+console.log(nodeExternals)
 
 const client = {
   entry: ["./src/client.tsx"],
@@ -38,25 +41,25 @@ const client = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"]
   },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin()
-  ]
+  plugins: [new webpack.optimize.OccurrenceOrderPlugin()]
 };
 
 console.log("NODE_ENV", NODE_ENV);
 
 if (NODE_ENV === "production") {
   // extract css into a file
-  client.plugins.push(new ExtractTextPlugin({
-    filename: "./css/[name].css"
-  }));
+  client.plugins.push(
+    new ExtractTextPlugin({
+      filename: "./css/[name].css"
+    })
+  );
   client.module.rules.push({
     test: /\.s?css$/,
     use: [
       ExtractTextPluginLoader,
-      'css-loader',
-      'sass-loader',
-      'postcss-loader',
+      "css-loader",
+      "sass-loader",
+      "postcss-loader"
     ]
   });
 } else {
@@ -88,6 +91,11 @@ const server = {
   node: {
     __dirname: false
   },
+  externals: [
+    (nodeExternals.default || nodeExternals)({
+      modulesFromFile: true
+    })
+  ],
   mode: NODE_ENV,
   entry: "./src/server.tsx",
   output: {
