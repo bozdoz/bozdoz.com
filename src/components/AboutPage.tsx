@@ -3,10 +3,10 @@ import * as React from 'react';
 import PlainPage from './PlainPage';
 import Contact from './Contact';
 
-const IndexPage = (props) => (
-	<PlainPage source="index" {...props}>
+const AboutPage = (props: object) => (
+	<PlainPage {...props}>
 		<Contact />
 	</PlainPage>
 );
 
-export default IndexPage;
+export default AboutPage;

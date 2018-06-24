@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 const list = [
@@ -15,11 +14,11 @@ const list = [
 
 const Nav = () => (
 	<ul id="side-nav">
-		{list.map(({href, text, title}) => (
+		{list.map(({href, text}) => (
 			<li key={href}>
 				<NavLink 
 					to={href} 
-					title={title || text}
+					title={text}
 					activeClassName="active">
 					<span className="nav-text">{text}</span>
 				</NavLink>

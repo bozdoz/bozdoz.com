@@ -1,10 +1,19 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 
 import Title from './Title';
 import Breadcrumbs from './Breadcrumbs';
 
-const PageLayout = (props) => {
+interface Props {
+	title: string
+	header?: string
+	subtitle?: string | JSX.Element
+	image?: string
+	className?: string
+	children?: React.ReactNodeArray
+	breadcrumbs?: string[]
+}
+
+const PageLayout = (props: Props) => {
 	const {
 		title,
 		header,
@@ -15,7 +24,7 @@ const PageLayout = (props) => {
 	} = props;
 
 	let classname = 'page';
-	let breadcrumbs = props.breadcrumbs;
+	let { breadcrumbs } = props;
 
 	if (className) {
 		classname += ` ${className}`;
@@ -46,17 +55,6 @@ const PageLayout = (props) => {
 		{ children }
 	</article>
 	);
-};
-
-PageLayout.propTypes = {
-	title: PropTypes.string.isRequired,
-	header: PropTypes.string,
-	subtitle: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.element
-	]),
-	image: PropTypes.string,
-	className: PropTypes.string,
 };
 
 export default PageLayout;

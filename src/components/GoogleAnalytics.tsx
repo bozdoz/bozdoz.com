@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import { GA_TRACKING_ID } from '../data/site_variables';
 
-class GoogleAnalytics extends React.Component {
-    componentWillUpdate ({ location, history }) {
-        const gtag = window.gtag;
+class GoogleAnalytics extends React.Component<RouteComponentProps<{}>> {
+    componentWillUpdate (props: RouteComponentProps<{}>) {
+        const {
+            location,
+            history
+        } = props
+        const gtag = (window as any).gtag;
 
         if (location.pathname === this.props.location.pathname) {
             // don't log identical link clicks (nav links likely)

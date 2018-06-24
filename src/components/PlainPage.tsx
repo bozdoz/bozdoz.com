@@ -6,7 +6,7 @@ import FrontMatter from './FrontMatter';
 * it intercepts request url and passes it to FrontMatter
 * so it can look up the page markdown file
 */
-const PlainPage = (props) => (
+const PlainPage = (props: any) => (
 	<FrontMatter source={props.match.url}  {...props} />
 );
 

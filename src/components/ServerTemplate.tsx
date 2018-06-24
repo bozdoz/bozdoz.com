@@ -28,7 +28,7 @@ export { pagedir };
 * @param Object source
 * @return Object|Null
 */
-const getMarkdown = (_source) => {
+const getMarkdown = (_source: string): any => {
 	let source = _source;
 
 	try {
@@ -44,7 +44,9 @@ const getMarkdown = (_source) => {
 * Sets Initial HTML (not needed if page.body is undefined)
 * Used and destroyed in FrontMatter.js
 */
-export const InitialHTML = ({page}) => (
+export const InitialHTML = ({ page }: {
+	page: object
+}) => (
 	<script 
 		id="initial-state"
 		dangerouslySetInnerHTML={{
@@ -64,7 +66,10 @@ export const Is404 = () => (
 		}} />
 );
 
-export const getPage = ({ location, staticContext }) => {
+export const getPage = ({ location, staticContext }: {
+	location: any
+	staticContext: any
+}) => {
 	let page;
 	if (location.pathname === '/') {
 		page = getMarkdown('index');

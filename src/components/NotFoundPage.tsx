@@ -3,7 +3,7 @@ import * as React from 'react';
 import FrontMatter from './FrontMatter';
 import Contact from './Contact';
 
-const NotFoundPage = (props) => {
+const NotFoundPage = (props: any) => {
 	if (props.staticContext) {
 		props.staticContext.is404 = true;
 	}

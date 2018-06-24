@@ -6,7 +6,7 @@ import { client } from '../webpack.config.babel';
 
 import { app, createApp } from './server';
 
-const bundler = webpack(client);
+const bundler = webpack(client as any);
 
 app.use(webpackDevMiddleware(bundler, {
 	publicPath: client.output.publicPath,

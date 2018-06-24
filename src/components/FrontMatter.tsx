@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import * as axios from 'axios';
 import * as path from 'path';
 
@@ -17,31 +16,60 @@ const cache = {};
 * @param object req 	created by axios.CancelToken.source()
 * @return Promise
 */
-const getPage = ( page, req ) => {
+const getPage = ( page: string, req: any ) => {
 	return new Promise((resolve) => {
 		if (cache[page]) {
 			resolve(cache[page]);
 		} else {
-			axios.get(path.join('/', 'pages', `${page}`), {
+			(axios as any).get(path.join('/', 'pages', `${page}`), {
 		    	headers: {
 		    		'X-Requested-With': 'XMLHttpRequest'
 		    	},
 		    	cancelToken: req.token
 		    })
-			.then((request) => request.data)
-			.then((data) => {
+			.then((request: any) => request.data)
+			.then((data: FrontMatterObject) => {
 				cache[page] = data;
 				resolve(data);
 			})
-			.catch((error) => {
+			.catch((error: Error) => {
 	        	console.error(error);
 	        });
 		}
 	});
 }
 
-class FrontMatter extends React.Component {
-	constructor(props) {
+interface FrontMatterAttributes {
+	link: string 
+	description: string
+	show_description: boolean
+	tags: string[]
+	subtitle: string
+}
+
+interface FrontMatterObject {
+	body: string
+	attributes: FrontMatterAttributes
+}
+
+interface Props {
+	page: FrontMatterObject
+	staticContext?: {
+		page: FrontMatterObject
+	}
+	source: string
+	className?: string
+	title: string
+}
+
+interface State {
+	page: FrontMatterObject
+}
+
+class FrontMatter extends React.Component<Props, State> {
+	req: any
+
+	constructor(props: Props) {
 		super(props);
 
 		let page = props.page || null;
@@ -51,16 +79,16 @@ class FrontMatter extends React.Component {
 			page = props.staticContext.page;
 		} else if (
 			typeof(window) !== 'undefined' && 
-			window.__INITIAL_HTML__
+			(window as any).__INITIAL_HTML__
 		) {
 			// client-side initial render
 			// gets variable set in ServerTemplate.js
-			page = window.__INITIAL_HTML__;
+			page = (window as any).__INITIAL_HTML__;
 			
 			// destroy variable and script
-			delete window.__INITIAL_HTML__;
+			delete (window as any).__INITIAL_HTML__;
 			let script = document.getElementById('initial-state');
-			script.parentNode.removeChild(script);
+			script!.parentNode!.removeChild(script as HTMLElement);
 
 			// cache page
 			cache[ props.source ] = page;
@@ -74,10 +102,10 @@ class FrontMatter extends React.Component {
 	    if ( !this.state.page ) {
 	    	// get the page from the source!
 	    	// and a cancel token from axios
-	    	this.req = axios.CancelToken.source();
+	    	this.req = (axios as any).CancelToken.source();
 
 		    getPage( this.props.source, this.req )
-		        .then((page) => this.setState({ page }));
+		        .then((page: FrontMatterObject) => this.setState({ page }));
 		}
 	}
 
@@ -94,7 +122,7 @@ class FrontMatter extends React.Component {
 		// no page while ajax retrieves 
 		// between client routes
 		if (page === null) {
-			return <LoadingPage {...this.props} />;
+			return <LoadingPage className={this.props.className} />;
 		}
 
 		const { 
@@ -112,7 +140,7 @@ class FrontMatter extends React.Component {
 		let { subtitle } = attributes;
 
 		if (link && subtitle) {
-			subtitle = (<a target="_blank" href={link}>{subtitle}</a>);
+			subtitle = (<a target="_blank" href={link}>{subtitle}</a>) as any;
 		}
 
 		return (
@@ -137,10 +165,5 @@ class FrontMatter extends React.Component {
 		);
 	}
 }
-
-FrontMatter.propTypes = {
-	source: PropTypes.string.isRequired,
-	page: PropTypes.object
-};
 
 export default FrontMatter;

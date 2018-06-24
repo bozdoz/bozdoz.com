@@ -1,10 +1,19 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 
 import Breadcrumbs from './Breadcrumbs';
 
-class LoadingPage extends React.Component {
-	constructor(props) {
+interface Props {
+	className?: string
+}
+
+interface State {
+	loading: boolean
+}
+
+class LoadingPage extends React.Component<Props, State> {
+	loading_timeout: any
+
+	constructor(props: Props) {
 		super(props);
 		this.state = {
 			loading: false
@@ -57,9 +66,5 @@ class LoadingPage extends React.Component {
 		);
 	}
 }
-
-LoadingPage.propTypes = {
-	className: PropTypes.string,
-};
 
 export default LoadingPage;

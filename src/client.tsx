@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { hydrate as render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import App from './components/App';
 import './css/style.scss';
 import { GA_TRACKING_ID } from './data/site_variables';
@@ -17,21 +18,23 @@ render(
 );
 
 // google analytics
-window.dataLayer = window.dataLayer || [];
-window.gtag = function gtag () {dataLayer.push(arguments)};
-
-gtag('js', new Date());
-gtag('config', GA_TRACKING_ID);
-
-window.addEventListener('hashchange', function () {
-	var hash = window.location.hash;
-	if (hash && hash !== '#') {
-		gtag({
-			event: 'hashchange',
-			hash: hash
-		});
-	}
-});
+((win) => {
+	win.dataLayer = win.dataLayer || [];
+	win.gtag = function gtag () { win.dataLayer.push(arguments) };
+	
+	win.gtag('js', new Date());
+	win.gtag('config', GA_TRACKING_ID);
+	
+	win.addEventListener('hashchange', function () {
+		var hash = win.location.hash;
+		if (hash && hash !== '#') {
+			win.gtag({
+				event: 'hashchange',
+				hash: hash
+			});
+		}
+	});
+})(window as any)
 
 // hot reloading
 if (module.hot) {

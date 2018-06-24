@@ -1,5 +1,10 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+
+
+interface Props {
+	children: string
+	header?: string
+};
 
 /**
 * It sets the document title and updates/creates the 
@@ -8,7 +13,7 @@ import * as PropTypes from 'prop-types';
 * @param Object props: {children (String), header? (String)}
 * @return h1 DOM Element
 */
-const Title = ({ children, header }) => {
+const Title = ({ children, header }: Props) => {
 	const title = children;
 	if (!title) {
 		return null;
@@ -21,10 +26,5 @@ const Title = ({ children, header }) => {
 		<h1 id="page-title">{header || title}</h1>
 	);
 }
-
-Title.propTypes = {
-	children: PropTypes.string.isRequired,
-	header: PropTypes.string
-};
 
 export default Title;

@@ -1,16 +1,15 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 
-const TagList = ({tags}) => (
+interface Props {
+	tags: string[]
+}
+
+const TagList = ({ tags }: Props) => (
 	<ul className="tag-list container">
 		{tags.map((tag) => (
 			<li key={tag}>#{tag}</li>
 		))}
 	</ul>
 );
-
-TagList.propTypes = {
-	tags: PropTypes.array.isRequired
-};
 
 export default TagList;

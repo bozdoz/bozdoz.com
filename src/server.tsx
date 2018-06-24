@@ -27,20 +27,11 @@ app.use(function(req, res, next) {
 	}
 });
 
-const getMarkdown = (page) => {
+const getMarkdown = (page: string) => {
 	const filename = path.join(__dirname, 'pages', `${page}.md`);
 	const content = fs.readFileSync(filename, 'utf8');
 
 	return fm(content);
-};
-
-const intBetween = (min, max) => (
-	Math.round((Math.random() * (max - min)) + min)
-);
-
-// simulate longer loads
-const simulateLoad = (fnc) => {
-	setTimeout(fnc, intBetween(0, 2000));
 };
 
 /**
@@ -53,7 +44,7 @@ function createApp () {
 	app.get('/pages/*', function (req, res) {
 		const page = req.params['0'];
 		let status = 200;
-		let content = 'not ajax';
+		let content;
 
 		try {
 			if (req.xhr) {
@@ -65,9 +56,7 @@ function createApp () {
 			status = 404;
 		}
 
-		// simulateLoad(() => {
 		res.status(status).send(content);
-		//});
 	});
 
 	app.get('/sitemap.xml', function (req, res) {
@@ -81,7 +70,10 @@ function createApp () {
 	});
 
 	app.get('*', function (req, res) {
-		const context = {};
+		const context: {
+			url?: string
+			is404?: boolean
+		} = {};
 		let status = 200;
 		let content = '<!doctype html>';
 

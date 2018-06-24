@@ -1,8 +1,11 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Breadcrumbs = ({ list = [] }) => {
+const Breadcrumbs = ({ 
+	list = [] 
+}: {
+	list?: string[]
+}) => {
 	let links = [];
 	
 	for (let i = 0, len = list.length; i < len; i+=2) {
@@ -36,10 +39,6 @@ const Breadcrumbs = ({ list = [] }) => {
 			</ol>
 		</nav>
 	);
-};
-
-Breadcrumbs.propTypes = {
-	list: PropTypes.array
 };
 
 export default Breadcrumbs;

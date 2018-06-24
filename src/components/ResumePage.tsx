@@ -1,12 +1,15 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import resume from '../data/resume';
 
 import FrontMatter from './FrontMatter';
 
-const ResumeHighlightList = props => (
+interface HighlightProps {
+    list: string[]
+}
+
+const ResumeHighlightList = (props: HighlightProps) => (
     <ul className="resume-highlight-list">
         {props.list.map((item, i) => (
             <li key={i} className="resume-highlight-item">
@@ -16,11 +19,19 @@ const ResumeHighlightList = props => (
     </ul>
 );
 
-ResumeHighlightList.propTypes = {
-    list: PropTypes.array.isRequired
+interface ResumeSectionProps {
+    header?: string
+    subheader?: string
+    date?: string
+    bullets?: string[]
 };
 
-const ResumeSection = ({ header, subheader, date, bullets }) => (
+const ResumeSection = ({
+    header,
+    subheader,
+    date,
+    bullets
+}: ResumeSectionProps) => (
     <div>
         {header && <h4>{header}</h4>}
         {subheader && (
@@ -37,14 +48,7 @@ const ResumeSection = ({ header, subheader, date, bullets }) => (
     </div>
 );
 
-ResumeSection.propTypes = {
-    header: PropTypes.string,
-    subheader: PropTypes.string,
-    date: PropTypes.string,
-    bullets: PropTypes.array
-};
-
-export default props => (
+export default (props: any) => (
     <FrontMatter className="resume-page" source="resume" {...props}>
         <div id="resume" className="container-fluid">
             <section className="table-row">

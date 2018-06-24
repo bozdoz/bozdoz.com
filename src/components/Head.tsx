@@ -1,19 +1,28 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 
 import { SITE, GFONT_FAMILY } from '../data/site_variables';
 
 const env = process.env.NODE_ENV;
 
-const Head = (props) => {
+interface Props {
+  title: string
+  description: string
+  image: string
+  children: React.ReactChildren
+}
+
+const defaultDescription = `Full-Stack Software Engineer from Halifax, 
+  Nova Scotia, specializing in JavaScript and interactive mapping applications.`
+
+const Head = (props: Props) => {
   const {
-    description,
-    image
+    description = defaultDescription,
+    image = '/images/bozdoz.jpg'
   } = props;
   
-  let { title } = props;
+  let { title = '@bozdoz' } = props;
 
-  if (title !== Head.defaultProps.title) {
+  if (title !== defaultDescription) {
     // DRY
     title = `${title} - @bozdoz`;
   }
@@ -60,18 +69,6 @@ const Head = (props) => {
       {props.children}
     </head>
   );
-};
-
-Head.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string
-};
-
-Head.defaultProps = {
-  title: '@bozdoz',
-  description: 'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.',
-  image: '/images/bozdoz.jpg'
 };
 
 export default Head;

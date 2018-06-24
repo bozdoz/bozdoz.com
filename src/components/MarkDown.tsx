@@ -1,19 +1,29 @@
 import * as React from 'react';
 import { Redirect } from 'react-router';
-import * as PropTypes from 'prop-types';
 import * as marked from 'marked';
 
-class MarkDown extends React.Component {
-	constructor (props) {
+interface Props {
+	content: string
+}
+
+interface State {
+	redirect?: string
+}
+
+class MarkDown extends React.Component<Props, State> {
+	container: HTMLElement | null
+	constructor (props: Props) {
 		super(props);
 		this.state = {};
 	}
-	handleOnClick (href) {
+
+	handleOnClick (href: string) {
 		this.setState({
 			redirect: href
 		});
 	}
-	componentDidMount () {
+
+	componentDidMount() {
 		const host = new RegExp(`^https?://${window.location.host}`);
 
 		/*
@@ -21,19 +31,21 @@ class MarkDown extends React.Component {
 	 	this.container (apparently)
 	 	*/
 		if (!this.container) {
-			return false;
+			return;
 		}
 
 		// change links to use react router
 		// or open new tabs
-		this.container
-			.querySelectorAll('a')
-			.forEach((a) => {
+		(this.container
+			.querySelectorAll('a') as any)
+			.forEach((a: HTMLAnchorElement) => {
 				if (a.href.match( host )) {
 					// add redirect handler
 					a.addEventListener('click', (e) => {
 						e.preventDefault();
-						this.handleOnClick(e.target.getAttribute('href'));
+						this.handleOnClick(
+							(e.target as any).getAttribute('href')
+						);
 					});
 				} else {
 					// otherwise push to a new tab
@@ -42,15 +54,15 @@ class MarkDown extends React.Component {
 			});
 
 		// style codeblocks;
-		if (typeof(Prism) !== 'undefined') {
-			Prism.highlightAll();
+		if (typeof((window as any).Prism) !== 'undefined') {
+			(window as any).Prism.highlightAll();
 		}
 
 		// add links to headers
 		['h1','h2','h3','h4','h5'].forEach((a) => {
-			this.container
-				.querySelectorAll(a)
-				.forEach((header) => {
+			(this.container!
+				.querySelectorAll(a) as any)
+				.forEach((header: HTMLElement) => {
 					const anchor = document.createElement('a');
 					anchor.className = `header-link`;
 					anchor.href = `#${header.id}`;
@@ -60,18 +72,16 @@ class MarkDown extends React.Component {
 		});
 
 		// copy img alt text to title
-		this.container
-			.querySelectorAll('img')
-			.forEach(img => {
+		(this.container
+			.querySelectorAll('img') as any)
+			.forEach((img: HTMLImageElement) => {
 				img.title = img.alt;
 			});
 
 		// todo: add header links to top of `this.container`
 		// as a list of skip-to links
-
-		// maybe do some wordpress-style shortcodes someday!! :)
-		// idea: [fa icon=link]
 	}
+
 	render () {
 		if (this.state.redirect) {
 			return <Redirect push to={this.state.redirect} />;
@@ -85,9 +95,5 @@ class MarkDown extends React.Component {
 		);
 	}
 }
-
-MarkDown.propTypes = {
-	content: PropTypes.string
-};
 
 export default MarkDown;

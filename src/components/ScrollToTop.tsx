@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 /**
 * It scrolls page and #main element to the top
 * when a new route is mounted
 */
 
-class ScrollToTop extends React.Component {
+class ScrollToTop extends React.Component<RouteComponentProps<{}>> {
     componentDidMount () {
         if (this.props.location.hash) {
             // one time reset location when
@@ -17,10 +17,10 @@ class ScrollToTop extends React.Component {
         }
     }
 
-    componentDidUpdate ({ history }) {
+    componentDidUpdate ({ history }: RouteComponentProps<{}>) {
         if (history.action === 'PUSH') {
             // new link goes to top
-            document.querySelector('#main').scrollTo(0, 0);
+            document!.querySelector('#main')!.scrollTo(0, 0);
 	        window.scrollTo(0, 0);
     	}
     }

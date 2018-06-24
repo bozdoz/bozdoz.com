@@ -27,7 +27,7 @@ export const list = [
 	},
 ];
 
-const Projects = (props) => (
+const Projects = (props: any) => (
 	<PlainPage {...props}>
 		<div className="container">
 			<ul className="project-list list-group">

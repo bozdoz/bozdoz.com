@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as React from 'react';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -59,17 +60,17 @@ const getDateFormat = (date) => {
 };
 
 const Sitemap = () => (
- 	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/1.0">
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/1.0">
 		{locations.map(({loc, priority, md}) => (
 			<url key={loc}>
-			<loc>{`https://bozdoz.com${loc}`}</loc>
-			<changefreq>Monthly</changefreq>
-			<priority>{priority}</priority>
-			<lastmod>{
-				getDateFormat(fs.statSync(getPath(loc, md)).mtime)
+				<loc>{`https://bozdoz.com${loc}`}</loc>
+				<changefreq>Monthly</changefreq>
+				<priority>{priority}</priority>
+				<lastmod>{
+					getDateFormat(fs.statSync(getPath(loc, md)).mtime)
 			}</lastmod>
-		  </url>
-			))}
+			</url>
+		))}
 	</urlset>	
 );
 

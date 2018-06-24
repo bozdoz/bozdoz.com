@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import NavHeader from './NavHeader';
 import Nav from './Nav';
 import NavFooter from './NavFooter';
 
-const Layout = (props) => (
+const Layout = ({ children }: {
+	children: JSX.Element[]
+}) => (
 	<div id="page-container">
 		<nav id="nav">
 			<div id="nav-top">
@@ -15,7 +16,7 @@ const Layout = (props) => (
 			<NavFooter />
 		</nav>
 		<main id="main">
-			{props.children}
+			{children}
 		</main>
 	</div>
 );
