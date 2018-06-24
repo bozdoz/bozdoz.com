@@ -1,9 +1,14 @@
 export default {
   EXPERIENCE: [
     {
+      header: 'VineView',
+      subheader: 'Full-Stack Software Engineer',
+      date: 'May 2018 - Present'
+    },
+    {
       header: 'ALCES Landscape & Land-use Ltd.',
       subheader: 'Full-Stack Software Engineer',
-      date: 'Nov. 2014 - Present',
+      date: 'Nov 2014 - Apr 2018',
       bullets: [
         'Planned, designed, and developed 2 data-driven, mapping applications in Django, as part of a team',
         'Translated mockups into intuitive, responsive user interfaces for web and mobile apps with JavaScript and CSS',
@@ -13,7 +18,7 @@ export default {
     {
       header: 'Ursudio Multimedia Marketing',
       subheader: 'Software Developer',
-      date: 'Oct. 2012 - Nov. 2014',
+      date: 'Oct 2012 - Nov 2014',
       bullets: [
         'Designed intuitive user interfaces in JavaScript and CSS',
         'Maintained sites built in WordPress, Django, and CakePHP',

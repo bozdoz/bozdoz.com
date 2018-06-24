@@ -7,11 +7,10 @@ interface Props {
   title: string;
   description: string;
   image: string;
-  children: React.ReactChildren;
+  children: JSX.Element[];
 }
 
-const defaultDescription = `Full-Stack Software Engineer from Halifax, 
-  Nova Scotia, specializing in JavaScript and interactive mapping applications.`;
+const defaultDescription = 'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.';
 
 const Head = (props: Props) => {
   const {

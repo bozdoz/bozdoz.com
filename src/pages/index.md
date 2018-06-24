@@ -4,7 +4,7 @@ header: "@bozdoz"
 subtitle: Full-Stack Software Engineer
 ---
 
-I am in the **[top 6% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
+I am in the **[top 5% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
 
 I have helped build mapping applications in **Django** and **PostGIS** (e.g. [Alberta Tomorrow](/projects/alberta-tomorrow)), complete with **REST Frameworks** and mobile applications. 
 
