@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+
 import FrontMatter from './FrontMatter';
 import Contact from './Contact';
 

@@ -1,6 +1,7 @@
-import React from 'react';
-import fs from 'fs';
-import path from 'path';
+import * as React from 'react';
+import * as fs from 'fs';
+import * as path from 'path';
+
 import { pagedir } from './ServerTemplate';
 import { list as projectlist } from './Projects';
 

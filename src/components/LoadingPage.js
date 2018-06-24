@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+
 import Breadcrumbs from './Breadcrumbs';
-import PropTypes from 'prop-types';
 
 class LoadingPage extends React.Component {
 	constructor(props) {

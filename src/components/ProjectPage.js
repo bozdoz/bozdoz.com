@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import NotFoundPage from './NotFoundPage';
 import PlainPage from './PlainPage';
-import { Link } from 'react-router-dom';
 
 /**
 * because project page is an ambiguous match, it requires

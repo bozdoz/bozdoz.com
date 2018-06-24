@@ -1,8 +1,9 @@
-import React from 'react';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+
 import NavHeader from './NavHeader';
 import Nav from './Nav';
 import NavFooter from './NavFooter';
-import { Link } from 'react-router-dom';
 
 const Layout = (props) => (
 	<div id="page-container">

@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+
 import PlainPage from './PlainPage';
 import Contact from './Contact';
 

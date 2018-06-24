@@ -1,11 +1,13 @@
-import React from 'react';
+import * as fs from 'fs';
+import * as fm from 'front-matter';
+import * as path from 'path';
+import * as React from 'react';
 import { Route } from 'react-router-dom';
+
+import { GA_TRACKING_ID } from '../data/site_variables';
+
 import App from './App';
 import Head from './Head';
-import { GA_TRACKING_ID } from '../data/site_variables';
-import fs from 'fs';
-import fm from 'front-matter';
-import path from 'path';
 
 const env = process.env.NODE_ENV;
 

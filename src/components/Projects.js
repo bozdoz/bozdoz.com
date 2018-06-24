@@ -1,6 +1,7 @@
-import React from 'react';
-import PlainPage from './PlainPage';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
+
+import PlainPage from './PlainPage';
 
 export const list = [
 	{

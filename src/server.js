@@ -1,12 +1,13 @@
-import path from 'path';
-import express from 'express';
-import React from 'react';
+import * as path from 'path';
+import * as express from 'express';
+import * as React from 'react';
+import * as fs from 'fs';
+import * as fm from 'front-matter';
 import { renderToString as render, renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
+
 import ServerTemplate from './components/ServerTemplate';
 import Sitemap from './components/Sitemap';
-import fs from 'fs';
-import fm from 'front-matter';
 
 const PORT = 8005;
 const app = express();

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "The portfolio of Benjamin J DeLong",
   "main": "index.js",
+  "repository": {
+    "url": "https://github.com/bozdoz/bozdoz.com/"
+  },
   "scripts": {
-    "start": "export NODE_ENV=development && npm run start:babel",
-    "start:babel": "babel-node ./src/dev-server.js",
+    "start": "export NODE_ENV=development && npm run start:ts",
+    "start:ts": "ts-node ./src/dev-server.js",
     "start:production": "npm run build && pm2 start ./src/server.min.js --name='bozdoz.com'",
     "clean": "sudo rm -f ./public/css/main.css && sudo rm ./public/js/main.js",
     "restart": "npm run build && pm2 restart bozdoz.com && npm run purge && service nginx restart",
@@ -34,9 +37,21 @@
     ]
   },
   "jest": {
+    "verbose": true,
     "setupFiles": [
       "raf/polyfill"
-    ]
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+      "^.+\\.js$": "ts-jest"
+    },
+    "testRegex": "./.*test\\.(ts|tsx|js)$",
+    "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts"
   },
   "dependencies": {
     "autoprefixer": "^7.2.6",
@@ -67,11 +82,21 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.11",
+    "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/jest": "^23.1.1",
+    "@types/node": "^10.3.5",
+    "@types/react": "^16.4.1",
+    "@types/react-router": "^4.0.27",
+    "@types/react-router-dom": "^4.2.7",
     "babel-jest": "^21.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^21.2.1",
     "raf": "^3.4.0",
-    "react-test-renderer": "^16.3.2"
+    "react-test-renderer": "^16.3.2",
+    "ts-jest": "^22.4.6",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
   }
 }

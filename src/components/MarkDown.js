@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { Redirect } from 'react-router';
-import PropTypes from 'prop-types';
-import marked from 'marked';
+import * as PropTypes from 'prop-types';
+import * as marked from 'marked';
 
 class MarkDown extends React.Component {
 	constructor (props) {
@@ -80,7 +80,7 @@ class MarkDown extends React.Component {
 			<div ref={(a) => { this.container = a; }}
 				className="container markdown" 
 				dangerouslySetInnerHTML={{
-					__html: marked(this.props.content)
+					__html: marked.parse(this.props.content)
 				}} />
 		);
 	}

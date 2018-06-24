@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+
 import { SITE, GFONT_FAMILY } from '../data/site_variables';
 
 const env = process.env.NODE_ENV;

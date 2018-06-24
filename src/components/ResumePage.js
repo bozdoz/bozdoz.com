@@ -1,8 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import FrontMatter from './FrontMatter';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import resume from '../data/resume';
+
+import FrontMatter from './FrontMatter';
 
 const ResumeHighlightList = props => (
     <ul className="resume-highlight-list">

@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import * as axios from 'axios';
+import * as path from 'path';
+
 import MarkDown from './MarkDown';
 import TagList from './TagList';
 import PageLayout from './PageLayout';
-import axios from 'axios';
-import path from 'path';
 import LoadingPage from './LoadingPage';
 
 const cache = {};
