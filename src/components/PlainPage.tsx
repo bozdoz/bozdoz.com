@@ -3,11 +3,11 @@ import * as React from 'react';
 import FrontMatter from './FrontMatter';
 
 /**
-* it intercepts request url and passes it to FrontMatter
-* so it can look up the page markdown file
-*/
+ * it intercepts request url and passes it to FrontMatter
+ * so it can look up the page markdown file
+ */
 const PlainPage = (props: any) => (
-	<FrontMatter source={props.match.url}  {...props} />
+  <FrontMatter source={props.match.url} {...props} />
 );
 
 export default PlainPage;

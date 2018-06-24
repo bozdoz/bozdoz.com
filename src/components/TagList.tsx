@@ -5,11 +5,9 @@ interface Props {
 }
 
 const TagList = ({ tags }: Props) => (
-	<ul className="tag-list container">
-		{tags.map((tag) => (
-			<li key={tag}>#{tag}</li>
-		))}
-	</ul>
+  <ul className="tag-list container">
+    {tags.map(tag => <li key={tag}>#{tag}</li>)}
+  </ul>
 );
 
 export default TagList;

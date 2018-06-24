@@ -13,19 +13,19 @@ import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
 
 const App = () => (
-	<Layout>
-		<Switch>
-			<Route exact path="/" component={IndexPage} />
-			<Route exact path="/projects" component={Projects} />
-			<Route exact path="/projects/:id" component={ProjectPage} />
-			<Route exact path="/resume" component={ResumePage} />
-			<Route exact path="/about" component={AboutPage} />
-			<Route exact path="/privacy" component={PlainPage} />
-			<Route component={NotFoundPage} />
-		</Switch>
-		<ScrollToTop />
-		<GoogleAnalytics />
-	</Layout>
+  <Layout>
+    <Switch>
+      <Route exact path="/" component={IndexPage} />
+      <Route exact path="/projects" component={Projects} />
+      <Route exact path="/projects/:id" component={ProjectPage} />
+      <Route exact path="/resume" component={ResumePage} />
+      <Route exact path="/about" component={AboutPage} />
+      <Route exact path="/privacy" component={PlainPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+    <ScrollToTop />
+    <GoogleAnalytics />
+  </Layout>
 );
 
 export default App;

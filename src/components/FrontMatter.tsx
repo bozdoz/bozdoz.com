@@ -10,160 +10,151 @@ import LoadingPage from './LoadingPage';
 const cache = {};
 
 /**
-* Gets markdown formatted page content from server
-*
-* @param string page
-* @param object req 	created by axios.CancelToken.source()
-* @return Promise
-*/
-const getPage = ( page: string, req: any ) => {
-	return new Promise((resolve) => {
-		if (cache[page]) {
-			resolve(cache[page]);
-		} else {
-			(axios as any).get(path.join('/', 'pages', `${page}`), {
-		    	headers: {
-		    		'X-Requested-With': 'XMLHttpRequest'
-		    	},
-		    	cancelToken: req.token
-		    })
-			.then((request: any) => request.data)
-			.then((data: FrontMatterObject) => {
-				cache[page] = data;
-				resolve(data);
-			})
-			.catch((error: Error) => {
-	        	console.error(error);
-	        });
-		}
-	});
-}
+ * Gets markdown formatted page content from server
+ *
+ * @param string page
+ * @param object req 	created by axios.CancelToken.source()
+ * @return Promise
+ */
+const getPage = (page: string, req: any) => {
+  return new Promise(resolve => {
+    if (cache[page]) {
+      resolve(cache[page]);
+    } else {
+      (axios as any)
+        .get(path.join('/', 'pages', `${page}`), {
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          cancelToken: req.token
+        })
+        .then((request: any) => request.data)
+        .then((data: FrontMatterObject) => {
+          cache[page] = data;
+          resolve(data);
+        })
+        .catch((error: Error) => {
+          console.error(error);
+        });
+    }
+  });
+};
 
 interface FrontMatterAttributes {
-	link: string 
-	description: string
-	show_description: boolean
-	tags: string[]
-	subtitle: string
+  link: string;
+  description: string;
+  show_description: boolean;
+  tags: string[];
+  subtitle: string;
 }
 
 interface FrontMatterObject {
-	body: string
-	attributes: FrontMatterAttributes
+  body: string;
+  attributes: FrontMatterAttributes;
 }
 
 interface Props {
-	page: FrontMatterObject
-	staticContext?: {
-		page: FrontMatterObject
-	}
-	source: string
-	className?: string
-	title: string
+  page: FrontMatterObject;
+  staticContext?: {
+    page: FrontMatterObject;
+  };
+  source: string;
+  className?: string;
+  title: string;
 }
 
 interface State {
-	page: FrontMatterObject
+  page: FrontMatterObject;
 }
 
 class FrontMatter extends React.Component<Props, State> {
-	req: any
+  req: any;
 
-	constructor(props: Props) {
-		super(props);
+  constructor(props: Props) {
+    super(props);
 
-		let page = props.page || null;
+    let page = props.page || null;
 
-		if (props.staticContext) {
-			// server-side rendering already has it
-			page = props.staticContext.page;
-		} else if (
-			typeof(window) !== 'undefined' && 
-			(window as any).__INITIAL_HTML__
-		) {
-			// client-side initial render
-			// gets variable set in ServerTemplate.js
-			page = (window as any).__INITIAL_HTML__;
-			
-			// destroy variable and script
-			delete (window as any).__INITIAL_HTML__;
-			let script = document.getElementById('initial-state');
-			script!.parentNode!.removeChild(script as HTMLElement);
+    if (props.staticContext) {
+      // server-side rendering already has it
+      page = props.staticContext.page;
+    } else if (
+      typeof window !== 'undefined' &&
+      (window as any).__INITIAL_HTML__
+    ) {
+      // client-side initial render
+      // gets variable set in ServerTemplate.js
+      page = (window as any).__INITIAL_HTML__;
 
-			// cache page
-			cache[ props.source ] = page;
-		}
-		
-		this.state = { page };
-	}
-	
-	componentDidMount() {
-		// no page
-	    if ( !this.state.page ) {
-	    	// get the page from the source!
-	    	// and a cancel token from axios
-	    	this.req = (axios as any).CancelToken.source();
+      // destroy variable and script
+      delete (window as any).__INITIAL_HTML__;
+      let script = document.getElementById('initial-state');
+      script!.parentNode!.removeChild(script as HTMLElement);
 
-		    getPage( this.props.source, this.req )
-		        .then((page: FrontMatterObject) => this.setState({ page }));
-		}
-	}
+      // cache page
+      cache[props.source] = page;
+    }
 
-	componentWillUnmount() {
-		// abort ajax request
-		if (this.req) {
-			this.req.cancel();
-		}
-	}
-	
-	render () {
-		const { page } = this.state;
+    this.state = { page };
+  }
 
-		// no page while ajax retrieves 
-		// between client routes
-		if (page === null) {
-			return <LoadingPage className={this.props.className} />;
-		}
+  componentDidMount() {
+    // no page
+    if (!this.state.page) {
+      // get the page from the source!
+      // and a cancel token from axios
+      this.req = (axios as any).CancelToken.source();
 
-		const { 
-			body,
-			attributes 
-		} = page;
+      getPage(this.props.source, this.req).then((page: FrontMatterObject) =>
+        this.setState({ page })
+      );
+    }
+  }
 
-		const { 
-			link, 
-			description, 
-			show_description, 
-			tags
-		} = attributes;
+  componentWillUnmount() {
+    // abort ajax request
+    if (this.req) {
+      this.req.cancel();
+    }
+  }
 
-		let { subtitle } = attributes;
+  render() {
+    const { page } = this.state;
 
-		if (link && subtitle) {
-			subtitle = (<a target="_blank" href={link}>{subtitle}</a>) as any;
-		}
+    // no page while ajax retrieves
+    // between client routes
+    if (page === null) {
+      return <LoadingPage className={this.props.className} />;
+    }
 
-		return (
-			<PageLayout 
-				{...attributes} 
-				subtitle={subtitle}
-				{...this.props}>
-			{description && 
-				(show_description !== false) &&
-				<div className="page-description">
-					<p>{description}</p>
-				</div>
-			}
-			{tags && 
-				<TagList tags={tags} />
-			}
-			{body &&
-				<MarkDown content={body} />
-			}
-			{this.props.children}
-			</PageLayout>
-		);
-	}
+    const { body, attributes } = page;
+
+    const { link, description, show_description, tags } = attributes;
+
+    let { subtitle } = attributes;
+
+    if (link && subtitle) {
+      subtitle = (
+        <a target="_blank" href={link}>
+          {subtitle}
+        </a>
+      ) as any;
+    }
+
+    return (
+      <PageLayout {...attributes} subtitle={subtitle} {...this.props}>
+        {description &&
+          show_description !== false && (
+            <div className="page-description">
+              <p>{description}</p>
+            </div>
+          )}
+        {tags && <TagList tags={tags} />}
+        {body && <MarkDown content={body} />}
+        {this.props.children}
+      </PageLayout>
+    );
+  }
 }
 
 export default FrontMatter;

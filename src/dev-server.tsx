@@ -8,16 +8,18 @@ import { app, createApp } from './server';
 
 const bundler = webpack(client as any);
 
-app.use(webpackDevMiddleware(bundler, {
-	publicPath: client.output.publicPath,
-	watchOptions: {
-		poll: true
-	},
-	stats: {
-		colors: true,
-		errorDetails: true
-	}
-}));
+app.use(
+  webpackDevMiddleware(bundler, {
+    publicPath: client.output.publicPath,
+    watchOptions: {
+      poll: true
+    },
+    stats: {
+      colors: true,
+      errorDetails: true
+    }
+  })
+);
 
 app.use(webpackHotMiddleware(bundler));
 
