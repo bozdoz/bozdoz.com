@@ -1,0 +1,15 @@
+variables:
+  GIT_DEPTH: 5
+
+stages: 
+  - deploy
+
+image: bozdoz/fabric-deployment
+
+deploy:
+  stage: deploy
+  script:
+    - fab gitpull dockercomposebuild
+  environment:
+    name: production
+    url: https://bozdoz.com
