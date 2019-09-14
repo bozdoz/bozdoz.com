@@ -2,12 +2,6 @@ import * as React from 'react';
 
 const contact_links = [
   {
-    href: 'https://twitter.com/bozdoz/',
-    text: '@bozdoz',
-    pre_text: ' Twitter: ',
-    icon: 'twitter'
-  },
-  {
     href: 'mailto:ben@bozdoz.com?subject=Your%20Site',
     text: 'ben@bozdoz.com',
     pre_text: ' Email: ',
@@ -21,8 +15,8 @@ const contact_links = [
   }
 ];
 
-const Contact = () => (
-  <div className="container">
+export default () => (
+  <section className="container">
     <ul className="contact-list">
       {contact_links.map(({ href, text, pre_text, icon }) => (
         <li key={text}>
@@ -34,7 +28,5 @@ const Contact = () => (
         </li>
       ))}
     </ul>
-  </div>
+  </section>
 );
-
-export default Contact;

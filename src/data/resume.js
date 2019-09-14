@@ -3,7 +3,11 @@ export default {
     {
       header: 'VineView',
       subheader: 'Full-Stack Software Engineer',
-      date: 'May 2018 - Present'
+      date: 'May 2018 - Present',
+      bullets: [
+        'Developed NodeJS, React apps with TypeScript',
+        'Using Mapbox GL JS, Electron JS, and Python, with Docker'
+      ]
     },
     {
       header: 'ALCES Landscape & Land-use Ltd.',

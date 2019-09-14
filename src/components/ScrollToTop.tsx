@@ -20,7 +20,7 @@ class ScrollToTop extends React.Component<RouteComponentProps<{}>> {
   componentDidUpdate({ history }: RouteComponentProps<{}>) {
     if (history.action === 'PUSH') {
       // new link goes to top
-      document!.querySelector('#main')!.scrollTo(0, 0);
+      document.querySelector('#main')!.scrollTo(0, 0);
       window.scrollTo(0, 0);
     }
   }

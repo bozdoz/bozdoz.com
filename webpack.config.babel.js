@@ -36,10 +36,12 @@ const client = {
       {
         test: /\.s?css$/,
         use: [
-          NODE_ENV === 'production' ? ExtractTextPlugin.loader : 'style-loader',
+          NODE_ENV === 'production' 
+            ? ExtractTextPlugin.loader 
+            : `style-loader${sourcemap}`,
           `css-loader${sourcemap}`,
+          `postcss-loader${sourcemap}`,
           `sass-loader${sourcemap}`,
-          `postcss-loader${sourcemap}`
         ]
       }
     ]

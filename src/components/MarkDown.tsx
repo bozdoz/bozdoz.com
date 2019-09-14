@@ -42,7 +42,9 @@ class MarkDown extends React.Component<Props, State> {
           // add redirect handler
           a.addEventListener('click', e => {
             e.preventDefault();
-            this.handleOnClick((e.target as any).getAttribute('href'));
+            this.handleOnClick(
+              (e.target as HTMLAnchorElement).getAttribute('href')!
+            );
           });
         } else {
           // otherwise push to a new tab
@@ -69,10 +71,14 @@ class MarkDown extends React.Component<Props, State> {
       );
     });
 
-    // copy img alt text to title
     (this.container.querySelectorAll('img') as any).forEach(
       (img: HTMLImageElement) => {
+        // copy img alt text to title
         img.title = img.alt;
+        // add a class to paragraphs with images for sizing
+        if (img.parentElement) {
+          img.parentElement.className = 'image';
+        }
       }
     );
 
@@ -85,7 +91,7 @@ class MarkDown extends React.Component<Props, State> {
       return <Redirect push to={this.state.redirect} />;
     }
     return (
-      <div
+      <section
         ref={a => {
           this.container = a;
         }}

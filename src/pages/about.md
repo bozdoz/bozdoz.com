@@ -25,8 +25,6 @@ const AboutPage = (props) => (
 export default AboutPage;
 ```
 
-> *Note how simple it would be to copy `<Contact />` anywhere I want my contact information to appear.*
-
 What I've loved about **React** is how modular/reusable it is; and what I've loved about **MarkDown** is how minimalistic it is.  I wished for a simple implementation of both languages, but generally found only a handful of examples which only dealt with *some* of the issues. This website borrowed from many examples and I made my own solutions where necessary.
 
 This is a **Universal JavaScript** app: The pages are generated server-side through **Express** with the help of **React Router**; the layout is created with **React** (*of course*), and most of the content is in a simple **MarkDown** and **FrontMatter** format.
