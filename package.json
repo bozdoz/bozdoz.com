@@ -9,8 +9,7 @@
   "scripts": {
     "start": "NODE_ENV=development npm run start:ts",
     "start:ts": "ts-node ./src/dev-server.tsx",
-    "test": "jest",
-    "build": "webpack -p"
+    "test": "jest"
   },
   "keywords": [
     "bozdoz",

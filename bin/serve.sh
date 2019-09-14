@@ -1,4 +1,4 @@
 #!/bin/sh
-npm i
-npm run build
+npm ci
+npx webpack -p
 node ./src/server.min.js
