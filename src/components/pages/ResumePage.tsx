@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import resume from '../data/resume';
+import resume from '../../data/resume';
 
-import FrontMatter from './FrontMatter';
+import FrontMatter from '../FrontMatter';
 
 interface HighlightProps {
   list: string[];

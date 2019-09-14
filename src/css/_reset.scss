@@ -1,0 +1,33 @@
+/* reset */
+* {
+  vertical-align: baseline;
+  border: none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* legibility */
+body,
+button,
+input,
+textarea {
+  background-color: white;
+  color: #43454b;
+  line-height: 1.618;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -0.002em;
+  word-spacing: 0.01em;
+}
+
+p {
+  line-height: 1.55;
+  letter-spacing: -0.002em;
+  word-spacing: 0.03em;
+  margin: 0 0 1.4em;
+}

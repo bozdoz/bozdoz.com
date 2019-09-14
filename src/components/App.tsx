@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Layout from './Layout';
-import IndexPage from './IndexPage';
+import Layout from './layouts/Layout';
+import IndexPage from './pages/IndexPage';
 import Projects from './Projects';
-import ProjectPage from './ProjectPage';
-import ResumePage from './ResumePage';
-import AboutPage from './AboutPage';
-import PlainPage from './PlainPage';
-import NotFoundPage from './NotFoundPage';
+import ProjectPage from './pages/ProjectPage';
+import ResumePage from './pages/ResumePage';
+import AboutPage from './pages/AboutPage';
+import PlainPage from './pages/PlainPage';
+import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
 

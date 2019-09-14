@@ -1,0 +1,16 @@
+$md: 55em;
+$lg: 72em;
+
+@mixin media($res) {
+  @if medium == $res {
+    @media only screen and (min-width: $md) {
+      @content;
+    }
+  }
+
+  @if large == $res {
+    @media only screen and (min-width: $lg) {
+      @content;
+    }
+  }
+}

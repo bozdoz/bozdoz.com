@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import FrontMatter from './FrontMatter';
+import FrontMatter from '../FrontMatter';
 
 /**
  * it intercepts request url and passes it to FrontMatter

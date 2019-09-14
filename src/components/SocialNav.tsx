@@ -2,11 +2,6 @@ import * as React from 'react';
 
 const list = [
   {
-    href: 'https://twitter.com/bozdoz/',
-    title: 'Twitter',
-    icon: 'twitter'
-  },
-  {
     href: 'https://github.com/bozdoz/',
     title: 'Github',
     icon: 'github'
@@ -32,17 +27,17 @@ const list = [
   }
 ];
 
-const NavFooter = () => (
-  <ul id="nav-footer">
+export default () => (
+  <nav id="social-nav" aria-label="Social Media">
     {list.map(({ href, title, icon, image }) => (
-      <li key={href} title={title}>
+      <React.Fragment key={href}>
         <a href={href} target="_blank">
           {icon && <i className={`fa fa-${icon}`} aria-hidden="true" />}
           {image && <img {...image} />}
+          <span className="screen-reader">{title}</span>
         </a>
-      </li>
+        {' '}
+      </React.Fragment>
     ))}
-  </ul>
+  </nav>
 );
-
-export default NavFooter;

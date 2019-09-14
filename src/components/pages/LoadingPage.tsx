@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Breadcrumbs from './Breadcrumbs';
+import Breadcrumbs from '../Breadcrumbs';
 
 interface Props {
   className?: string;

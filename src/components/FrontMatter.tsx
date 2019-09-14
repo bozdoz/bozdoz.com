@@ -1,44 +1,11 @@
 import * as React from 'react';
-import * as axios from 'axios';
 import * as path from 'path';
+import axios, { CancelTokenSource } from 'axios';
 
 import MarkDown from './MarkDown';
 import TagList from './TagList';
-import PageLayout from './PageLayout';
-import LoadingPage from './LoadingPage';
-
-const cache = {};
-
-/**
- * Gets markdown formatted page content from server
- *
- * @param string page
- * @param object req 	created by axios.CancelToken.source()
- * @return Promise
- */
-const getPage = (page: string, req: any) => {
-  return new Promise(resolve => {
-    if (cache[page]) {
-      resolve(cache[page]);
-    } else {
-      (axios as any)
-        .get(path.join('/', 'pages', `${page}`), {
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          cancelToken: req.token
-        })
-        .then((request: any) => request.data)
-        .then((data: FrontMatterObject) => {
-          cache[page] = data;
-          resolve(data);
-        })
-        .catch((error: Error) => {
-          console.error(error);
-        });
-    }
-  });
-};
+import PageLayout from './layouts/PageLayout';
+import LoadingPage from './pages/LoadingPage';
 
 interface FrontMatterAttributes {
   link: string;
@@ -63,12 +30,46 @@ interface Props {
   title: string;
 }
 
+
+const cache: Record<string, FrontMatterObject> = {};
+
+/**
+ * Gets markdown formatted page content from server
+ *
+ * @param string page
+ * @param object req 	created by axios.CancelToken.source()
+ * @return Promise
+ */
+const getPage = (page: string, req: any): Promise<FrontMatterObject> => {
+  return new Promise(resolve => {
+    if (cache[page]) {
+      resolve(cache[page]);
+    } else {
+      axios
+        .get(path.join('/', 'pages', `${page}`), {
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          cancelToken: req.token
+        })
+        .then((request: any) => request.data)
+        .then((data: FrontMatterObject) => {
+          cache[page] = data;
+          resolve(data);
+        })
+        .catch((error: Error) => {
+          console.error(error);
+        });
+    }
+  });
+};
+
 interface State {
   page: FrontMatterObject;
 }
 
 class FrontMatter extends React.Component<Props, State> {
-  req: any;
+  req: CancelTokenSource | undefined
 
   constructor(props: Props) {
     super(props);
@@ -98,16 +99,16 @@ class FrontMatter extends React.Component<Props, State> {
     this.state = { page };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // no page
     if (!this.state.page) {
       // get the page from the source!
       // and a cancel token from axios
-      this.req = (axios as any).CancelToken.source();
+      this.req = axios.CancelToken.source();
 
-      getPage(this.props.source, this.req).then((page: FrontMatterObject) =>
-        this.setState({ page })
-      );
+      const page = await getPage(this.props.source, this.req)
+
+      this.setState({ page })
     }
   }
 

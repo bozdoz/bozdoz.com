@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import PlainPage from './PlainPage';
+import PlainPage from './pages/PlainPage';
 
 export const list = [
   {
@@ -29,7 +29,7 @@ export const list = [
   }
 ];
 
-const Projects = (props: any) => (
+export default (props: any) => (
   <PlainPage {...props}>
     <div className="container">
       <ul className="project-list list-group">
@@ -53,5 +53,3 @@ const Projects = (props: any) => (
     </div>
   </PlainPage>
 );
-
-export default Projects;

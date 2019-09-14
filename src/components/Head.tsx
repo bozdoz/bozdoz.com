@@ -59,11 +59,6 @@ const Head = (props: Props) => {
 
       <link
         rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         crossOrigin="anonymous"
       />

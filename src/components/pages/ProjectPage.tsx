@@ -37,7 +37,7 @@ const ProjectPage = (props: any) => {
   return (
     <PlainPage
       className="project-page"
-      breadcrumbs={['Home', '/', 'Projects', '/projects']}
+      breadcrumbs={[['Home', '/'], ['Projects', '/projects']]}
       {...props}
     >
       <div className="container">

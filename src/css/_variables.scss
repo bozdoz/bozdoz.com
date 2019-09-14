@@ -1,0 +1,31 @@
+$para-font: 'Roboto';
+$header-font: 'Open Sans';
+
+$color-primary: #314dae; /* royal blue */
+$color-secondary: #21a038; /* turquoise */
+
+$brand-hue: hue($color-primary);
+$brand-saturation: saturation($color-primary);
+$brand-lightness: lightness($color-primary);
+$dark-grey: #29253d; /* gunmetal */
+$light-grey: hsl($brand-hue, 12%, 80%);
+
+$para-color: rgba(0, 0, 0, 0.75);
+
+// inferred variables
+$select-bg: $color-primary;
+$header-bg-color: $color-primary;
+
+:root {
+  --brand-hue: #{$brand-hue};
+  --brand-saturation: #{$brand-saturation};
+  --brand-lightness: #{$brand-lightness};
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+
+  --dark-grey: #{$dark-grey};
+  --light-grey: #{$light-grey};
+
+  --select-bg: #{$select-bg};
+  --header-bg-color: #{$header-bg-color};
+}

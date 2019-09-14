@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import Title from './Title';
-import Breadcrumbs from './Breadcrumbs';
+import Title from '../Title';
+import Breadcrumbs from '../Breadcrumbs';
+
+type breadcrumb = (string | undefined)[];
 
 interface Props {
   title: string;
@@ -10,10 +12,10 @@ interface Props {
   image?: string;
   className?: string;
   children?: React.ReactNodeArray;
-  breadcrumbs?: string[];
+  breadcrumbs?: breadcrumb[];
 }
 
-const PageLayout = (props: Props) => {
+export default (props: Props) => {
   const { title, header, subtitle, children, image, className } = props;
 
   let classname = 'page';
@@ -25,7 +27,7 @@ const PageLayout = (props: Props) => {
 
   if (breadcrumbs) {
     // add non-linking title
-    breadcrumbs = [...breadcrumbs, title];
+    breadcrumbs = [...breadcrumbs, [title]];
   }
   return (
     <article className={classname}>
@@ -48,5 +50,3 @@ const PageLayout = (props: Props) => {
     </article>
   );
 };
-
-export default PageLayout;

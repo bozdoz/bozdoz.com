@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import FrontMatter from './FrontMatter';
-import Contact from './Contact';
+import FrontMatter from '../FrontMatter';
+import Contact from '../Contact';
 
 const NotFoundPage = (props: any) => {
   if (props.staticContext) {

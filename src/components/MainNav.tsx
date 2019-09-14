@@ -12,16 +12,15 @@ const list = [
   }
 ];
 
-const Nav = () => (
-  <ul id="side-nav">
+export default () => (
+  <nav id="side-nav" aria-label="Main">
     {list.map(({ href, text }) => (
-      <li key={href}>
+      <React.Fragment key={href}>
         <NavLink to={href} title={text} activeClassName="active">
           <span className="nav-text">{text}</span>
         </NavLink>
-      </li>
+        {' '}
+      </React.Fragment>
     ))}
-  </ul>
+  </nav>
 );
-
-export default Nav;
