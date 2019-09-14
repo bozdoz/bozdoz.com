@@ -1,3 +1,5 @@
 __tests__
 .babel_cache
+.gitignore
+.prettierrc
 node_modules

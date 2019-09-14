@@ -7,14 +7,10 @@
     "url": "https://github.com/bozdoz/bozdoz.com/"
   },
   "scripts": {
-    "start": "export NODE_ENV=development && npm run start:ts",
+    "start": "NODE_ENV=development npm run start:ts",
     "start:ts": "ts-node ./src/dev-server.tsx",
-    "start:production": "npm run build && pm2 start ./src/server.min.js --name='bozdoz.com'",
-    "clean": "rm -f ./public/css/main.css && rm -f ./public/js/main.js && rm -f ./src/server.min.js",
-    "restart": "npm run build && pm2 restart bozdoz.com && npm run purge && service nginx restart",
-    "purge": "sudo rm -R ../cache",
-    "build": "npm install && export NODE_ENV=production && webpack -p",
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack -p"
   },
   "keywords": [
     "bozdoz",
@@ -55,6 +51,23 @@
     "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/enzyme": "^3.1.11",
+    "@types/enzyme-adapter-react-16": "^1.0.2",
+    "@types/express": "^4.16.0",
+    "@types/jest": "^23.1.1",
+    "@types/marked": "^0.4.0",
+    "@types/mini-css-extract-plugin": "^0.2.0",
+    "@types/node": "^10.3.5",
+    "@types/react": "^16.4.1",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-router": "^4.0.27",
+    "@types/react-router-dom": "^4.2.7",
+    "@types/webpack": "^4.4.2",
+    "@types/webpack-dev-middleware": "^2.0.1",
+    "@types/webpack-env": "^1.13.6",
+    "@types/webpack-hot-middleware": "^2.16.3",
+    "@types/webpack-node-externals": "^1.6.3",
     "autoprefixer": "^7.2.6",
     "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
@@ -76,6 +89,8 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.18.2",
     "ts-loader": "^4.4.1",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2",
     "webpack": "^4.12.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.11.2",
@@ -83,23 +98,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/enzyme": "^3.1.11",
-    "@types/enzyme-adapter-react-16": "^1.0.2",
-    "@types/express": "^4.16.0",
-    "@types/jest": "^23.1.1",
-    "@types/marked": "^0.4.0",
-    "@types/mini-css-extract-plugin": "^0.2.0",
-    "@types/node": "^10.3.5",
-    "@types/react": "^16.4.1",
-    "@types/react-dom": "^16.0.6",
-    "@types/react-router": "^4.0.27",
-    "@types/react-router-dom": "^4.2.7",
-    "@types/webpack": "^4.4.2",
-    "@types/webpack-dev-middleware": "^2.0.1",
-    "@types/webpack-env": "^1.13.6",
-    "@types/webpack-hot-middleware": "^2.16.3",
-    "@types/webpack-node-externals": "^1.6.3",
     "babel-jest": "^21.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -108,8 +106,6 @@
     "raf": "^3.4.0",
     "react-test-renderer": "^16.3.2",
     "ts-jest": "^22.4.6",
-    "ts-node": "^7.0.0",
-    "typescript": "^2.9.2",
     "webpack-cli": "^3.0.8"
   }
 }
