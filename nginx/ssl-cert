@@ -1,0 +1,4 @@
+ssl_certificate certs/bozdoz_cert.pem;
+ssl_certificate_key certs/bozdoz_key.pem;
+ssl_client_certificate certs/cloudflare.crt;
+ssl_verify_client on;

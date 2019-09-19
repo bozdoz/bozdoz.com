@@ -3,3 +3,7 @@ __tests__
 .gitignore
 .prettierrc
 node_modules
+cache
+logs
+certs
+.env

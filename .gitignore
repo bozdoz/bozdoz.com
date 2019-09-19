@@ -4,3 +4,7 @@ npm-debug.log
 public/js/main.js
 public/css
 src/server.min.js
+cache
+logs
+certs
+.env
