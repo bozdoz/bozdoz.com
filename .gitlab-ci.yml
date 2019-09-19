@@ -13,3 +13,5 @@ deploy:
   environment:
     name: production
     url: https://bozdoz.com
+  only:
+    - master
