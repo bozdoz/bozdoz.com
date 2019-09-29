@@ -14,6 +14,8 @@ image: bozdoz/fabric-deployment
 deploy:
   extends:
     - .deploys
+  variables:
+    CWD: ~/bozdoz.com/v2
   environment:
     name: production
     url: https://bozdoz.com
@@ -24,7 +26,7 @@ deploy_staging:
   extends:
     - .deploys
   variables:
-    CWD: /home/bozdoz/staging-bozdoz/public_html
+    CWD: ~/staging-bozdoz/public_html
   environment:
     name: staging
     url: https://staging.bozdoz.com
