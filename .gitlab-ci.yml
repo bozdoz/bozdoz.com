@@ -9,7 +9,7 @@ image: bozdoz/fabric-deployment
 .deploys:
   stage: deploy
   script:
-    - fab gitpull dockercomposebuild
+    - fab gitpull dockercomposebuild dockercomposerestart
   
 deploy:
   extends:
