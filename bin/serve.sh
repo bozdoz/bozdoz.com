@@ -3,8 +3,8 @@ set -ex
 
 npm i
 # remove webpack-created files
-rm ./public/js/main.js
-rm ./src/server.min.js
+rm -f ./public/js/main.js
+rm -f ./src/server.min.js
 NODE_ENV=production npx webpack -p
 # cache created by nginx docker volume
 rm -rf /cache/*

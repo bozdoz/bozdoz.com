@@ -2,11 +2,6 @@ import * as React from 'react';
 
 const list = [
   {
-    href: 'https://twitter.com/bozdoz/',
-    title: 'Twitter',
-    icon: 'twitter'
-  },
-  {
     href: 'https://github.com/bozdoz/',
     title: 'Github',
     icon: 'github'
