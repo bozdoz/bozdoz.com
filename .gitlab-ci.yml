@@ -26,7 +26,7 @@ deploy_staging:
   extends:
     - .deploys
   variables:
-    CWD: ~/staging-bozdoz/public_html
+    CWD: ~/staging-bozdoz/staging-bozdoz
   environment:
     name: staging
     url: https://staging.bozdoz.com
