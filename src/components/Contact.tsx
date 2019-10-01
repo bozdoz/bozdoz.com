@@ -22,7 +22,7 @@ export default () => (
         <li key={text}>
           <i className={`fa fa-${icon}`} />
           <span className="pretext">{pre_text}</span>
-          <a href={href} target="_blank">
+          <a href={href} target="_blank" rel="noreferrer">
             {text}
           </a>
         </li>
