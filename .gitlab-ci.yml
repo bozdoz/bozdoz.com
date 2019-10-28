@@ -8,6 +8,7 @@ stages:
   - deploy
 
 test:
+  image: node:10-alpine
   script:
     - npm test
 
