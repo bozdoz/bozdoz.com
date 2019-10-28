@@ -2,11 +2,15 @@ variables:
   GIT_DEPTH: 5
 
 stages: 
+  - test
   - deploy
 
-image: bozdoz/fabric-deployment
+test:
+  script:
+    - npm test
 
 .deploys:
+  image: bozdoz/fabric-deployment
   stage: deploy
   script:
     - fab gitpull dockercomposebuild dockercomposerestart
