@@ -1,7 +1,8 @@
 variables:
   GIT_DEPTH: 5
-  CURL_DATA: '{ "purge_everything": true }'
-  CURL_AUTH: "Authorization: Bearer $CF_TOKEN"
+  CURL_DATA: "'{ \"purge_everything\": true }'"
+  CURL_AUTH: '"Authorization: Bearer $CF_TOKEN"'
+  CURL_CT: '"Content-Type: application/json"'
 
 stages: 
   - test
@@ -20,7 +21,7 @@ test:
     - fab gitpull dockercomposebuild dockercomposerestart
   after_script:
     - apk add curl
-    - curl "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/purge_cache" -H $CURL_AUTH -d $CURL_DATA
+    - curl "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/purge_cache" -H $CURL_AUTH -H $CURL_CT -d $CURL_DATA
   
 deploy:
   extends:
