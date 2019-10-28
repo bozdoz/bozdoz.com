@@ -18,7 +18,7 @@ const NavHeader = () => (
       <img className="img-responsive rounded-circle mr-3" {...imgprops} />
       <div className="profile-headers">
         <h1>Benjamin J DeLong</h1>
-        <h2>Full-Stack Software Engineer</h2>
+        <h2>Software Engineer</h2>
       </div>
     </Link>
   </div>

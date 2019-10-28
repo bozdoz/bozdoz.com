@@ -1,12 +1,12 @@
 ---
-title: Luke Buxton Is Sitting On the Couch In Front Of Me
+title: Luke Buxton
 subtitle: lukeandrewbuxton.com
 link: "https://lukeandrewbuxton.com"
 description: >
     This is an online portfolio for Canadian Art director, Animator, and Production Designer, Luke Buxton. This site was built in Django, with Vanilla JavaScript.
 tags:
     - JavaScript
-    - CSS3
+    - CSS
     - Django
 image: /images/projects/luke-buxton/luke-buxton.jpg
 ---
