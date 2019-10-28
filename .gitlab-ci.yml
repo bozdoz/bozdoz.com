@@ -10,6 +10,7 @@ stages:
 test:
   image: node:10-alpine
   script:
+    - npm ci
     - npm test
 
 .deploys:
