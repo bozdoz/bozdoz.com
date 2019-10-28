@@ -19,6 +19,7 @@ test:
   script:
     - fab gitpull dockercomposebuild dockercomposerestart
   after_script:
+    - apk add curl
     - curl "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/purge_cache" -H $CURL_AUTH -d $CURL_DATA
   
 deploy:
