@@ -27,6 +27,7 @@ deploy_staging:
     - .deploys
   variables:
     CWD: ~/staging-bozdoz/staging-bozdoz
+    CI_DEBUG_TRACE: "true"
   environment:
     name: staging
     url: https://staging.bozdoz.com
