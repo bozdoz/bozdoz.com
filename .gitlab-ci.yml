@@ -1,8 +1,8 @@
 variables:
   GIT_DEPTH: 5
-  CURL_DATA: "'{ \"purge_everything\": true }'"
-  CURL_AUTH: '"Authorization: Bearer $CF_TOKEN"'
-  CURL_CT: '"Content-Type: application/json"'
+  CURL_DATA: '{ \"purge_everything\": true }'
+  CURL_AUTH: "Authorization: Bearer $CF_TOKEN"
+  CURL_CT: "Content-Type: application/json"
 
 stages: 
   - test
@@ -39,7 +39,6 @@ deploy_staging:
     - .deploys
   variables:
     CWD: ~/staging-bozdoz/staging-bozdoz
-    CI_DEBUG_TRACE: "true"
   environment:
     name: staging
     url: https://staging.bozdoz.com
