@@ -1,8 +1,8 @@
 variables:
   GIT_DEPTH: 5
   CURL_DATA: '{ "purge_everything": true }'
-  CURL_AUTH: "Authorization: Bearer $CF_TOKEN"
-  CURL_CT: "Content-Type: application/json"
+  CURL_AUTH: '"Authorization: Bearer $CF_TOKEN"'
+  CURL_CT: '"Content-Type: application/json"'
 
 stages: 
   - test
@@ -13,6 +13,9 @@ test:
   script:
     - npm ci
     - npm test
+  only:
+    changes:
+      - src/**/*
 
 .deploys:
   image: bozdoz/fabric-deployment
