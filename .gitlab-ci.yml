@@ -21,10 +21,10 @@ docker:image:
   services:
     - docker:dind
   script:
-    - docker version
-    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - export TAG=$([[ $CI_COMMIT_REF_NAME = 'master' ]] && echo "latest" || echo $CI_COMMIT_REF_NAME)
+    - docker build -t $CI_REGISTRY_IMAGE:$TAG .
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push $CI_REGISTRY_IMAGE
+    - docker push $CI_REGISTRY_IMAGE:$TAG
   only:
     changes:
       - src/**/*
