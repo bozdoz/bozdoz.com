@@ -1,0 +1,15 @@
+__tests__
+.babel_cache
+bin
+certs
+nginx
+node_modules
+public
+.env
+.env-example
+
+.git*
+.prettierrc
+docker-*
+README.md
+LICENSE

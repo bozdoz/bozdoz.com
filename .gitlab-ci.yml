@@ -2,25 +2,9 @@ variables:
   GIT_DEPTH: 5
 
 stages:
-  - build
   - test
+  - build
   - deploy
-
-docker:image:
-  stage: build
-  image: docker:1.11
-  services:
-    - docker:dind
-  script:
-    - docker version
-    - docker build -t $CI_REGISTRY_IMAGE:latest .
-    - docker tag $CI_REGISTRY_IMAGE:latest $CI_REGISTRY_IMAGE:$CI_BUILD_TAG
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_TAG
-  only:
-    changes:
-      - src/**/*
-      - Dockerfile
 
 test:
   image: node:10-alpine
@@ -30,6 +14,22 @@ test:
   only:
     changes:
       - src/**/*
+
+docker:image:
+  stage: build
+  image: docker:1.11
+  services:
+    - docker:dind
+  script:
+    - docker version
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker push $CI_REGISTRY_IMAGE
+  only:
+    changes:
+      - src/**/*
+      - Dockerfile
+      - .gitlab-ci.yml
 
 .deploys:
   image: bozdoz/fabric-deployment
