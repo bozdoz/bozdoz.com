@@ -1,0 +1,8 @@
+version: "3.4"
+
+services:
+  web:
+    image: node:10-alpine
+    command: rm -rf /cache/* && node ./src/server.min.js
+    environment: 
+      NODE_ENV: production
