@@ -6,7 +6,6 @@ services:
     command: /app/bin/serve.sh
     restart: always
     volumes:
-      - .:/app
       # share cache so the web app can clear it
       - cache:/cache
 
