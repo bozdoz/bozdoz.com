@@ -17,9 +17,7 @@ test:
 
 docker:image:
   stage: build
-  image: docker:1.11
-  services:
-    - docker:dind
+  image: docker:stable-dind
   script:
     - export TAG=$([[ $CI_COMMIT_REF_NAME = 'master' ]] && echo "latest" || echo $CI_COMMIT_REF_NAME)
     - docker build -t $CI_REGISTRY_IMAGE:$TAG .
