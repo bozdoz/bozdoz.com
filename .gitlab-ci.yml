@@ -30,6 +30,7 @@ docker:image:
       - src/**/*
       - Dockerfile
       - .gitlab-ci.yml
+      - .dockerignore
 
 .deploys:
   image: bozdoz/fabric-deployment
