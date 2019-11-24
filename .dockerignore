@@ -1,6 +1,5 @@
 __tests__
 .babel_cache
-bin
 certs
 nginx
 node_modules

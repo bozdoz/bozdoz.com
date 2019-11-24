@@ -1,13 +1,15 @@
-version: "3.4"
+version: "3.7"
 
 services:
   web:
-    image: node:10-alpine
-    command: /app/bin/serve.sh
+    build: .
+    command: /app/bin/start.sh
     restart: always
     volumes:
       # share cache so the web app can clear it
       - cache:/cache
+    environment: 
+      NODE_ENV: production
 
   # static files, ssl, and caching
   nginx:
