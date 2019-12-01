@@ -9,7 +9,7 @@
   "scripts": {
     "start": "npm run clean && NODE_ENV=development npm run start:ts",
     "start:ts": "ts-node ./src/dev-server.tsx",
-    "build": "docker-compose up -d --build",
+    "build": "./bin/deploy.sh",
     "clean": "rm -f ./src/server.min.js && rm -f ./public/js/main.js",
     "test": "jest"
   },

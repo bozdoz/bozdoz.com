@@ -3,5 +3,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+ENV NODE_ENV production
 RUN npx webpack -p
 CMD ["node", "./src/server.min.js"]

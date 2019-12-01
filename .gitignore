@@ -8,3 +8,4 @@ cache
 logs
 certs
 .env
+docker-stack.yml

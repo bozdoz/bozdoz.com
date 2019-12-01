@@ -46,7 +46,7 @@ docker:image:
   image: bozdoz/fabric-deployment
   stage: deploy
   script:
-    - fab gitpull dockercomposebuild
+    - fab gitpull npmbuild
   after_script:
     - apk add curl
     - |
