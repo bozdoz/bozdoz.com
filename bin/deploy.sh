@@ -5,7 +5,7 @@ set -ex
 cd $(dirname $0)
 cd ..
 
-source .env
+. ./.env
 
 docker-compose config > docker-stack.yml
 docker stack deploy -c docker-stack.yml site-${TAG:-staging}
