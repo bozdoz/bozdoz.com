@@ -5,4 +5,6 @@ RUN npm ci
 COPY . .
 ENV NODE_ENV production
 RUN npx webpack -p
+HEALTHCHECK --interval=20m \
+  CMD curl -Ifs http://localhost:8005/ || exit 1
 CMD ["node", "./src/server.min.js"]
