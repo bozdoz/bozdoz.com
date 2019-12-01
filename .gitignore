@@ -6,6 +6,5 @@ public/css
 src/server.min.js
 cache
 logs
-certs
 .env
 docker-stack.yml

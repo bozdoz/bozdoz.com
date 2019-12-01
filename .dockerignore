@@ -1,6 +1,6 @@
 __tests__
 .babel_cache
-certs
+bin
 nginx
 node_modules
 .env
@@ -8,6 +8,8 @@ node_modules
 
 .git*
 .prettierrc
+.dockerignore
+Docker*
 docker-*
 README.md
 LICENSE

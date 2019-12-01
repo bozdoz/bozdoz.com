@@ -3,7 +3,6 @@ version: "3.7"
 services:
   web:
     image: registry.gitlab.com/bozdoz/bozdoz-com:${TAG:-latest}
-    command: /app/bin/start.sh
     restart: always
     volumes:
       # share cache so this service can clear it
