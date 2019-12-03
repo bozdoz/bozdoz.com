@@ -1,6 +1,5 @@
 __tests__
 .babel_cache
-bin
 nginx
 node_modules
 .env
