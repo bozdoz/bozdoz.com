@@ -5,7 +5,7 @@ export default {
       subheader: 'Full-Stack Software Engineer',
       date: 'May 2018 - Present',
       bullets: [
-        'Developed NodeJS, React apps with TypeScript',
+        'Developing NodeJS, React/Redux apps with TypeScript',
         'Using Mapbox GL JS, Electron JS, and Python, with Docker'
       ]
     },
@@ -25,7 +25,7 @@ export default {
       date: 'Oct 2012 - Nov 2014',
       bullets: [
         'Designed intuitive user interfaces in JavaScript and CSS',
-        'Maintained sites built in WordPress, Django, and CakePHP',
+        'Maintained sites built in WordPress, and Django',
         'Developed plugins to integrate with mapping applications'
       ]
     }
@@ -34,19 +34,19 @@ export default {
     {
       header: 'Languages',
       bullets: [
-        'JavaScript - jQuery, ES6, React, Node.js, Express',
+        'JavaScript - TypeScript, React, NodeJS, Express, Koa, VueJS, jQuery',
         'Python - Django',
         'PHP - WordPress'
       ]
     },
     {
       header: 'Development',
-      bullets: ['JSHint, CasperJS, Jest, TypeScript, Vagrant']
+      bullets: ['Jest, ESLint, Docker, Gitlab CI/CD, CasperJS, Vagrant']
     },
     {
       header: 'Other',
       bullets: [
-        'PostgreSQL, PostGIS, MySQL, Cordova/Phonegap, GraphQL, RESTful APIs, Bash, YAML'
+        'Redux, PostgreSQL, PostGIS, MySQL, Cordova/Phonegap, GraphQL, RESTful APIs, Bash'
       ]
     }
   ],

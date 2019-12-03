@@ -2,11 +2,6 @@ import * as React from 'react';
 
 const list = [
   {
-    href: 'https://twitter.com/bozdoz/',
-    title: 'Twitter',
-    icon: 'twitter'
-  },
-  {
     href: 'https://github.com/bozdoz/',
     title: 'Github',
     icon: 'github'
@@ -36,7 +31,7 @@ const NavFooter = () => (
   <ul id="nav-footer">
     {list.map(({ href, title, icon, image }) => (
       <li key={href} title={title}>
-        <a href={href} target="_blank">
+        <a href={href} target="_blank" rel="noreferrer">
           {icon && <i className={`fa fa-${icon}`} aria-hidden="true" />}
           {image && <img {...image} />}
         </a>

@@ -49,6 +49,7 @@ class MarkDown extends React.Component<Props, State> {
         } else {
           // otherwise push to a new tab
           a.target = '_blank';
+          a.rel = 'noreferrer';
         }
       }
     );

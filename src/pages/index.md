@@ -1,5 +1,5 @@
 ---
-title: Full-Stack Software Developer
+title: Full-Stack Software Engineer
 header: Benjamin J DeLong
 subtitle: Software Engineer
 ---

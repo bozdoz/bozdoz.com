@@ -1,5 +1,15 @@
 __tests__
 .babel_cache
-.gitignore
-.prettierrc
+bin
+nginx
 node_modules
+.env
+.env-example
+
+.git*
+.prettierrc
+.dockerignore
+Docker*
+docker-*
+README.md
+LICENSE
