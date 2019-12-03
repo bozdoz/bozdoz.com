@@ -8,4 +8,4 @@ cd ..
 . ./.env
 
 docker-compose config > docker-stack.yml
-docker stack deploy -c docker-stack.yml site-${TAG:-staging}
+docker stack deploy -c docker-stack.yml bozdoz-${TAG:-staging}
