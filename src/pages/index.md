@@ -1,10 +1,12 @@
 ---
 title: Full-Stack Software Engineer
 header: Benjamin J DeLong
-subtitle: FS Software Engineer
+subtitle: Software Engineer
 ---
 
-I am in the **[top 80% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
+I am in the **[top 5% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
+
+I've recently been digging into **React**/**Redux** projects, built in **Typescript**, and served in **Docker** containers.
 
 In the last 10 years, I have helped build mapping applications in **Django** and **PostGIS** (e.g. [Alberta Tomorrow](/projects/alberta-tomorrow)), complete with **REST Frameworks** and mobile applications in **Cordova**.
 
