@@ -7,6 +7,7 @@ services:
     volumes:
       # share cache so this service can clear it
       - cache:/cache
+      - public:/app/public
     deploy:
       replicas: 2
       update_config:
@@ -28,7 +29,7 @@ services:
       - logs:/logs
       - cache:/cache
       # share files from web
-      - ./public:/static:ro
+      - public:/static:ro
     deploy:
       restart_policy:
         condition: on-failure
@@ -39,3 +40,4 @@ services:
 volumes:
   logs:
   cache:
+  public:
