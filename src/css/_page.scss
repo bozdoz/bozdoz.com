@@ -13,8 +13,7 @@ $header_color: hsl($brand-hue, 12%, 20%);
 
 #main .page {
 	padding-bottom: 4em;
-	padding-bottom: 50vh;
-	padding-bottom: calc(50vh - 2em);
+	padding-bottom: calc(100vh - 1em);
 	header {
 		height: 32vh;
 
