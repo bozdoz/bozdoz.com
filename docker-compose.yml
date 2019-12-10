@@ -1,13 +1,14 @@
 version: "3.7"
 
 services:
+  # NodeJS React server-side and static files
   web:
     build: .
     image: registry.gitlab.com/bozdoz/bozdoz-com:${TAG:-latest}
     volumes:
-      # share cache so this service can clear it
+      # share cache from nginx container
       - cache:/cache
-      - public:/app/public
+      - public:/static
     deploy:
       replicas: 2
       update_config:
