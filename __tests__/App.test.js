@@ -60,7 +60,7 @@ const loadPage = url => {
 describe('Render all pages without error', () => {
   test('Index', () => {
     const wrapper = loadPage('/');
-    expect(wrapper.find('.header-title h1').text()).toBe('@bozdoz');
+    expect(wrapper.find('.header-title h1').text()).toBe('Benjamin J DeLong');
   });
 
   test('About', () => {

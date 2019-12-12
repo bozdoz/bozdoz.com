@@ -136,7 +136,7 @@ class FrontMatter extends React.Component<Props, State> {
 
     if (link && subtitle) {
       subtitle = (
-        <a target="_blank" href={link}>
+        <a target="_blank" href={link} rel="noreferrer">
           {subtitle}
         </a>
       ) as any;

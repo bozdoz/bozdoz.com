@@ -30,14 +30,14 @@ const list = [
 export default () => (
   <nav id="social-nav" aria-label="Social Media">
     {list.map(({ href, title, icon, image }) => (
-      <React.Fragment key={href}>
-        <a href={href} target="_blank">
+      <li key={href} title={title}>
+        <a href={href} target="_blank" rel="noreferrer">
           {icon && <i className={`fa fa-${icon}`} aria-hidden="true" />}
           {image && <img {...image} />}
           <span className="screen-reader">{title}</span>
         </a>
         {' '}
-      </React.Fragment>
+      </li>
     ))}
   </nav>
 );

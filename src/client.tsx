@@ -36,6 +36,6 @@ render(<Client />, document.getElementById('page'));
 })(window as any);
 
 // hot reloading
-if (module.hot) {
+if (module.hot && process.env.NODE_ENV !== 'production') {
   module.hot.accept();
 }
