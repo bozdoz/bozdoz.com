@@ -1,10 +1,6 @@
 #!/bin/sh
 set -ex
 
-# move to root dir
-cd $(dirname $0)
-cd ..
-
 # remove cache from nginx container/volume
 if [ -d /cache ]; then
   rm -rf /cache/*
