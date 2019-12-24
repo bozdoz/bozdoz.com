@@ -12,7 +12,7 @@ fi
 
 # copy files to static volume
 if [ -d /static ]; then
-  cp -r /app/public/* /static
+  rsync -rt /app/public/ /static/ --delete
   rm -rf /app/public
 fi
 
