@@ -13,3 +13,7 @@ Docker*
 docker-*
 README.md
 LICENSE
+
+public/css/main.css
+public/js/main.js
+src/server.min.js
