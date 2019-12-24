@@ -8,6 +8,10 @@ class GoogleAnalytics extends React.Component<RouteComponentProps<{}>> {
     const { location, history } = props;
     const gtag = (window as any).gtag;
 
+    if (!GA_TRACKING_ID) {
+      return;
+    }
+
     if (location.pathname === this.props.location.pathname) {
       // don't log identical link clicks (nav links likely)
       return;

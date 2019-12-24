@@ -15,25 +15,27 @@ const Client = () => (
 render(<Client />, document.getElementById('page'));
 
 // google analytics
-(win => {
-  win.dataLayer = win.dataLayer || [];
-  win.gtag = function gtag() {
-    win.dataLayer.push(arguments);
-  };
+if (GA_TRACKING_ID) {
+  (win => {
+    win.dataLayer = win.dataLayer || [];
+    win.gtag = function gtag() {
+      win.dataLayer.push(arguments);
+    };
 
-  win.gtag('js', new Date());
-  win.gtag('config', GA_TRACKING_ID);
+    win.gtag('js', new Date());
+    win.gtag('config', GA_TRACKING_ID);
 
-  win.addEventListener('hashchange', function() {
-    var hash = win.location.hash;
-    if (hash && hash !== '#') {
-      win.gtag({
-        event: 'hashchange',
-        hash: hash
-      });
-    }
-  });
-})(window as any);
+    win.addEventListener('hashchange', function() {
+      var hash = win.location.hash;
+      if (hash && hash !== '#') {
+        win.gtag({
+          event: 'hashchange',
+          hash: hash
+        });
+      }
+    });
+  })(window as any);
+}
 
 // hot reloading
 if (module.hot && process.env.NODE_ENV !== 'production') {

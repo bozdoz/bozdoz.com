@@ -47,12 +47,12 @@ const Head = (props: Props) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@bozdoz" />
-      <meta name="twitter:image" content={SITE + image} />
+      <meta name="twitter:image" content={`${SITE}${image}`} />
 
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={SITE} />
-      <meta property="og:image" content={SITE + image} />
+      <meta property="og:image" content={`${SITE}${image}`} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
       <meta property="og:locale" content="en_CA" />

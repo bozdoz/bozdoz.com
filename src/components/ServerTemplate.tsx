@@ -107,12 +107,13 @@ const ServerTemplate = () => (
       <div id="page">
         <App />
       </div>
-      {env === 'production' && (
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-      )}
+      {env === 'production' &&
+        GA_TRACKING_ID && (
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+        )}
       <script src="/js/main.js" />
       <script src="/js/prism.js" defer />
     </body>
