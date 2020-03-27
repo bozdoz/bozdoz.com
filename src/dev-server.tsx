@@ -25,8 +25,6 @@ app.use(
 app.use(webpackHotMiddleware(bundler));
 
 createApp(function() {
-  console.log('live!');
-  console.log(arguments);
   const PORT = process.env.PORT || 8005;
   open(`http://localhost:${PORT}`);
 });

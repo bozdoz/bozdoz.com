@@ -3,16 +3,16 @@ __tests__
 bin/deploy.sh
 nginx
 node_modules
+
 .env
 .env-example
-
 .git*
 .prettierrc
 .dockerignore
 Docker*
 docker-*
-README.md
 LICENSE
+README.md
 
 public/css/main.css
 public/js/main.js

@@ -12,8 +12,6 @@ const Breadcrumbs = ({ list = [] }: Props) => (
     {list.map(breadcrumb => {
       const [name, link] = breadcrumb;
 
-      console.log({ name });
-
       return (
         <React.Fragment key={name}>
           {link ? <Link to={link}>{name}</Link> : name}{' '}
