@@ -1,10 +1,10 @@
 ---
 title: Full-Stack Software Engineer
-header: Benjamin J DeLong
+header: "@bozdoz"
 subtitle: Software Engineer
 ---
 
-I am in the **[top 5% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
+I am in the **[top 4% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
 
 I've recently been digging into **React**/**Redux** projects, built in **Typescript**, and served in **Docker** containers.
 

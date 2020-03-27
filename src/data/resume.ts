@@ -1,5 +1,5 @@
-export default {
-  EXPERIENCE: [
+const resume: Resume = {
+  experience: [
     {
       header: 'VineView',
       subheader: 'Full-Stack Software Engineer',
@@ -30,7 +30,7 @@ export default {
       ]
     }
   ],
-  SKILLS: [
+  skills: [
     {
       header: 'Languages',
       bullets: [
@@ -50,7 +50,7 @@ export default {
       ]
     }
   ],
-  EDUCATION: {
+  education: {
     header: 'Mount Saint Vincent University',
     subheader: 'Bachelor of Public Relations',
     date: 'Graduate of 2010',
@@ -58,7 +58,7 @@ export default {
       'Courses included Audio-Visual, Web Design, Communications Theory, Marketing, and Business.'
     ]
   },
-  PROJECTS: {
+  projects: {
     'Alberta Tomorrow': {
       link: '/projects/alberta-tomorrow',
       description:
@@ -71,3 +71,26 @@ export default {
     }
   }
 };
+
+export default resume;
+
+interface Resume {
+  experience: Section[];
+  skills: Section[];
+  education: Section;
+  projects: Projects;
+}
+
+interface Section {
+  header: string;
+  subheader?: string;
+  date?: string;
+  bullets: string[];
+}
+
+interface Projects {
+  [project: string]: {
+    link: string;
+    description: string;
+  };
+}

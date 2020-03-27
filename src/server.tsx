@@ -12,7 +12,6 @@ import { StaticRouter as Router } from 'react-router-dom';
 import ServerTemplate from './components/ServerTemplate';
 import Sitemap from './components/Sitemap';
 
-const PORT = 8005;
 const app = express();
 
 app.disable('x-powered-by');
@@ -43,7 +42,7 @@ const getMarkdown = (page: string) => {
  *
  * @return null
  */
-function createApp() {
+function createApp(cb = () => {}) {
   app.get('/pages/*', function(req, res) {
     const page = req.params['0'];
     let status = 200;
@@ -96,9 +95,7 @@ function createApp() {
     res.status(status).send(content);
   });
 
-  app.listen(PORT, function() {
-    console.log(`Live at http://localhost:${PORT}/`);
-  });
+  app.listen(process.env.PORT || 8005, cb);
 }
 
 if (process.env.NODE_ENV === 'production') {

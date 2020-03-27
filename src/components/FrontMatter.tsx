@@ -1,24 +1,11 @@
 import * as React from 'react';
-import * as path from 'path';
 import axios, { CancelTokenSource } from 'axios';
 
 import MarkDown from './MarkDown';
 import TagList from './TagList';
 import PageLayout from './layouts/PageLayout';
 import LoadingPage from './pages/LoadingPage';
-
-interface FrontMatterAttributes {
-  link: string;
-  description: string;
-  show_description: boolean;
-  tags: string[];
-  subtitle: string;
-}
-
-interface FrontMatterObject {
-  body: string;
-  attributes: FrontMatterAttributes;
-}
+import { FrontMatterObject, cache, getPage } from './getPage';
 
 interface Props {
   page: FrontMatterObject;
@@ -30,46 +17,12 @@ interface Props {
   title: string;
 }
 
-
-const cache: Record<string, FrontMatterObject> = {};
-
-/**
- * Gets markdown formatted page content from server
- *
- * @param string page
- * @param object req 	created by axios.CancelToken.source()
- * @return Promise
- */
-const getPage = (page: string, req: any): Promise<FrontMatterObject> => {
-  return new Promise(resolve => {
-    if (cache[page]) {
-      resolve(cache[page]);
-    } else {
-      axios
-        .get(path.join('/', 'pages', `${page}`), {
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          cancelToken: req.token
-        })
-        .then((request: any) => request.data)
-        .then((data: FrontMatterObject) => {
-          cache[page] = data;
-          resolve(data);
-        })
-        .catch((error: Error) => {
-          console.error(error);
-        });
-    }
-  });
-};
-
 interface State {
   page: FrontMatterObject;
 }
 
 class FrontMatter extends React.Component<Props, State> {
-  req: CancelTokenSource | undefined
+  req: CancelTokenSource | undefined;
 
   constructor(props: Props) {
     super(props);
@@ -106,9 +59,9 @@ class FrontMatter extends React.Component<Props, State> {
       // and a cancel token from axios
       this.req = axios.CancelToken.source();
 
-      const page = await getPage(this.props.source, this.req)
+      const page = await getPage(this.props.source, this.req);
 
-      this.setState({ page })
+      this.setState({ page });
     }
   }
 

@@ -12,7 +12,7 @@ const Client = () => (
   </Router>
 );
 
-render(<Client />, document.getElementById('page'));
+render(<Client />, document.getElementById('app'));
 
 // google analytics
 if (GA_TRACKING_ID) {

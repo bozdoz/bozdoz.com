@@ -27,9 +27,9 @@ docker:image:
     DOCKER_DRIVER: overlay
     # This will instruct Docker not to start over TLS.
     DOCKER_TLS_CERTDIR: ""
-  image: docker:19.03.1
+  image: docker:latest
   services:
-    - docker:19.03.1-dind
+    - docker:dind
   before_script:
     - echo $CI_BUILD_TOKEN | docker login -u gitlab-ci-token $CI_REGISTRY --password-stdin
   script:
@@ -41,7 +41,6 @@ docker:image:
     changes:
       - src/**/*
       - Dockerfile
-      - .gitlab-ci.yml
       - .dockerignore
 
 .deploys:

@@ -13,13 +13,12 @@ const list = [
 ];
 
 export default () => (
-  <nav id="side-nav" aria-label="Main">
+  <nav id="main-nav" aria-label="Main">
     {list.map(({ href, text }) => (
       <React.Fragment key={href}>
         <NavLink to={href} title={text} activeClassName="active">
           <span className="nav-text">{text}</span>
-        </NavLink>
-        {' '}
+        </NavLink>{' '}
       </React.Fragment>
     ))}
   </nav>

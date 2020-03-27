@@ -1,0 +1,58 @@
+#header {
+  @include grid;
+  justify-content: center;
+  justify-items: center;
+  background: var(--header-bg-color);
+  padding: 1rem;
+
+  a {
+    color: white;
+  }
+}
+
+#brand-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-right: 1em;
+    border-radius: 55% 45% 50% 55% / 60% 55% 50% 45%;
+  }
+
+  h1 {
+    font-size: 1em;
+  }
+  h2 {
+    font-size: 0.8em;
+    opacity: 0.5;
+  }
+}
+
+#main-nav {
+  a {
+    font-size: 1.3em;
+    padding: 0.8em;
+  }
+}
+
+#social-nav {
+  display: flex;
+  font-size: 0.82rem;
+  --padding: 0.64em;
+  margin-top: calc(-1 * var(--padding));
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    font-size: 1.6em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  img {
+    height: 1em;
+  }
+}

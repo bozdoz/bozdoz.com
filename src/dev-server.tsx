@@ -1,3 +1,4 @@
+import * as open from 'open';
 import * as webpack from 'webpack';
 import * as webpackDevMiddleware from 'webpack-dev-middleware';
 import * as webpackHotMiddleware from 'webpack-hot-middleware';
@@ -23,4 +24,9 @@ app.use(
 
 app.use(webpackHotMiddleware(bundler));
 
-createApp();
+createApp(function() {
+  console.log('live!');
+  console.log(arguments);
+  const PORT = process.env.PORT || 8005;
+  open(`http://localhost:${PORT}`);
+});

@@ -104,7 +104,7 @@ const ServerTemplate = () => (
       }}
     />
     <body>
-      <div id="page">
+      <div id="app">
         <App />
       </div>
       {env === 'production' &&

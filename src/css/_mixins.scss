@@ -14,3 +14,9 @@ $lg: 72em;
     }
   }
 }
+
+@mixin grid {
+  display: grid;
+  grid-gap: 1em;
+  align-items: center;
+}
