@@ -11,8 +11,8 @@ COPY tsconfig.json \
   ./
 COPY src src
 # empty NODE_ENV to install dev dependencies
-RUN NODE_ENV='' npm ci \
-  && npx webpack -p
+RUN NODE_ENV='' npm ci &> /dev/null && \
+  npx webpack -p
 
 # final build
 FROM base as prod
@@ -26,7 +26,7 @@ COPY ./bin/entrypoint.sh /usr/bin/
 # install rsync for entrypoint
 RUN apk add --no-cache rsync=3.1.3-r1
 # re-install production-only node packages
-RUN npm ci
+RUN npm ci &> /dev/null
 
 # do not run as root; create /static for shared volume
 RUN mkdir /static && \
