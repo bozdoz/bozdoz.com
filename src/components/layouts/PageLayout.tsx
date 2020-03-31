@@ -29,6 +29,7 @@ export default (props: Props) => {
     // add non-linking title
     breadcrumbs = [...breadcrumbs, [title]];
   }
+
   return (
     <article className={classname}>
       <header>

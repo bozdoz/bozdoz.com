@@ -19,7 +19,7 @@ app.disable('x-powered-by');
 app.use(express.static(path.join(__dirname, '../public')));
 
 // it removes trailing slash
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   const _path = req.path;
   if (_path.length > 1 && /\/$/.test(_path)) {
     const query = req.url.slice(_path.length);
@@ -41,7 +41,7 @@ const getMarkdown = (page: string) => {
  * webpack script in dev-server.js
  */
 function createApp(cb = () => {}) {
-  app.get('/pages/*', function(req, res) {
+  app.get('/pages/*', (req, res) => {
     const page = req.params['0'];
     let status = 200;
     let content;
@@ -59,7 +59,7 @@ function createApp(cb = () => {}) {
     res.status(status).send(content);
   });
 
-  app.get('/sitemap.xml', function(req, res) {
+  app.get('/sitemap.xml', (req, res) => {
     let content = '<?xml version="1.0" encoding="UTF-8"?>';
     content += renderToStaticMarkup(<Sitemap />);
     res
@@ -68,7 +68,7 @@ function createApp(cb = () => {}) {
       .send(content);
   });
 
-  app.get('*', function(req, res) {
+  app.get('*', (req, res) => {
     const context: {
       url?: string;
       is404?: boolean;

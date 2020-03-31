@@ -81,6 +81,7 @@ class MarkDown extends React.Component<Props, State> {
     if (this.state.redirect) {
       return <Redirect push to={this.state.redirect} />;
     }
+
     return (
       <section
         ref={a => {

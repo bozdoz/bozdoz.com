@@ -7,6 +7,7 @@ const NotFoundPage = (props: any) => {
   if (props.staticContext) {
     props.staticContext.is404 = true;
   }
+
   return (
     <FrontMatter source="404" {...props}>
       <Contact />

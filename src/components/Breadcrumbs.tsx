@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-type breadcrumb = (string | undefined)[];
+type Breadcrumb = (string | undefined)[];
 
 interface Props {
-  list?: breadcrumb[];
+  list?: Breadcrumb[];
 }
 
 const Breadcrumbs = ({ list = [] }: Props) => (

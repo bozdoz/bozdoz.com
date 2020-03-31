@@ -17,6 +17,7 @@ const Title = ({ children, header }: Props) => {
   if (typeof document !== 'undefined' && document.title !== title) {
     document.title = `${title} - @bozdoz`;
   }
+
   return <h1 id="page-title">{header || title}</h1>;
 };
 

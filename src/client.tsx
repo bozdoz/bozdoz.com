@@ -24,12 +24,12 @@ if (GA_TRACKING_ID) {
   window.gtag('js', new Date());
   window.gtag('config', GA_TRACKING_ID);
 
-  window.addEventListener('hashchange', function() {
-    var hash = window.location.hash;
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
     if (hash && hash !== '#') {
       window.gtag!({
-        event: 'hashchange',
-        hash: hash
+        hash,
+        event: 'hashchange'
       });
     }
   });

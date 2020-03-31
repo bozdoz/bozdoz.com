@@ -1,0 +1,28 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "linterOptions": {
+    "exclude": ["**/*.md", "**/*.scss"]
+  },
+  "jsRules": {},
+  "rulesDirectory": [],
+  "rules": {
+    "no-empty": false,
+    "variable-name": false,
+    "only-arrow-functions": false,
+    "strict-boolean-expressions": false,
+    "member-access": false,
+    "newline-before-return": true,
+    "no-this-assignment": [
+      true,
+      {
+        "allow-destructuring": true
+      }
+    ],
+    "array-type": [true, "array"]
+  }
+}

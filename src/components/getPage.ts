@@ -29,7 +29,9 @@ export const getPage = async (
 
     return data;
   } catch (e) {
+    // tslint:disable-next-line:no-console
     console.error(e);
+
     return null;
   }
 };

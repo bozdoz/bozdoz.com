@@ -26,10 +26,11 @@ export { pagedir };
  * gets frontmatter/markdown from given page
  */
 const getMarkdown = (_source: string): FrontMatterObject => {
-  let source = _source;
+  const source = _source;
 
   try {
-    let content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
+    const content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
+
     return fm<FrontMatterAttributes>(content);
   } catch (e) {
     // can't find a file; return 404
@@ -85,10 +86,11 @@ const ServerTemplate = () => (
   <html lang="en" dir="ltr">
     <Route
       render={props => {
-        const page = getPage(props);
-        const atts = page.attributes;
         // conditionally load initial HTML
         // and 404 pages
+        const page = getPage(props);
+        const atts = page.attributes;
+
         return (
           <Head {...atts}>
             {page.body && <Route render={() => <InitialHTML page={page} />} />}

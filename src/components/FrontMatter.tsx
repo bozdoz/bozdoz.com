@@ -98,7 +98,7 @@ class FrontMatter extends React.Component<Props, State> {
     return (
       <PageLayout {...attributes} subtitle={subtitle} {...this.props}>
         {description &&
-          show_description !== false && (
+          show_description && (
             <div className="page-description">
               <p>{description}</p>
             </div>
