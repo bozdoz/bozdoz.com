@@ -24,16 +24,13 @@ export { pagedir };
 
 /**
  * gets frontmatter/markdown from given page
- *
- * @param Object source
- * @return Object|Null
  */
-const getMarkdown = (_source: string): any => {
+const getMarkdown = (_source: string): FrontMatterObject => {
   let source = _source;
 
   try {
     let content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
-    return fm(content);
+    return fm<FrontMatterAttributes>(content);
   } catch (e) {
     // can't find a file; return 404
     return getMarkdown('404');

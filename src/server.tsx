@@ -39,8 +39,6 @@ const getMarkdown = (page: string) => {
 /**
  * app listen methods; required for executing AFTER
  * webpack script in dev-server.js
- *
- * @return null
  */
 function createApp(cb = () => {}) {
   app.get('/pages/*', function(req, res) {

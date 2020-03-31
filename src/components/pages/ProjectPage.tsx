@@ -8,9 +8,6 @@ import PlainPage from './PlainPage';
  * because project page is an ambiguous match, it requires
  * a lookup first to see if the markdown file can be found;
  * defaults to NotFoundPage
- *
- * @param Object props
- * @return Component NotFoundPage|PlainPage
  */
 const ProjectPage = (props: any) => {
   // client-side render
