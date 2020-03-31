@@ -8,7 +8,7 @@ type breadcrumb = (string | undefined)[];
 interface Props {
   title: string;
   header?: string;
-  subtitle?: string | JSX.Element;
+  subtitle?: React.ReactChild;
   image?: string;
   className?: string;
   children?: React.ReactNodeArray;

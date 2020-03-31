@@ -5,7 +5,7 @@ import MarkDown from './MarkDown';
 import TagList from './TagList';
 import PageLayout from './layouts/PageLayout';
 import LoadingPage from './pages/LoadingPage';
-import { FrontMatterObject, cache, getPage } from './getPage';
+import { cache, getPage } from './getPage';
 
 interface Props {
   page: FrontMatterObject;
@@ -18,7 +18,7 @@ interface Props {
 }
 
 interface State {
-  page: FrontMatterObject;
+  page: FrontMatterObject | null;
 }
 
 class FrontMatter extends React.Component<Props, State> {
@@ -32,18 +32,18 @@ class FrontMatter extends React.Component<Props, State> {
     if (props.staticContext) {
       // server-side rendering already has it
       page = props.staticContext.page;
-    } else if (
-      typeof window !== 'undefined' &&
-      (window as any).__INITIAL_HTML__
-    ) {
+    } else if (typeof window !== 'undefined' && window.__INITIAL_HTML__) {
       // client-side initial render
       // gets variable set in ServerTemplate.js
-      page = (window as any).__INITIAL_HTML__;
+      page = window.__INITIAL_HTML__;
 
       // destroy variable and script
-      delete (window as any).__INITIAL_HTML__;
-      let script = document.getElementById('initial-state');
-      script!.parentNode!.removeChild(script as HTMLElement);
+      delete window.__INITIAL_HTML__;
+      const script = document.getElementById('initial-state');
+
+      if (script && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
 
       // cache page
       cache[props.source] = page;
@@ -85,14 +85,14 @@ class FrontMatter extends React.Component<Props, State> {
 
     const { link, description, show_description, tags } = attributes;
 
-    let { subtitle } = attributes;
+    let subtitle: React.ReactChild = attributes.subtitle;
 
     if (link && subtitle) {
       subtitle = (
         <a target="_blank" href={link} rel="noreferrer">
           {subtitle}
         </a>
-      ) as any;
+      );
     }
 
     return (

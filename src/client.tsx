@@ -16,25 +16,23 @@ render(<Client />, document.getElementById('app'));
 
 // google analytics
 if (GA_TRACKING_ID) {
-  (win => {
-    win.dataLayer = win.dataLayer || [];
-    win.gtag = function gtag() {
-      win.dataLayer.push(arguments);
-    };
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer!.push(arguments);
+  };
 
-    win.gtag('js', new Date());
-    win.gtag('config', GA_TRACKING_ID);
+  window.gtag('js', new Date());
+  window.gtag('config', GA_TRACKING_ID);
 
-    win.addEventListener('hashchange', function() {
-      var hash = win.location.hash;
-      if (hash && hash !== '#') {
-        win.gtag({
-          event: 'hashchange',
-          hash: hash
-        });
-      }
-    });
-  })(window as any);
+  window.addEventListener('hashchange', function() {
+    var hash = window.location.hash;
+    if (hash && hash !== '#') {
+      window.gtag!({
+        event: 'hashchange',
+        hash: hash
+      });
+    }
+  });
 }
 
 // hot reloading

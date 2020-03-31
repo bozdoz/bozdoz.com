@@ -6,9 +6,9 @@ import { GA_TRACKING_ID } from '../data/site_variables';
 class GoogleAnalytics extends React.Component<RouteComponentProps<{}>> {
   componentWillUpdate(props: RouteComponentProps<{}>) {
     const { location, history } = props;
-    const gtag = (window as any).gtag;
+    const gtag = window.gtag;
 
-    if (!GA_TRACKING_ID) {
+    if (!GA_TRACKING_ID || !gtag) {
       return;
     }
 
@@ -17,7 +17,7 @@ class GoogleAnalytics extends React.Component<RouteComponentProps<{}>> {
       return;
     }
 
-    if (history.action === 'PUSH' && typeof gtag === 'function') {
+    if (history.action === 'PUSH' || history.action === 'REPLACE') {
       gtag('config', GA_TRACKING_ID, {
         page_title: document.title,
         page_location: window.location.href,
