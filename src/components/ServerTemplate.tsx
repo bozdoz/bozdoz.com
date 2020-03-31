@@ -78,9 +78,6 @@ export const getPage = ({
   }
   staticContext.page = page;
 
-  if (!page.attributes) {
-    page.attributes = {};
-  }
   return page;
 };
 
@@ -90,7 +87,7 @@ const ServerTemplate = () => (
       render={props => {
         const page = getPage(props);
         const atts = page.attributes;
-        // conditionally load intial HTML
+        // conditionally load initial HTML
         // and 404 pages
         return (
           <Head {...atts}>

@@ -7,10 +7,11 @@ interface Props {
   title: string;
   description: string;
   image: string;
-  children: JSX.Element[];
+  children: React.ReactNode;
 }
 
-const defaultDescription = 'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.';
+const defaultDescription =
+  'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.';
 
 const Head = (props: Props) => {
   const {
@@ -68,9 +69,7 @@ const Head = (props: Props) => {
         crossOrigin="anonymous"
       />
 
-      {env === 'production' &&
-        <link rel="stylesheet" href="/css/main.css" />
-      }
+      {env === 'production' && <link rel="stylesheet" href="/css/main.css" />}
 
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       {props.children}

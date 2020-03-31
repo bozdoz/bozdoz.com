@@ -1,9 +1,12 @@
 interface FrontMatterAttributes {
-  link: string;
+  title: string;
+  subtitle: string;
   description: string;
   show_description: boolean;
+  link: string;
   tags: string[];
-  subtitle: string;
+  image: string;
+  status: number;
 }
 
 interface FrontMatterObject {
