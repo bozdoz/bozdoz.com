@@ -35,8 +35,6 @@ if (GA_TRACKING_ID) {
   });
 }
 
-declare const module: any;
-
 // hot reloading
 if (module.hot && process.env.NODE_ENV !== 'production') {
   module.hot.accept();

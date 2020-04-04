@@ -5,7 +5,7 @@ import * as ExtractTextPlugin from 'mini-css-extract-plugin';
 
 const { NODE_ENV } = process.env;
 
-const sourcemap = NODE_ENV === 'production' ? '' : '?sourceMap';
+const sourcemap = NODE_ENV === 'production' ? '' : '?sourceMap'
 
 const client = {
   entry: ['./src/client.tsx'],
@@ -36,12 +36,12 @@ const client = {
       {
         test: /\.s?css$/,
         use: [
-          NODE_ENV === 'production'
-            ? ExtractTextPlugin.loader
+          NODE_ENV === 'production' 
+            ? ExtractTextPlugin.loader 
             : `style-loader${sourcemap}`,
           `css-loader${sourcemap}`,
           `postcss-loader${sourcemap}`,
-          `sass-loader${sourcemap}`
+          `sass-loader${sourcemap}`,
         ]
       }
     ]
@@ -57,7 +57,6 @@ const client = {
   ]
 };
 
-// tslint:disable-next-line:no-console
 console.log('NODE_ENV', NODE_ENV);
 
 if (NODE_ENV !== 'production') {
