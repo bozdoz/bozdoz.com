@@ -3,37 +3,32 @@ import * as React from 'react';
 const list = [
   {
     href: 'https://github.com/bozdoz/',
-    title: 'Github',
-    icon: 'github'
+    title: 'GitHub',
+    src: '/images/github.svg'
   },
   {
     href: 'https://stackoverflow.com/users/488784/bozdoz',
     title: 'Stack Overflow',
-    icon: 'stack-overflow'
+    src: '/images/stack-overflow.svg'
   },
   {
     href: 'https://codepen.io/bozdoz/',
     title: 'CodePen',
-    icon: 'codepen'
+    src: '/images/codepen.svg'
   },
   {
     href: 'https://www.strava.com/athletes/637243',
     title: 'Strava',
-    image: {
-      src: '/images/strava-white.svg',
-      alt: 'Strava',
-      height: 10
-    }
+    src: '/images/strava.svg'
   }
 ];
 
 export default () => (
   <nav id="social-nav" aria-label="Social Media">
-    {list.map(({ href, title, icon, image }) => (
+    {list.map(({ href, title, src }) => (
       <React.Fragment key={href}>
         <a title={title} href={href} target="_blank" rel="noreferrer">
-          {icon && <i className={`fa fa-${icon}`} aria-hidden="true" />}
-          {image && <img {...image} />}
+          <img src={src} alt={title} height="30" />
           <span className="screen-reader">{title}</span>
         </a>{' '}
       </React.Fragment>

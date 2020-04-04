@@ -18,7 +18,7 @@ export default () => (
       <React.Fragment key={href}>
         <NavLink to={href} title={text} activeClassName="active">
           <span className="nav-text">{text}</span>
-        </NavLink>{' '}
+        </NavLink>
       </React.Fragment>
     ))}
   </nav>
