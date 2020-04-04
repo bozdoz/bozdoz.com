@@ -5,7 +5,8 @@ import * as ExtractTextPlugin from 'mini-css-extract-plugin';
 
 const { NODE_ENV } = process.env;
 
-const sourcemap = NODE_ENV === 'production' ? '' : '?sourceMap'
+const mode = NODE_ENV || 'development';
+const sourcemap = mode === 'production' ? '' : '?sourceMap';
 
 const client = {
   entry: ['./src/client.tsx'],
@@ -14,7 +15,7 @@ const client = {
     filename: 'js/main.js',
     publicPath: '/'
   },
-  mode: NODE_ENV,
+  mode: mode,
   module: {
     rules: [
       {
@@ -36,12 +37,12 @@ const client = {
       {
         test: /\.s?css$/,
         use: [
-          NODE_ENV === 'production' 
-            ? ExtractTextPlugin.loader 
+          mode === 'production'
+            ? ExtractTextPlugin.loader
             : `style-loader${sourcemap}`,
           `css-loader${sourcemap}`,
           `postcss-loader${sourcemap}`,
-          `sass-loader${sourcemap}`,
+          `sass-loader${sourcemap}`
         ]
       }
     ]
@@ -57,9 +58,9 @@ const client = {
   ]
 };
 
-console.log('NODE_ENV', NODE_ENV);
+console.log('NODE_ENV', mode);
 
-if (NODE_ENV !== 'production') {
+if (mode !== 'production') {
   client.entry = ['webpack-hot-middleware/client', ...client.entry];
 
   // live editing
@@ -84,7 +85,7 @@ const server = {
       modulesFromFile: true
     })
   ],
-  mode: NODE_ENV,
+  mode: mode,
   entry: './src/server.tsx',
   output: {
     path: path.join(__dirname, 'src'),
