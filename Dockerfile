@@ -29,8 +29,8 @@ RUN apk add --no-cache rsync=3.1.3-r1
 RUN npm ci &> /dev/null
 
 # do not run as root; create /static for shared volume
-RUN mkdir /static && \
-  chown -R node:node /static && \
+RUN mkdir -p /public && \
+  chown -R node:node /public && \
   chown -R node:node /app
 USER node
 
