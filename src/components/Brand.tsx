@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const imgsize = 90;
 
-export default () => (
+const Brand = () => (
   <Link id="brand-link" to="/" rel="home">
     <img
       src={`https://gravatar.com/avatar/008a440567c800274d0d2faa93da916c?s=${imgsize *
@@ -19,3 +19,5 @@ export default () => (
     </div>
   </Link>
 );
+
+export default Brand;

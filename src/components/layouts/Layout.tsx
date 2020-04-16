@@ -5,10 +5,10 @@ import MainNav from '../MainNav';
 import SocialNav from '../SocialNav';
 
 interface Props {
-  children: JSX.Element[]
+  children: JSX.Element[];
 }
 
-export default ({ children }: Props) => (
+const Layout = ({ children }: Props) => (
   <React.Fragment>
     <header id="header">
       <Brand />
@@ -18,3 +18,5 @@ export default ({ children }: Props) => (
     <main id="main">{children}</main>
   </React.Fragment>
 );
+
+export default Layout;

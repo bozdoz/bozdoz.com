@@ -15,7 +15,7 @@ interface Props {
   breadcrumbs?: breadcrumb[];
 }
 
-export default (props: Props) => {
+const PageLayout = (props: Props) => {
   const { title, header, subtitle, children, image, className } = props;
 
   let classname = 'page';
@@ -51,3 +51,5 @@ export default (props: Props) => {
     </article>
   );
 };
+
+export default PageLayout;

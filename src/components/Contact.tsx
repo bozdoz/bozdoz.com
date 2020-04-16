@@ -15,7 +15,7 @@ const contact_links = [
   }
 ];
 
-export default () => (
+const Contact = () => (
   <section className="container">
     <ul className="contact-list">
       {contact_links.map(({ href, text, pre_text, icon }) => (
@@ -30,3 +30,5 @@ export default () => (
     </ul>
   </section>
 );
+
+export default Contact;

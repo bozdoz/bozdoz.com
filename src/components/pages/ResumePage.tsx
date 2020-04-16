@@ -46,7 +46,7 @@ const ResumeSection = ({
   </div>
 );
 
-export default (props: any) => (
+const ResumePage = (props: any) => (
   <FrontMatter className="resume-page" source="resume" {...props}>
     <div id="resume" className="container-fluid">
       <section className="table-row">
@@ -101,3 +101,5 @@ export default (props: any) => (
     </div>
   </FrontMatter>
 );
+
+export default ResumePage;

@@ -12,7 +12,7 @@ const list = [
   }
 ];
 
-export default () => (
+const MainNav = () => (
   <nav id="main-nav" aria-label="Main">
     {list.map(({ href, text }) => (
       <React.Fragment key={href}>
@@ -23,3 +23,5 @@ export default () => (
     ))}
   </nav>
 );
+
+export default MainNav;

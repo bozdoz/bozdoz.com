@@ -23,7 +23,7 @@ const list = [
   }
 ];
 
-export default () => (
+const SocialNav = () => (
   <nav id="social-nav" aria-label="Social Media">
     {list.map(({ href, title, src }) => (
       <React.Fragment key={href}>
@@ -35,3 +35,5 @@ export default () => (
     ))}
   </nav>
 );
+
+export default SocialNav;
