@@ -2,12 +2,16 @@ import * as React from 'react';
 import { mount as render } from 'enzyme';
 import { StaticRouter as Router, Route } from 'react-router-dom';
 
-import App from '../src/components/App';
-import { getPage, InitialHTML, Is404 } from '../src/components/ServerTemplate';
-import { list as projectlist } from '../src/components/Projects';
+import App from '../../src/components/App';
+import {
+  getPage,
+  InitialHTML,
+  Is404
+} from '../../src/components/ServerTemplate';
+import { list as projectlist } from '../../src/components/Projects';
 
 jest.mock('axios', () => {
-  const server = require('../src/server');
+  const server = require('../../src/server');
   const { getMarkdown } = server;
   return {
     get: url => {
