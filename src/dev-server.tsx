@@ -26,5 +26,7 @@ app.use(webpackHotMiddleware(bundler));
 
 createApp(() => {
   const PORT = process.env.PORT || 8005;
+  // tslint:disable-next-line:no-console
+  console.log(`live at: http://localhost:${PORT}`);
   open(`http://localhost:${PORT}`);
 });
