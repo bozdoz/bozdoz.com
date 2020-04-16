@@ -7,9 +7,9 @@ stages:
   - deploy
 
 test:
-  image: node:10-alpine
+  image: node:10.17.0-alpine3.10
   script:
-    - npm ci
+    - npm ci @> /dev/null
     - npm test
   only:
     changes:
