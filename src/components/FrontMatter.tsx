@@ -6,13 +6,15 @@ import TagList from './TagList';
 import PageLayout from './layouts/PageLayout';
 import LoadingPage from './pages/LoadingPage';
 import { cache, getPage } from './getPage';
+import { RouteComponentProps, StaticContext } from 'react-router';
 
-interface Props {
+interface RouteContext extends StaticContext {
   page: FrontMatterObject;
-  staticContext?: {
-    page: FrontMatterObject;
-  };
-  source: string;
+}
+
+interface Props extends RouteComponentProps<{}, RouteContext> {
+  page: FrontMatterObject;
+  source?: string;
   className?: string;
   title: string;
 }
@@ -23,6 +25,10 @@ interface State {
 
 class FrontMatter extends React.Component<Props, State> {
   req: CancelTokenSource | undefined;
+
+  get source() {
+    return this.props.source || this.props.match.url;
+  }
 
   constructor(props: Props) {
     super(props);
@@ -46,7 +52,7 @@ class FrontMatter extends React.Component<Props, State> {
       }
 
       // cache page
-      cache[props.source] = page;
+      cache[this.source] = page;
     }
 
     this.state = { page };
@@ -59,7 +65,7 @@ class FrontMatter extends React.Component<Props, State> {
       // and a cancel token from axios
       this.req = axios.CancelToken.source();
 
-      const page = await getPage(this.props.source, this.req);
+      const page = await getPage(this.source, this.req);
 
       this.setState({ page });
     }

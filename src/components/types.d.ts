@@ -1,3 +1,6 @@
+/**
+ * These attributes could appear within the frontmatter of markdown files
+ */
 interface FrontMatterAttributes {
   title: string;
   subtitle: string;
