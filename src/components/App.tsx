@@ -7,10 +7,10 @@ import Projects from './Projects';
 import ProjectPage from './pages/ProjectPage';
 import ResumePage from './pages/ResumePage';
 import AboutPage from './pages/AboutPage';
-import PlainPage from './pages/PlainPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
+import FrontMatter from './FrontMatter';
 
 const App = () => (
   <Layout>
@@ -20,7 +20,7 @@ const App = () => (
       <Route exact path="/projects/:id" component={ProjectPage} />
       <Route exact path="/resume" component={ResumePage} />
       <Route exact path="/about" component={AboutPage} />
-      <Route exact path="/privacy" component={PlainPage} />
+      <Route exact path="/privacy" component={FrontMatter} />
       <Route component={NotFoundPage} />
     </Switch>
     <ScrollToTop />

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import NotFoundPage from './NotFoundPage';
-import PlainPage from './PlainPage';
+import FrontMatter from '../FrontMatter';
 
 /**
  * because project page is an ambiguous match, it requires
@@ -35,7 +35,7 @@ const ProjectPage = (props: any) => {
   }
 
   return (
-    <PlainPage
+    <FrontMatter
       className="project-page"
       breadcrumbs={[['Home', '/'], ['Projects', '/projects']]}
       {...props}
@@ -47,7 +47,7 @@ const ProjectPage = (props: any) => {
           &nbsp; Back to Projects
         </Link>
       </div>
-    </PlainPage>
+    </FrontMatter>
   );
 };
 

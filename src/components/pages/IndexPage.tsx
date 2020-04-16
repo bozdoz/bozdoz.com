@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import PlainPage from './PlainPage';
 import Contact from '../Contact';
+import FrontMatter from '../FrontMatter';
 
 const IndexPage = (props: any) => (
-  <PlainPage source="index" {...props}>
+  <FrontMatter source="index" {...props}>
     <Contact />
-  </PlainPage>
+  </FrontMatter>
 );
 
 export default IndexPage;

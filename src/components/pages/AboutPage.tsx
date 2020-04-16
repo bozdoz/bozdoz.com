@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import PlainPage from './PlainPage';
 import Contact from '../Contact';
+import FrontMatter from '../FrontMatter';
 
 const AboutPage = (props: any) => (
-  <PlainPage {...props}>
+  <FrontMatter {...props}>
     <Contact />
-  </PlainPage>
+  </FrontMatter>
 );
 
 export default AboutPage;
