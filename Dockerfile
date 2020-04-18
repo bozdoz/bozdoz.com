@@ -34,8 +34,8 @@ COPY /src/pages ./pages
 COPY ./bin/entrypoint.sh /usr/bin/
 
 # do not run as root; create /static for shared volume
-RUN mkdir /static && \
-  chown -R node:node /static && \
+RUN mkdir -p /public && \
+  chown -R node:node /public && \
   chown -R node:node /app
 USER node
 
