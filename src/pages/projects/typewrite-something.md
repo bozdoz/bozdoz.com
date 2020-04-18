@@ -8,6 +8,8 @@ tags:
     - JavaScript
     - PhoneGap
 image: /images/projects/typewrite-something/typewrite-something.jpg
+published_date: '2017-11-20'
+modified_date: '2020-04-16'
 ---
 
 ### What is it?

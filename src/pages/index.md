@@ -2,6 +2,8 @@
 title: Full-Stack Software Engineer
 header: "@bozdoz"
 subtitle: Software Engineer
+published_date: '2017-11-20'
+modified_date: '2020-03-27'
 ---
 
 I am in the **[top 4% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.

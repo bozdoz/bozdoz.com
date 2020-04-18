@@ -3,6 +3,8 @@ title: About
 description: >
     This is a Universal JavaScript app. The pages are generated server-side through Express using React and React Router; most of the content is in simple, static MarkDown files.
 show_description: false
+published_date: '2017-11-20'
+modified_date: '2020-04-16'
 ---
 
 This site is designed to showcase **[my best-loved projects](/projects)** in web development.
