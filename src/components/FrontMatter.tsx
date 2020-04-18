@@ -91,7 +91,7 @@ class FrontMatter extends React.Component<Props, State> {
 
     const { link, description, show_description, tags } = attributes;
 
-    let subtitle: React.ReactChild = attributes.subtitle;
+    let subtitle = attributes.subtitle;
 
     if (link && subtitle) {
       subtitle = (

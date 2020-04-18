@@ -3,10 +3,7 @@ import * as React from 'react';
 import { SITE, GFONT_FAMILY } from '../data/site_variables';
 
 const env = process.env.NODE_ENV;
-interface Props {
-  title: string;
-  description: string;
-  image: string;
+interface Props extends FrontMatterAttributes {
   children: React.ReactNode;
 }
 

@@ -5,18 +5,23 @@ import Breadcrumbs from '../Breadcrumbs';
 
 type breadcrumb = (string | undefined)[];
 
-interface Props {
-  title: string;
+interface Props extends FrontMatterAttributes {
   header?: string;
-  subtitle?: React.ReactChild;
-  image?: string;
   className?: string;
   children?: React.ReactNodeArray;
   breadcrumbs?: breadcrumb[];
 }
 
 const PageLayout = (props: Props) => {
-  const { title, header, subtitle, children, image, className } = props;
+  const {
+    title,
+    header,
+    subtitle,
+    children,
+    image,
+    className,
+    modified_date
+  } = props;
 
   let classname = 'page';
   let { breadcrumbs } = props;
@@ -44,6 +49,7 @@ const PageLayout = (props: Props) => {
         <div className="header-title">
           <Title header={header}>{title}</Title>
           {subtitle && <h2>{subtitle}</h2>}
+          {modified_date && <h5>Last modified: {modified_date}</h5>}
         </div>
       </header>
       {breadcrumbs && <Breadcrumbs list={breadcrumbs} />}

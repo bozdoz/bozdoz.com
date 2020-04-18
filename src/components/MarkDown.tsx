@@ -64,7 +64,7 @@ class MarkDown extends React.Component<Props, State> {
       anchor.className = `header-link`;
       anchor.href = `#${header.id}`;
       anchor.innerHTML = '<i class="fa fa-link" aria-hidden="true"></i>';
-      header.appendChild(anchor);
+      header.insertBefore(anchor, header.firstChild);
     });
 
     this.container.querySelectorAll('img').forEach(img => {
