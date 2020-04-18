@@ -11,18 +11,11 @@ import {
 import { list as projectlist } from '../../src/components/Projects';
 
 jest.mock('axios', () => {
-  const server = require('../../src/server');
-  const { getMarkdown } = server;
+  const getMarkdown = require('../../src/util/getMarkdown');
   return {
     get: url => {
       const md = url.replace('/pages', '');
-      return new Promise(resolve => {
-        resolve({
-          data: getMarkdown(md)
-        });
-      }).catch(error => {
-        throw new Error(error);
-      });
+      return getMarkdown(md);
     },
     CancelToken: {
       source: () => 'asdf'
