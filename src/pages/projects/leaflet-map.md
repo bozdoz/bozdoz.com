@@ -1,6 +1,7 @@
 ---
 title: Leaflet Map
 subtitle: A WordPress plugin for simple map shortcodes
+link: "https://wordpress.org/plugins/leaflet-map/"
 description: >
     A simple WordPress plugin for adding interactive Leaflet maps with shortcodes. Leaflet Map fully supports Geocoding addresses, adding Markers to maps, and adding every other 2D shape.
 tags:
@@ -10,7 +11,7 @@ tags:
     - PHP
 image: /images/projects/leaflet-map/leaflet-map.jpg
 published_date: '2017-11-20'
-modified_date: '2018-02-27'
+modified_date: '2020-04-17'
 ---
 
 ### What is it?

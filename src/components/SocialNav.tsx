@@ -7,14 +7,14 @@ const list = [
     src: '/images/github.svg'
   },
   {
-    href: 'https://stackoverflow.com/users/488784/bozdoz',
-    title: 'Stack Overflow',
-    src: '/images/stack-overflow.svg'
-  },
-  {
     href: 'https://codepen.io/bozdoz/',
     title: 'CodePen',
     src: '/images/codepen.svg'
+  },
+  {
+    href: 'https://stackoverflow.com/users/488784/bozdoz',
+    title: 'Stack Overflow',
+    src: '/images/stack-overflow.svg'
   },
   {
     href: 'https://www.strava.com/athletes/637243',

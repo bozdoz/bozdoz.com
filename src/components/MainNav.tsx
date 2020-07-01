@@ -5,10 +5,6 @@ const list = [
   {
     href: '/projects',
     text: 'Projects'
-  },
-  {
-    href: '/about',
-    text: 'About'
   }
 ];
 

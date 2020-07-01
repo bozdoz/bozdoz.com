@@ -2,12 +2,12 @@ $para-font: 'Roboto';
 $header-font: 'Open Sans';
 
 $color-primary: #2069ac;
-$color-secondary: #21a038; /* turquoise */
+$color-secondary: #21a038;
 
 $brand-hue: hue($color-primary);
 $brand-saturation: saturation($color-primary);
 $brand-lightness: lightness($color-primary);
-$dark-grey: #29253d; /* gunmetal */
+$dark-grey: #29253d;
 $light-grey: hsl($brand-hue, 12%, 80%);
 
 $para-color: rgba(0, 0, 0, 0.75);

@@ -36,11 +36,7 @@ const locations: Location[] = [
   ...projectList.map(({ id }) => ({
     loc: `/projects/${id}`,
     priority: 0.8
-  })),
-  {
-    loc: '/about',
-    priority: 0.5
-  }
+  }))
 ];
 
 const Sitemap = async () => {

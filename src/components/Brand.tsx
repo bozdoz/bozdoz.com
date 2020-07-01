@@ -1,23 +1,30 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import SocialNav from './SocialNav';
 
 const imgsize = 90;
 
 const Brand = () => (
-  <Link id="brand-link" to="/" rel="home">
-    <img
-      src={`https://gravatar.com/avatar/008a440567c800274d0d2faa93da916c?s=${imgsize *
-        2}`}
-      width={imgsize}
-      height={imgsize}
-      alt="Benjamin J DeLong"
-      title="Me"
-    />
+  <div id="brand">
+    <Link to="/" rel="home">
+      <img
+        id="avatar"
+        src={`https://gravatar.com/avatar/008a440567c800274d0d2faa93da916c?s=${imgsize *
+          2}`}
+        width={imgsize}
+        height={imgsize}
+        alt="Benjamin J DeLong"
+        title="Me"
+      />
+    </Link>
     <div>
-      <h1>Benjamin J DeLong</h1>
-      <h2>Software Engineer</h2>
+      <Link to="/" rel="home">
+        <h1>Benjamin J DeLong</h1>
+        <h2>Software Engineer</h2>
+      </Link>
+      <SocialNav />
     </div>
-  </Link>
+  </div>
 );
 
 export default Brand;

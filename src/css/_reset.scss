@@ -8,6 +8,20 @@
   box-sizing: border-box;
 }
 
+/* Text meant only for screen readers. */
+.screen-reader {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
 /* legibility */
 body,
 button,
@@ -25,28 +39,12 @@ textarea {
   word-spacing: 0.01em;
 }
 
-p {
-  line-height: 1.55;
-  letter-spacing: -0.002em;
-  word-spacing: 0.03em;
-  margin: 0 0 1.4em;
-}
-
 a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-/* Text meant only for screen readers. */
-.screen-reader {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  word-wrap: normal !important;
+ol,
+ul {
+  list-style-type: none;
 }

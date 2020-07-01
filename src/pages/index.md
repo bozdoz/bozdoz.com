@@ -1,9 +1,8 @@
 ---
 title: Full-Stack Software Engineer
-header: "@bozdoz"
-subtitle: Software Engineer
+header: About Me
 published_date: '2017-11-20'
-modified_date: '2020-03-27'
+modified_date: '2020-04-29'
 ---
 
 I am in the **[top 4% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
@@ -24,4 +23,8 @@ I developed a simple [typewriter simulator](/projects/typewrite-something) which
 
 I live in Halifax, Nova Scotia, Canada with my partner, my son, and my dog.
 
-If you want to know more, check out [my projects](/projects), or [my resume](/resume).
+This site is designed to showcase **[my best-loved projects](/projects)** in web development. Check out [my projects](/projects), or [my resume](/resume).
+
+This is a **Universal JavaScript** app: The pages are generated server-side through **Express** with the help of **React Router**; the layout is created with **React** (_of course_), and most of the content is in a simple **MarkDown** and **FrontMatter** format, similar to a blog-aware static site.
+
+If you're curious, take a look at the repo: [<i class="fa fa-github"></i> github.com](https://github.com/bozdoz/bozdoz.com)

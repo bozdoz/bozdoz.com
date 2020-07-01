@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import FrontMatter from './FrontMatter';
 
+// TODO: make dynamic with GraphQL (see GraphQL branch)
 export const list = [
   {
     id: 'alberta-tomorrow',

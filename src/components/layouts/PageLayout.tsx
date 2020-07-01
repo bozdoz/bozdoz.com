@@ -13,15 +13,7 @@ interface Props extends FrontMatterAttributes {
 }
 
 const PageLayout = (props: Props) => {
-  const {
-    title,
-    header,
-    subtitle,
-    children,
-    image,
-    className,
-    modified_date
-  } = props;
+  const { title, header, subtitle, children, image, className } = props;
 
   let classname = 'page';
   let { breadcrumbs } = props;
@@ -49,7 +41,6 @@ const PageLayout = (props: Props) => {
         <div className="header-title">
           <Title header={header}>{title}</Title>
           {subtitle && <h2>{subtitle}</h2>}
-          {modified_date && <h5>Last modified: {modified_date}</h5>}
         </div>
       </header>
       {breadcrumbs && <Breadcrumbs list={breadcrumbs} />}

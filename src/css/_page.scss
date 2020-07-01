@@ -1,3 +1,43 @@
 .page {
-  padding: 1em;
+  --newline: 1.4em;
+  padding: 0.6rem 1.2rem;
+
+  .markdown {
+    p {
+      line-height: 1.618;
+      letter-spacing: -0.002em;
+      word-spacing: 0.03em;
+      margin: 0 0 var(--newline);
+    }
+
+    li:before {
+      left: -1.5em;
+      top: 0.3em;
+      display: inline-block;
+      position: absolute;
+      font-family: FontAwesome;
+      font-size: 10pt;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      content: '\F054';
+      color: #c6c9d2;
+    }
+  }
+
+  ul,
+  ol {
+    margin-left: 1em;
+    margin-bottom: var(--newline);
+  }
+
+  li {
+    position: relative;
+    margin-bottom: calc(0.5 * var(--newline));
+  }
+}
+
+.header-title {
+  text-align: center;
+  padding: 2.6em 0;
 }

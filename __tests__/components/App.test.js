@@ -57,13 +57,16 @@ const loadPage = url => {
 describe('Render all pages without error', () => {
   test('Index', () => {
     const wrapper = loadPage('/');
-    expect(wrapper.find('.header-title h1').text()).toBe('@bozdoz');
-    expect(wrapper.find('#brand-link h1').text()).toBe('Benjamin J DeLong');
+    expect(wrapper.find('.header-title h1').text()).toBe('About Me');
+    expect(wrapper.find('#brand h1').text()).toBe('Benjamin J DeLong');
   });
 
   test('About', () => {
     const wrapper = loadPage('/about');
-    expect(wrapper.find('.header-title h1').text()).toBe('About');
+    // about is redirected as of 2020-04-29
+    const elem = wrapper.find('Redirect');
+    expect(elem.prop('from')).toBe('/about');
+    expect(elem.prop('to')).toBe('/');
   });
 
   test('Projects', () => {
