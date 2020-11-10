@@ -43,7 +43,10 @@ const ProjectPage = (props: any) => {
       <div className="container">
         <hr />
         <Link to={`/projects`} className="btn btn-default">
-          <i className="fa fa-chevron-left fa-fw color-grey font-sm" />
+          <i
+            className="fa fa-chevron-left fa-fw color-grey font-sm"
+            aria-hidden
+          />
           &nbsp; Back to Projects
         </Link>
       </div>

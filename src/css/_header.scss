@@ -1,15 +1,12 @@
+$header-padding: 0.4rem;
+
 #header {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   justify-items: center;
   background: var(--header-bg-color);
-  padding: 1rem;
-  padding-bottom: 0.618rem;
-
-  a {
-    color: white;
-  }
+  padding: calc(#{$header-padding} * #{$golden}) 0 $header-padding;
 }
 
 #brand {
@@ -17,17 +14,32 @@
   justify-content: center;
   align-items: center;
 
+  a {
+    color: white;
+
+    &:focus {
+      outline: 1px dashed white;
+    }
+  }
+
+  & > a {
+    height: 90px;
+  }
+
   #avatar {
     border-radius: 55% 45% 50% 55% / 60% 55% 50% 45%;
   }
 
+  div {
+    padding-top: 1em;
+  }
+
   h1,
   h2 {
-    margin-left: 16px;
+    padding-left: 16px;
   }
 
   h1 {
-    padding-top: 1em;
     font-size: 1em;
   }
 
@@ -59,9 +71,11 @@
     display: flex;
     justify-items: center;
     align-items: center;
-    padding: var(--padding);
     font-size: 1.6em;
     border-radius: 6px;
+    height: 48px;
+    width: 48px;
+    justify-content: center;
 
     * {
       filter: brightness(0) invert(1);
@@ -71,7 +85,8 @@
       margin-right: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       * {
         filter: saturate(100%);
       }

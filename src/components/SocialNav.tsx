@@ -24,12 +24,17 @@ const list = [
 ];
 
 const SocialNav = () => (
-  <nav id="social-nav" aria-label="Social Media">
+  <nav id="social-nav" aria-label="my social media links">
     {list.map(({ href, title, src }) => (
       <React.Fragment key={href}>
-        <a title={title} href={href} target="_blank" rel="noreferrer">
-          <img src={src} alt={title} height="30" />
-          <span className="screen-reader">{title}</span>
+        <a
+          aria-label={title}
+          title={title}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={src} aria-hidden alt="" height="48" />
         </a>{' '}
       </React.Fragment>
     ))}

@@ -16,19 +16,19 @@ const contact_links = [
 ];
 
 const Contact = () => (
-  <section className="container">
+  <nav className="container" aria-label="Contact info">
     <ul className="contact-list">
       {contact_links.map(({ href, text, pre_text, icon }) => (
         <li key={text}>
-          <i className={`fa fa-${icon}`} />
-          <span className="pretext">{pre_text}</span>
-          <a href={href} target="_blank" rel="noreferrer">
+          <span>{pre_text}</span>
+          <a href={href} target="_blank" rel="noreferrer" aria-label={text}>
+            <i className={`fa fa-${icon}`} aria-hidden />
             {text}
           </a>
         </li>
       ))}
     </ul>
-  </section>
+  </nav>
 );
 
 export default Contact;

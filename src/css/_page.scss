@@ -1,6 +1,6 @@
 .page {
   --newline: 1.4em;
-  padding: 0.6rem 1.2rem;
+  padding: 0 1.2rem;
 
   .markdown {
     p {
@@ -35,9 +35,22 @@
     position: relative;
     margin-bottom: calc(0.5 * var(--newline));
   }
+
+  a {
+    padding-bottom: 0.1em;
+    padding-right: 0.1em;
+    padding-left: 0.1em;
+
+    &:hover,
+    &:focus {
+      border-bottom: 0.2em solid var(--color-secondary);
+    }
+  }
 }
+
+$header-padding: 2.2rem;
 
 .header-title {
   text-align: center;
-  padding: 2.6em 0;
+  padding: calc(#{$header-padding} * #{$golden}) 0 $header-padding;
 }

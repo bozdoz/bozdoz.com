@@ -51,6 +51,10 @@ class MarkDown extends React.Component<Props, State> {
         a.target = '_blank';
         a.rel = 'noreferrer';
       }
+      // add text content to label
+      if (a.textContent) {
+        a.setAttribute('aria-label', a.textContent);
+      }
     });
 
     // style codeblocks;
@@ -74,6 +78,11 @@ class MarkDown extends React.Component<Props, State> {
       if (img.parentElement) {
         img.parentElement.className = 'image';
       }
+    });
+
+    // make font awesome hidden to screen readers
+    this.container.querySelectorAll('i.fa').forEach(elem => {
+      elem.setAttribute('aria-hidden', 'true');
     });
   }
 
