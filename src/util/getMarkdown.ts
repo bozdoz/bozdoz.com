@@ -1,7 +1,7 @@
 import { promisify } from 'util';
-import * as path from 'path';
+import path from 'path';
 import { readFile } from 'fs';
-import * as fm from 'front-matter';
+import fm from 'front-matter';
 
 const readFileAsync = promisify(readFile);
 

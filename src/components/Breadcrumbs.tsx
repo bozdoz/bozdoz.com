@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-type Breadcrumb = (string | undefined)[];
+export type Breadcrumb = (string | undefined)[];
 
 interface Props {
   list?: Breadcrumb[];

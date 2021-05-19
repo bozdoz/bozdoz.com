@@ -1,7 +1,7 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as nodeExternals from 'webpack-node-externals';
-import * as ExtractTextPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals';
+import ExtractTextPlugin from 'mini-css-extract-plugin';
 
 const { NODE_ENV } = process.env;
 

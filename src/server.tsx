@@ -1,6 +1,6 @@
-import * as path from 'path';
-import * as express from 'express';
-import * as React from 'react';
+import path from 'path';
+import express from 'express';
+import React from 'react';
 import {
   renderToString as render,
   renderToStaticMarkup

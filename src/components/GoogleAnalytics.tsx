@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import { GA_TRACKING_ID } from '../data/site_variables';

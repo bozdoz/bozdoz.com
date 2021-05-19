@@ -1,13 +1,14 @@
-import * as fs from 'fs';
-import * as fm from 'front-matter';
-import * as path from 'path';
-import * as React from 'react';
+import fs from 'fs';
+import fm from 'front-matter';
+import path from 'path';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { GA_TRACKING_ID } from '../data/site_variables';
 
 import App from './App';
 import Head from './Head';
+import { RouteProps } from './types';
 
 const env = process.env.NODE_ENV;
 
@@ -64,20 +65,14 @@ export const Is404 = () => (
   />
 );
 
-export const getPage = ({
-  location,
-  staticContext
-}: {
-  location: any;
-  staticContext: any;
-}) => {
+export const getPage = ({ location, staticContext }: RouteProps) => {
   let page;
   if (location.pathname === '/') {
     page = getMarkdown('index');
   } else {
     page = getMarkdown(location.pathname);
   }
-  staticContext.page = page;
+  staticContext!.page = page;
 
   return page;
 };
@@ -85,7 +80,7 @@ export const getPage = ({
 const ServerTemplate = () => (
   <html lang="en" dir="ltr">
     <Route
-      render={props => {
+      render={(props: RouteProps) => {
         // conditionally load initial HTML
         // and 404 pages
         const page = getPage(props);

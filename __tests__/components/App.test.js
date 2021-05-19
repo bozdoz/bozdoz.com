@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { mount as render } from 'enzyme';
 import { StaticRouter as Router, Route } from 'react-router-dom';
 

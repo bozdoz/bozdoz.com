@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { hydrate as render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
