@@ -1,3 +1,4 @@
+# TODO replace with node:14.16-alpine3.13
 FROM node:10.17.0-alpine3.10 as base
 WORKDIR /app
 ENV NODE_ENV production
@@ -27,7 +28,7 @@ COPY --from=build /app/public/js/main.js ./public/js/
 COPY --from=build /app/src/server.min.js ./server.min.js
 COPY /src/pages ./pages
 COPY ./bin/entrypoint.sh /usr/bin/
-# do not run as root; create /static for shared volume
+# do not run as root; create /public for shared volume
 RUN mkdir -p /public && \
   chown -R node:node /public && \
   chown -R node:node /app
