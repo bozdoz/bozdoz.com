@@ -11,14 +11,11 @@ interface State {
 }
 
 class LoadingPage extends React.Component<Props, State> {
-  loading_timeout: any;
+  loading_timeout: number;
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      loading: false
-    };
-  }
+  state: State = {
+    loading: false
+  };
 
   componentDidMount() {
     // set loading to true

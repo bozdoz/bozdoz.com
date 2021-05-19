@@ -3,34 +3,31 @@ import axios, { CancelTokenSource } from 'axios';
 
 import MarkDown from './MarkDown';
 import TagList from './TagList';
-import PageLayout from './layouts/PageLayout';
+import PageLayout, { PageLayoutProps } from './layouts/PageLayout';
 import LoadingPage from './pages/LoadingPage';
 import { cache, getPage } from './getPage';
-import { RouteComponentProps, StaticContext } from 'react-router';
+import { RouteProps } from './types';
 
-interface RouteContext extends StaticContext {
-  page: FrontMatterObject;
-}
-
-interface Props extends RouteComponentProps<{}, RouteContext> {
+export interface FrontMatterProps extends RouteProps {
+  title: string;
   page: FrontMatterObject;
   source?: string;
   className?: string;
-  title: string;
+  breadcrumbs?: PageLayoutProps['breadcrumbs'];
 }
 
 interface State {
   page: FrontMatterObject | null;
 }
 
-class FrontMatter extends React.Component<Props, State> {
+class FrontMatter extends React.Component<FrontMatterProps, State> {
   req: CancelTokenSource | undefined;
 
   get source() {
     return this.props.source || this.props.match.url;
   }
 
-  constructor(props: Props) {
+  constructor(props: FrontMatterProps) {
     super(props);
 
     let page = props.page || null;

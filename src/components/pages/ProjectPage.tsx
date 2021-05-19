@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import NotFoundPage from './NotFoundPage';
-import FrontMatter from '../FrontMatter';
+import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 
 /**
  * because project page is an ambiguous match, it requires
  * a lookup first to see if the markdown file can be found;
  * defaults to NotFoundPage
  */
-const ProjectPage = (props: any) => {
+const ProjectPage = (props: FrontMatterProps) => {
   // client-side render
   if (typeof window !== 'undefined' && window.__IS_404__) {
     // gets variable set in ServerTemplate.js

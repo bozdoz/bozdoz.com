@@ -4,8 +4,8 @@ declare global {
     __INITIAL_HTML__: FrontMatterObject;
     __IS_404__?: boolean;
     /** Google Analytics */
-    dataLayer?: any[];
-    gtag?(...args: any[]): void;
+    dataLayer?: unknown[];
+    gtag?(...args: unknown[]): void;
     Prism?: Prism;
   }
 }

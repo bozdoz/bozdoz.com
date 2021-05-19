@@ -1,18 +1,16 @@
 import React from 'react';
 
 import Title from '../Title';
-import Breadcrumbs from '../Breadcrumbs';
+import Breadcrumbs, { Breadcrumb } from '../Breadcrumbs';
 
-type breadcrumb = (string | undefined)[];
-
-interface Props extends FrontMatterAttributes {
+export interface PageLayoutProps extends FrontMatterAttributes {
   header?: string;
   className?: string;
   children?: React.ReactNodeArray;
-  breadcrumbs?: breadcrumb[];
+  breadcrumbs?: Breadcrumb[];
 }
 
-const PageLayout = (props: Props) => {
+const PageLayout = (props: PageLayoutProps) => {
   const { title, header, subtitle, children, image, className } = props;
 
   let classname = 'page';

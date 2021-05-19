@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FrontMatter from '../FrontMatter';
+import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 import Contact from '../Contact';
 
-const NotFoundPage = (props: any) => {
+const NotFoundPage = (props: FrontMatterProps) => {
   // passes 404 status to server in ServerTemplate.tsx
   if (props.staticContext) {
     props.staticContext.is404 = true;

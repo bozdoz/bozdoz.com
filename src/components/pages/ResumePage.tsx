@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import resume from '../../data/resume';
 
-import FrontMatter from '../FrontMatter';
+import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 
 interface HighlightProps {
   list: string[];
@@ -46,7 +46,7 @@ const ResumeSection = ({
   </div>
 );
 
-const ResumePage = (props: any) => (
+const ResumePage = (props: FrontMatterProps) => (
   <FrontMatter className="resume-page" source="resume" {...props}>
     <div id="resume" className="container-fluid">
       <section className="table-row">

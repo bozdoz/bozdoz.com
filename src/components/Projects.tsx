@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import FrontMatter from './FrontMatter';
+import FrontMatter, { FrontMatterProps } from './FrontMatter';
 
 // TODO: make dynamic with GraphQL (see GraphQL branch)
 export const list = [
@@ -30,7 +30,7 @@ export const list = [
   }
 ];
 
-const Projects = (props: any) => (
+const Projects = (props: FrontMatterProps) => (
   <FrontMatter {...props}>
     <div className="container">
       <ul className="project-list list-group">

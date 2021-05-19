@@ -3,12 +3,6 @@ import React from 'react';
 import { list as projectList } from './Projects';
 import getMarkdown from '../util/getMarkdown';
 
-interface Location {
-  loc: string;
-  priority: number;
-  md?: string;
-}
-
 // add xml to TSX
 declare global {
   namespace JSX {
@@ -21,6 +15,12 @@ declare global {
       lastmod: any;
     }
   }
+}
+
+interface Location {
+  loc: string;
+  priority: number;
+  md?: string;
 }
 
 const locations: Location[] = [

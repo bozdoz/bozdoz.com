@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Contact from '../Contact';
-import FrontMatter from '../FrontMatter';
+import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 
-const IndexPage = (props: any) => (
+const IndexPage = (props: FrontMatterProps) => (
   <FrontMatter source="index" {...props}>
     <Contact />
   </FrontMatter>
