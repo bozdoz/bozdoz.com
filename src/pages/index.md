@@ -2,10 +2,10 @@
 title: Full-Stack Software Engineer
 header: About Me
 published_date: '2017-11-20'
-modified_date: '2020-04-29'
+modified_date: '2022-11-20'
 ---
 
-I am in the **[<i class="fa fa-stack-overflow"></i> top 4% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
+I am in the **[<i class="fa fa-stack-overflow"></i> top 3% on StackOverflow](https://stackoverflow.com/users/488784/bozdoz)**, with most of that reputation coming from **JavaScript** questions and answers.
 
 I've recently been digging into **React**/**Redux** projects, built in **Typescript**, and served in **Docker** containers.
 

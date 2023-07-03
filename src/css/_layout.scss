@@ -3,35 +3,47 @@ body,
 #app {
   height: 100%;
 
-  // @include media(large) {
-  //   overflow: hidden;
-  // }
+  @include media(medium) {
+    overflow: hidden;
+  }
 }
 
 #app {
   display: grid;
   overflow-y: auto;
-  // @include media(large) {
-  //   grid-template-areas: 'header main';
-  //   grid-template-columns: 10em 1fr;
-  // }
+
+  @include media(medium) {
+    grid-template-areas: 'header main';
+    grid-template-columns: 12em 1fr;
+  }
 }
 
 #header {
-  // @include media(large) {
-  //   grid-area: header;
-  // }
+
 }
 
 #main {
   height: 100%;
-  // @include media(large) {
-  //   grid-area: main;
-  //   overflow-y: auto;
-  // }
+
+  @include media(medium) {
+    grid-area: main;
+    overflow-y: auto;
+  }
 
   article {
     padding-bottom: calc(100vh - 1em);
+    
+    @include media(medium) {
+      padding-top: 24vh;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      & > * {
+        grid-column: 3 / span 8;
+      }
+    }
   }
 
   img {

@@ -7,5 +7,4 @@ cd ..
 
 . ./.env
 
-docker-compose config > docker-stack.yml
-docker stack deploy -c docker-stack.yml bozdoz-${TAG:-staging}
+docker-compose up -d

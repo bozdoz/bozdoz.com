@@ -1,42 +1,46 @@
 $header-padding: 0.4rem;
 
 #header {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  justify-items: center;
+  display: grid;
+  grid-template-areas: 'img name'
+  'img socials'
+  'nav nav';
   background: var(--header-bg-color);
   padding: calc(#{$header-padding} * #{$golden}) 0 $header-padding;
+  
+  a:focus {
+    outline: 1px dashed white;
+  }
+
+  @include media(medium) {
+    grid-template-areas: 'img'
+    'name'
+    'nav'
+    'socials';
+  }
 }
 
-#brand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    color: white;
-
-    &:focus {
-      outline: 1px dashed white;
-    }
-  }
-
-  & > a {
-    height: 90px;
-  }
+#brand-img {
+  grid-area: img;
+  justify-self: end;
 
   #avatar {
     border-radius: 55% 45% 50% 55% / 60% 55% 50% 45%;
   }
 
-  div {
-    padding-top: 1em;
+  @include media(medium) {
+    justify-self: center;
   }
+}
+#brand-name {
+  grid-area: name;
+  margin-top: 8px;
+  margin-bottom: -3px;
 
   h1,
   h2 {
     padding-left: 16px;
+    color: white;
   }
 
   h1 {
@@ -48,15 +52,37 @@ $header-padding: 0.4rem;
     opacity: 0.5;
   }
 }
+#social-nav {
+  grid-area: socials;
+}
+#main-nav {
+  grid-area: nav;
+}
 
 #main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -$header-padding;
   a {
-    font-size: 1.3em;
-    padding: 0.4em 0.8em;
+    font-size: 1.08em;
+    padding: 0.6em 1.8em;
     border-radius: 6px;
+    color: white;
     &:hover {
       background: rgba(255, 255, 255, 0.04);
     }
+    &[aria-current=true] {
+      cursor: default;
+
+      &:hover {
+        background: inherit;
+      }
+    }
+  }
+
+  @include media(medium) {
+    flex-flow: column nowrap;
   }
 }
 

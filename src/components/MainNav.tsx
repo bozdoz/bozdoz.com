@@ -5,6 +5,14 @@ const list = [
   {
     href: '/projects',
     text: 'Projects'
+  },
+  {
+    href: '/',
+    text: 'About'
+  },
+  {
+    href: 'https://github.com/bozdoz',
+    text: 'Contact'
   }
 ];
 
@@ -12,9 +20,15 @@ const MainNav = () => (
   <nav id="main-nav" aria-label="Main">
     {list.map(({ href, text }) => (
       <React.Fragment key={href}>
-        <NavLink to={href} activeClassName="active">
-          <span className="nav-text">{text}</span>
-        </NavLink>
+        {href.startsWith('http') ? (
+          <a href={href} rel="noopener noreferer" target="_blank">
+            <span className="nav-text">{text}</span>
+          </a>
+        ) : (
+          <NavLink exact to={href} activeClassName="active">
+            <span className="nav-text">{text}</span>
+          </NavLink>
+        )}
       </React.Fragment>
     ))}
   </nav>
