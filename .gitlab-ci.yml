@@ -15,34 +15,6 @@ test:
     changes:
       - src/**/*
 
-docker:image:
-  stage: build
-  variables:
-    # When using dind service we need to instruct docker, to talk 
-    # with the daemon started inside of the service. The daemon is 
-    # available with a network connection instead of the default 
-    # /var/run/docker.sock socket.
-    DOCKER_HOST: tcp://docker:2375
-    DOCKER_DRIVER: overlay
-    # This will instruct Docker not to start over TLS.
-    DOCKER_TLS_CERTDIR: ""
-  image: docker:19.03.1
-  services:
-    - docker:19.03.1-dind
-  before_script:
-    - echo $CI_BUILD_TOKEN | docker login -u gitlab-ci-token $CI_REGISTRY --password-stdin
-  script:
-    - export TAG=$([[ $CI_COMMIT_REF_NAME = 'master' ]] && echo "latest" || echo $CI_COMMIT_REF_SLUG)
-    - docker pull $CI_REGISTRY_IMAGE:$TAG || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE:$TAG -t $CI_REGISTRY_IMAGE:$TAG .
-    - docker push $CI_REGISTRY_IMAGE:$TAG
-  only:
-    changes:
-      - src/**/*
-      - Dockerfile
-      - .gitlab-ci.yml
-      - .dockerignore
-
 .deploys:
   image: bozdoz/fabric-deployment
   stage: deploy

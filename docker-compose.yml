@@ -4,21 +4,11 @@ services:
   # NodeJS React server-side and static files
   web:
     build: .
-    image: registry.gitlab.com/bozdoz/bozdoz-com:${TAG:-latest}
     volumes:
       # share cache from nginx container
       - cache:/cache
       - public:/static
-    deploy:
-      replicas: 2
-      update_config:
-        parallelism: 1
-        delay: 10s
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 5
-        window: 10s
+    restart: on-failure:3
 
   # static files, ssl, and caching
   nginx:
@@ -31,12 +21,7 @@ services:
       - cache:/cache
       # share files from web
       - public:/static:ro
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 5
-        window: 10s
+    restart: on-failure:3
 
 volumes:
   logs:
