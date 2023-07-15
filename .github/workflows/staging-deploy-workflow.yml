@@ -1,10 +1,11 @@
-name: ProductionDeployWorkflow
+name: StagingDeployWorkflow
 
 on:
   push:
     branches:
       - master
     paths:
+      - ".github/**"
       - "src/**"
       - "Dockerfile"
       - "docker-compose.yml"
