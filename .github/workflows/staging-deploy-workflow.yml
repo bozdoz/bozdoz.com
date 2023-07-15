@@ -3,7 +3,7 @@ name: StagingDeployWorkflow
 on:
   push:
     branches:
-      - master
+      - staging
     paths:
       - ".github/**"
       - "src/**"
