@@ -9,10 +9,6 @@ const list = [
   {
     href: '/',
     text: 'About'
-  },
-  {
-    href: 'https://github.com/bozdoz',
-    text: 'Contact'
   }
 ];
 

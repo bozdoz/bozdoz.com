@@ -27,11 +27,11 @@ COPY --from=build /app/public/css/main.css ./public/css/
 COPY --from=build /app/public/js/main.js ./public/js/
 COPY --from=build /app/src/server.min.js ./server.min.js
 COPY /src/pages ./pages
-COPY ./bin/entrypoint.sh /usr/bin/
-# do not run as root; create /public for shared volume
-RUN mkdir -p /public && \
-  chown -R node:node /public && \
+# do not run as root; create /static for shared volume
+RUN mkdir -p /static && \
+  chown -R node:node /static && \
   chown -R node:node /app
+COPY ./bin/entrypoint.sh /usr/bin/
 USER node
 ENTRYPOINT [ "entrypoint.sh" ]
 CMD [ "node", "/app/server.min.js" ]

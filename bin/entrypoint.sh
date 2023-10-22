@@ -1,15 +1,9 @@
 #!/bin/sh
-set -e
+set -ex
 
 # update/copy files to static volume
-if [ -d /public ]; then
-  rsync -rt /app/public/ /public/ --delete
-  rm -rf /app/public
-fi
-
-# remove cache from nginx container/volume
-if [ -d /cache ]; then
-  rm -rf /cache/*
+if [ -d /static ]; then
+  rsync -rt /app/public/ /static/ --delete || echo "failed rsync"
 fi
 
 exec "$@"
