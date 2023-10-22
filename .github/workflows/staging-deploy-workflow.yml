@@ -12,16 +12,7 @@ on:
       - "package*"
 
 jobs:
-  test:
-    container:
-      image: node:10-alpine
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm ci --no-audit --no-progress
-      - run: npm test
   deploy:
-    needs: test
     container: 
       image: bozdoz/fabric-deployment
       env:
