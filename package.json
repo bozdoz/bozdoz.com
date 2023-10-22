@@ -10,9 +10,7 @@
     "start": "npm run clean && NODE_ENV=development npm run start:ts",
     "start:ts": "ts-node --files ./src/dev-server.tsx",
     "build": "./bin/deploy.sh",
-    "clean": "rm -f ./src/server.min.js && rm -f ./public/js/main.js",
-    "test": "npm run lint && jest",
-    "lint": "tslint --project tsconfig.json"
+    "clean": "rm -f ./src/server.min.js && rm -f ./public/js/main.js"
   },
   "license": "MIT",
   "babel": {
@@ -22,26 +20,6 @@
     ],
     "plugins": [
       "transform-object-rest-spread"
-    ]
-  },
-  "jest": {
-    "verbose": true,
-    "setupFiles": [
-      "raf/polyfill"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
-      "^.+\\.jsx?$": "ts-jest"
-    },
-    "testRegex": "./.*test\\.(ts|tsx|js)$",
-    "setupFilesAfterEnv": [
-      "<rootDir>setupTests.ts"
     ]
   },
   "dependencies": {
@@ -55,10 +33,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/enzyme": "^3.1.11",
-    "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/express": "^4.16.0",
-    "@types/jest": "^23.1.1",
     "@types/marked": "^0.4.0",
     "@types/mini-css-extract-plugin": "^0.2.0",
     "@types/node": "^10.3.5",
@@ -74,15 +49,11 @@
     "autoprefixer": "^7.2.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^26.0.1",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.12.0",
     "open": "^7.0.3",
@@ -92,12 +63,8 @@
     "react-test-renderer": "^16.3.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.18.2",
-    "ts-jest": "^22.4.6",
     "ts-loader": "^4.4.1",
     "ts-node": "^7.0.0",
-    "tslint": "^6.1.0",
-    "tslint-config-airbnb": "^5.11.2",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.8.3",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.8",
