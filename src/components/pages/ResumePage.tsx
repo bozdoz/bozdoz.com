@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import resume from '../data/resume';
+import resume from '../../data/resume';
 
-import FrontMatter from './FrontMatter';
+import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 
 interface HighlightProps {
   list: string[];
@@ -46,7 +46,7 @@ const ResumeSection = ({
   </div>
 );
 
-export default (props: any) => (
+const ResumePage = (props: FrontMatterProps) => (
   <FrontMatter className="resume-page" source="resume" {...props}>
     <div id="resume" className="container-fluid">
       <section className="table-row">
@@ -54,7 +54,7 @@ export default (props: any) => (
           <h3>EXPERIENCE</h3>
         </div>
         <div className="section-content">
-          {resume['EXPERIENCE'].map(exp => (
+          {resume.experience.map(exp => (
             <ResumeSection key={exp.header} {...exp} />
           ))}
         </div>
@@ -64,7 +64,7 @@ export default (props: any) => (
           <h3>SKILLS</h3>
         </div>
         <div className="section-content">
-          {resume['SKILLS'].map(skill => (
+          {resume.skills.map(skill => (
             <ResumeSection key={skill.header} {...skill} />
           ))}
         </div>
@@ -74,14 +74,14 @@ export default (props: any) => (
           <h3>PROJECTS</h3>
         </div>
         <div className="section-content">
-          {Object.keys(resume['PROJECTS']).map(key => (
+          {Object.keys(resume.projects).map(key => (
             <div key={key}>
               <h4>{key}</h4>
               <p>
-                {resume['PROJECTS'][key].description}{' '}
+                {resume.projects[key].description}{' '}
                 <Link
                   className="badge badge-info"
-                  to={resume['PROJECTS'][key].link}
+                  to={resume.projects[key].link}
                 >
                   View Project
                 </Link>
@@ -95,9 +95,11 @@ export default (props: any) => (
           <h3>EDUCATION</h3>
         </div>
         <div className="section-content">
-          <ResumeSection {...resume['EDUCATION']} />
+          <ResumeSection {...resume.education} />
         </div>
       </section>
     </div>
   </FrontMatter>
 );
+
+export default ResumePage;

@@ -1,18 +1,16 @@
-import * as path from 'path';
-import * as express from 'express';
-import * as React from 'react';
-import * as fs from 'fs';
-import * as fm from 'front-matter';
+import path from 'path';
+import express from 'express';
+import React from 'react';
 import {
   renderToString as render,
   renderToStaticMarkup
 } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 
+import getMarkdown from './util/getMarkdown';
 import ServerTemplate from './components/ServerTemplate';
 import Sitemap from './components/Sitemap';
 
-const PORT = 8005;
 const app = express();
 
 app.disable('x-powered-by');
@@ -20,7 +18,7 @@ app.disable('x-powered-by');
 app.use(express.static(path.join(__dirname, '../public')));
 
 // it removes trailing slash
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   const _path = req.path;
   if (_path.length > 1 && /\/$/.test(_path)) {
     const query = req.url.slice(_path.length);
@@ -30,48 +28,42 @@ app.use(function(req, res, next) {
   }
 });
 
-const getMarkdown = (page: string) => {
-  const filename = path.join(__dirname, 'pages', `${page}.md`);
-  const content = fs.readFileSync(filename, 'utf8');
-
-  return fm(content);
-};
-
 /**
  * app listen methods; required for executing AFTER
  * webpack script in dev-server.js
- *
- * @return null
  */
-function createApp() {
-  app.get('/pages/*', function(req, res) {
+function createApp(cb = () => {}) {
+  app.get('/pages/*', async (req, res) => {
     const page = req.params['0'];
     let status = 200;
-    let content;
+    let content: UnwrapPromise<ReturnType<typeof getMarkdown>>;
 
     try {
       if (req.xhr) {
-        content = getMarkdown(page);
+        content = await getMarkdown(page);
       }
     } catch (e) {
       // can't find a file; return 404
-      content = getMarkdown('404');
+      content = await getMarkdown('404');
       status = 404;
     }
 
-    res.status(status).send(content);
+    // TODO: content might not be defined
+    res.status(status).send(content!);
   });
 
-  app.get('/sitemap.xml', function(req, res) {
+  app.get('/sitemap.xml', async (req, res) => {
     let content = '<?xml version="1.0" encoding="UTF-8"?>';
-    content += renderToStaticMarkup(<Sitemap />);
+    // squirrelly way of rendering an async component
+    const sitemap = await Sitemap();
+    content += renderToStaticMarkup(sitemap);
     res
       .header('Content-Type', 'text/xml')
       .status(200)
       .send(content);
   });
 
-  app.get('*', function(req, res) {
+  app.get('*', (req, res) => {
     const context: {
       url?: string;
       is404?: boolean;
@@ -96,13 +88,15 @@ function createApp() {
     res.status(status).send(content);
   });
 
-  app.listen(PORT, function() {
-    console.log(`Live at http://localhost:${PORT}/`);
-  });
+  app.listen(process.env.PORT || 8005, cb);
 }
 
 if (process.env.NODE_ENV === 'production') {
   createApp();
 }
 
-export { app, createApp, getMarkdown };
+export {
+  app,
+  // export for dev-server
+  createApp
+};

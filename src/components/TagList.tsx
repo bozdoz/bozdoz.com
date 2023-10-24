@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 
 interface Props {
-	tags: string[]
+  tags: string[];
 }
 
 const TagList = ({ tags }: Props) => (

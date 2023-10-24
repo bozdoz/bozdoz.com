@@ -1,76 +1,33 @@
-import * as React from 'react';
-import * as axios from 'axios';
-import * as path from 'path';
+import React from 'react';
+import axios, { CancelTokenSource } from 'axios';
 
 import MarkDown from './MarkDown';
 import TagList from './TagList';
-import PageLayout from './PageLayout';
-import LoadingPage from './LoadingPage';
+import PageLayout, { PageLayoutProps } from './layouts/PageLayout';
+import LoadingPage from './pages/LoadingPage';
+import { cache, getPage } from './getPage';
+import { RouteProps } from './types';
 
-const cache = {};
-
-/**
- * Gets markdown formatted page content from server
- *
- * @param string page
- * @param object req 	created by axios.CancelToken.source()
- * @return Promise
- */
-const getPage = (page: string, req: any) => {
-  return new Promise(resolve => {
-    if (cache[page]) {
-      resolve(cache[page]);
-    } else {
-      (axios as any)
-        .get(path.join('/', 'pages', `${page}`), {
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          cancelToken: req.token
-        })
-        .then((request: any) => request.data)
-        .then((data: FrontMatterObject) => {
-          cache[page] = data;
-          resolve(data);
-        })
-        .catch((error: Error) => {
-          console.error(error);
-        });
-    }
-  });
-};
-
-interface FrontMatterAttributes {
-  link: string;
-  description: string;
-  show_description: boolean;
-  tags: string[];
-  subtitle: string;
-}
-
-interface FrontMatterObject {
-  body: string;
-  attributes: FrontMatterAttributes;
-}
-
-interface Props {
-  page: FrontMatterObject;
-  staticContext?: {
-    page: FrontMatterObject;
-  };
-  source: string;
-  className?: string;
+export interface FrontMatterProps extends RouteProps {
   title: string;
+  page: FrontMatterObject;
+  source?: string;
+  className?: string;
+  breadcrumbs?: PageLayoutProps['breadcrumbs'];
 }
 
 interface State {
-  page: FrontMatterObject;
+  page: FrontMatterObject | null;
 }
 
-class FrontMatter extends React.Component<Props, State> {
-  req: any;
+class FrontMatter extends React.Component<FrontMatterProps, State> {
+  req: CancelTokenSource | undefined;
 
-  constructor(props: Props) {
+  get source() {
+    return this.props.source || this.props.match.url;
+  }
+
+  constructor(props: FrontMatterProps) {
     super(props);
 
     let page = props.page || null;
@@ -78,36 +35,36 @@ class FrontMatter extends React.Component<Props, State> {
     if (props.staticContext) {
       // server-side rendering already has it
       page = props.staticContext.page;
-    } else if (
-      typeof window !== 'undefined' &&
-      (window as any).__INITIAL_HTML__
-    ) {
+    } else if (typeof window !== 'undefined' && window.__INITIAL_HTML__) {
       // client-side initial render
       // gets variable set in ServerTemplate.js
-      page = (window as any).__INITIAL_HTML__;
+      page = window.__INITIAL_HTML__;
 
       // destroy variable and script
-      delete (window as any).__INITIAL_HTML__;
-      let script = document.getElementById('initial-state');
-      script!.parentNode!.removeChild(script as HTMLElement);
+      delete window.__INITIAL_HTML__;
+      const script = document.getElementById('initial-state');
+
+      if (script && script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
 
       // cache page
-      cache[props.source] = page;
+      cache[this.source] = page;
     }
 
     this.state = { page };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // no page
     if (!this.state.page) {
       // get the page from the source!
       // and a cancel token from axios
-      this.req = (axios as any).CancelToken.source();
+      this.req = axios.CancelToken.source();
 
-      getPage(this.props.source, this.req).then((page: FrontMatterObject) =>
-        this.setState({ page })
-      );
+      const page = await getPage(this.source, this.req);
+
+      this.setState({ page });
     }
   }
 
@@ -131,20 +88,20 @@ class FrontMatter extends React.Component<Props, State> {
 
     const { link, description, show_description, tags } = attributes;
 
-    let { subtitle } = attributes;
+    let subtitle = attributes.subtitle;
 
     if (link && subtitle) {
       subtitle = (
         <a target="_blank" href={link} rel="noreferrer">
           {subtitle}
         </a>
-      ) as any;
+      );
     }
 
     return (
       <PageLayout {...attributes} subtitle={subtitle} {...this.props}>
         {description &&
-          show_description !== false && (
+          show_description && (
             <div className="page-description">
               <p>{description}</p>
             </div>

@@ -1,16 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 
 import { SITE, GFONT_FAMILY } from '../data/site_variables';
 
 const env = process.env.NODE_ENV;
-interface Props {
-  title: string;
-  description: string;
-  image: string;
-  children: JSX.Element[];
+interface Props extends FrontMatterAttributes {
+  children: React.ReactNode;
 }
 
-const defaultDescription = 'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.';
+const defaultDescription =
+  'Full-Stack Software Engineer from Halifax, Nova Scotia, specializing in JavaScript and interactive mapping applications.';
 
 const Head = (props: Props) => {
   const {
@@ -47,21 +45,16 @@ const Head = (props: Props) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:creator" content="@bozdoz" />
-      <meta name="twitter:image" content={SITE + image} />
+      <meta name="twitter:image" content={`${SITE}${image}`} />
 
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={SITE} />
-      <meta property="og:image" content={SITE + image} />
+      <meta property="og:image" content={`${SITE}${image}`} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={title} />
       <meta property="og:locale" content="en_CA" />
 
-      <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        crossOrigin="anonymous"
-      />
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -73,9 +66,7 @@ const Head = (props: Props) => {
         crossOrigin="anonymous"
       />
 
-      {env === 'production' &&
-        <link rel="stylesheet" href="/css/main.css" />
-      }
+      {env === 'production' && <link rel="stylesheet" href="/css/main.css" />}
 
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       {props.children}

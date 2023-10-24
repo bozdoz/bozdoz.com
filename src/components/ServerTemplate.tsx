@@ -1,13 +1,14 @@
-import * as fs from 'fs';
-import * as fm from 'front-matter';
-import * as path from 'path';
-import * as React from 'react';
+import fs from 'fs';
+import fm from 'front-matter';
+import path from 'path';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 import { GA_TRACKING_ID } from '../data/site_variables';
 
 import App from './App';
 import Head from './Head';
+import { RouteProps } from './types';
 
 const env = process.env.NODE_ENV;
 
@@ -24,16 +25,14 @@ export { pagedir };
 
 /**
  * gets frontmatter/markdown from given page
- *
- * @param Object source
- * @return Object|Null
  */
-const getMarkdown = (_source: string): any => {
-  let source = _source;
+const getMarkdown = (_source: string): FrontMatterObject => {
+  const source = _source;
 
   try {
-    let content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
-    return fm(content);
+    const content = fs.readFileSync(path.join(pagedir, `${source}.md`), 'utf8');
+
+    return fm<FrontMatterAttributes>(content);
   } catch (e) {
     // can't find a file; return 404
     return getMarkdown('404');
@@ -66,35 +65,27 @@ export const Is404 = () => (
   />
 );
 
-export const getPage = ({
-  location,
-  staticContext
-}: {
-  location: any;
-  staticContext: any;
-}) => {
+export const getPage = ({ location, staticContext }: RouteProps) => {
   let page;
   if (location.pathname === '/') {
     page = getMarkdown('index');
   } else {
     page = getMarkdown(location.pathname);
   }
-  staticContext.page = page;
+  staticContext!.page = page;
 
-  if (!page.attributes) {
-    page.attributes = {};
-  }
   return page;
 };
 
 const ServerTemplate = () => (
   <html lang="en" dir="ltr">
     <Route
-      render={props => {
+      render={(props: RouteProps) => {
+        // conditionally load initial HTML
+        // and 404 pages
         const page = getPage(props);
         const atts = page.attributes;
-        // conditionally load intial HTML
-        // and 404 pages
+
         return (
           <Head {...atts}>
             {page.body && <Route render={() => <InitialHTML page={page} />} />}
@@ -104,15 +95,16 @@ const ServerTemplate = () => (
       }}
     />
     <body>
-      <div id="page">
+      <div id="app">
         <App />
       </div>
-      {env === 'production' && (
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-      )}
+      {env === 'production' &&
+        GA_TRACKING_ID && (
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+        )}
       <script src="/js/main.js" />
       <script src="/js/prism.js" defer />
     </body>

@@ -1,6 +1,7 @@
-import * as webpack from 'webpack';
-import * as webpackDevMiddleware from 'webpack-dev-middleware';
-import * as webpackHotMiddleware from 'webpack-hot-middleware';
+import open from 'open';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import { client } from '../webpack.config.babel';
 
@@ -23,4 +24,9 @@ app.use(
 
 app.use(webpackHotMiddleware(bundler));
 
-createApp();
+createApp(() => {
+  const PORT = process.env.PORT || 8005;
+  // tslint:disable-next-line:no-console
+  console.log(`live at: http://localhost:${PORT}`);
+  open(`http://localhost:${PORT}`);
+});

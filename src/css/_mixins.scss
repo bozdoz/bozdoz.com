@@ -1,0 +1,22 @@
+$md: 55em;
+$lg: 72em;
+
+@mixin media($res) {
+  @if medium == $res {
+    @media only screen and (min-width: $md) {
+      @content;
+    }
+  }
+
+  @if large == $res {
+    @media only screen and (min-width: $lg) {
+      @content;
+    }
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-gap: 1em;
+  align-items: center;
+}

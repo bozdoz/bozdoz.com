@@ -1,0 +1,52 @@
+html,
+body,
+#app {
+  height: 100%;
+
+  @include media(medium) {
+    overflow: hidden;
+  }
+}
+
+#app {
+  display: grid;
+  overflow-y: auto;
+
+  @include media(medium) {
+    grid-template-areas: 'header main';
+    grid-template-columns: 12em 1fr;
+  }
+}
+
+#header {
+
+}
+
+#main {
+  height: 100%;
+
+  @include media(medium) {
+    grid-area: main;
+    overflow-y: auto;
+  }
+
+  article {
+    padding-bottom: calc(100vh - 1em);
+    
+    @include media(medium) {
+      padding-top: 24vh;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      & > * {
+        grid-column: 3 / span 8;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

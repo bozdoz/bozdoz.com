@@ -1,16 +1,15 @@
-import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Layout from './Layout';
-import IndexPage from './IndexPage';
+import Layout from './layouts/Layout';
+import IndexPage from './pages/IndexPage';
 import Projects from './Projects';
-import ProjectPage from './ProjectPage';
-import ResumePage from './ResumePage';
-import AboutPage from './AboutPage';
-import PlainPage from './PlainPage';
-import NotFoundPage from './NotFoundPage';
+import ProjectPage from './pages/ProjectPage';
+import ResumePage from './pages/ResumePage';
+import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './ScrollToTop';
 import GoogleAnalytics from './GoogleAnalytics';
+import FrontMatter from './FrontMatter';
 
 const App = () => (
   <Layout>
@@ -19,8 +18,9 @@ const App = () => (
       <Route exact path="/projects" component={Projects} />
       <Route exact path="/projects/:id" component={ProjectPage} />
       <Route exact path="/resume" component={ResumePage} />
-      <Route exact path="/about" component={AboutPage} />
-      <Route exact path="/privacy" component={PlainPage} />
+      <Route exact path="/privacy" component={FrontMatter} />
+      {/* @since 2020-04-29 */}
+      <Redirect from="/about" to="/" />
       <Route component={NotFoundPage} />
     </Switch>
     <ScrollToTop />

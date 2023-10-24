@@ -1,0 +1,50 @@
+/* reset */
+* {
+  vertical-align: baseline;
+  border: none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+/* legibility */
+body,
+button,
+input,
+textarea {
+  background-color: white;
+  color: #43454b;
+  line-height: 1.618;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: -0.002em;
+  word-spacing: 0.01em;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}

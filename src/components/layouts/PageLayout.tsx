@@ -1,19 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 
-import Title from './Title';
-import Breadcrumbs from './Breadcrumbs';
+import Title from '../Title';
+import Breadcrumbs, { Breadcrumb } from '../Breadcrumbs';
 
-interface Props {
-  title: string;
+export interface PageLayoutProps extends FrontMatterAttributes {
   header?: string;
-  subtitle?: string | JSX.Element;
-  image?: string;
   className?: string;
   children?: React.ReactNodeArray;
-  breadcrumbs?: string[];
+  breadcrumbs?: Breadcrumb[];
 }
 
-const PageLayout = (props: Props) => {
+const PageLayout = (props: PageLayoutProps) => {
   const { title, header, subtitle, children, image, className } = props;
 
   let classname = 'page';
@@ -25,8 +22,9 @@ const PageLayout = (props: Props) => {
 
   if (breadcrumbs) {
     // add non-linking title
-    breadcrumbs = [...breadcrumbs, title];
+    breadcrumbs = [...breadcrumbs, [title]];
   }
+
   return (
     <article className={classname}>
       <header>

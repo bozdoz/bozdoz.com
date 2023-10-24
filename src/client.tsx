@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { hydrate as render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -12,28 +12,28 @@ const Client = () => (
   </Router>
 );
 
-render(<Client />, document.getElementById('page'));
+render(<Client />, document.getElementById('app'));
 
 // google analytics
-(win => {
-  win.dataLayer = win.dataLayer || [];
-  win.gtag = function gtag() {
-    win.dataLayer.push(arguments);
+if (GA_TRACKING_ID) {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer!.push(arguments);
   };
 
-  win.gtag('js', new Date());
-  win.gtag('config', GA_TRACKING_ID);
+  window.gtag('js', new Date());
+  window.gtag('config', GA_TRACKING_ID);
 
-  win.addEventListener('hashchange', function() {
-    var hash = win.location.hash;
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
     if (hash && hash !== '#') {
-      win.gtag({
-        event: 'hashchange',
-        hash: hash
+      window.gtag!({
+        hash,
+        event: 'hashchange'
       });
     }
   });
-})(window as any);
+}
 
 // hot reloading
 if (module.hot && process.env.NODE_ENV !== 'production') {

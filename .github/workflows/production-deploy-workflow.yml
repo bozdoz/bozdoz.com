@@ -1,0 +1,32 @@
+name: ProductionDeployWorkflow
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/**"
+      - "src/**"
+      - "Dockerfile"
+      - "docker-compose.yml"
+      - "package*"
+
+jobs:
+  deploy:
+    container: 
+      image: bozdoz/fabric-deployment
+      env:
+        CWD: ~/bozdoz.com/v2
+        HOST: ${{ secrets.HOST }}
+        PORT: ${{ secrets.PORT }}
+        USER: ${{ secrets.USER }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: fab gitpull npmbuild
+      - run: apk add curl
+      - run: |
+          curl "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE }}/purge_cache" \
+          -H "Authorization: Bearer ${{ secrets.CF_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d "{\"purge_everything\": true}"
