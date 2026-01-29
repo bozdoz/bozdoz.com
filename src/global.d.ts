@@ -3,13 +3,15 @@
  */
 interface FrontMatterAttributes {
   title: string;
+  header?: string;
+  description?: string;
+  show_description?: boolean;
+  // 404?
+  status?: number;
   subtitle?: React.ReactChild;
-  description: string;
-  show_description: boolean;
   link?: string;
   tags?: string[];
   image?: string;
-  status: number;
   /** YMD */
   published_date?: string;
   /** YMD */

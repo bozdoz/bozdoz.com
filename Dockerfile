@@ -1,37 +1,53 @@
-# TODO replace with node:14.16-alpine3.13
-FROM node:10.17.0-alpine3.10 as base
+# use the official Bun image
+# see all versions at https://hub.docker.com/r/oven/bun/tags
+FROM oven/bun:1-slim AS base
+
 WORKDIR /app
-ENV NODE_ENV production
-COPY package*.json ./
 
-# build stage
-FROM base as build
-# empty NODE_ENV to install dev dependencies
-RUN NODE_ENV='' npm ci &> /dev/null 
-COPY tsconfig.json \
-  webpack.config.babel.js \
-  postcss.config.js \
-  ./
+RUN apt-get update && \
+  # Install TINI
+  apt-get install -y --no-install-recommends tini && \
+  rm -rf /var/lib/apt/lists/* && \
+  cp /usr/bin/tini /tini && \
+  chmod +x /tini && \
+  # Copy glibc files to a separate layer
+  # discovered by `ldd app` after app is built by bun build --compile
+  mkdir -p /glibc && \
+  cp -v /lib/ld-linux-aarch64.so.1 /glibc/ && \
+  cp -v /lib/aarch64-linux-gnu/libc.so.6 /glibc/ && \
+  cp -v /lib/aarch64-linux-gnu/libm.so.6 /glibc/ && \
+  cp -v /lib/aarch64-linux-gnu/libdl.so.2 /glibc/ && \
+  cp -v /lib/aarch64-linux-gnu/libpthread.so.0 /glibc/
+
+COPY package.json bun.lock /app/
+
+ENV NODE_ENV=production
+
+RUN bun install --production --frozen-lockfile
+
 COPY src src
-# production build with webpack
-RUN npx webpack -p
 
-# final build
-FROM base as prod
-# install rsync for entrypoint
-RUN apk add --no-cache rsync=3.1.3-r1
-# re-install production-only node packages
-RUN npm ci &> /dev/null
-COPY public public
-COPY --from=build /app/public/css/main.css ./public/css/
-COPY --from=build /app/public/js/main.js ./public/js/
-COPY --from=build /app/src/server.min.js ./server.min.js
-COPY /src/pages ./pages
-# do not run as root; create /static for shared volume
-RUN mkdir -p /static && \
-  chown -R node:node /static && \
-  chown -R node:node /app
-COPY ./bin/entrypoint.sh /usr/bin/
-USER node
-ENTRYPOINT [ "entrypoint.sh" ]
-CMD [ "node", "/app/server.min.js" ]
+# I think this can be parallel "&"
+RUN bun run build:client & \
+  bun run build:copy & \
+  bun run bundle
+
+# --- Final scratch image ---
+FROM scratch
+
+# Copy Bun binary
+COPY --from=base /app/dist /dist
+# Copy public files
+COPY public /public
+# Copy glibc files
+COPY --from=base /glibc /lib
+# Copy TINI
+COPY --from=base /tini /tini
+
+# Set loader environment
+ENV LD_LIBRARY_PATH=/lib
+
+# TINI handles SIGINT
+ENTRYPOINT ["/tini", "--"]
+
+CMD ["/dist/app"]

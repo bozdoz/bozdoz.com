@@ -1,10 +1,23 @@
-body,
-p {
-  font-family: $para-font;
+$para_font: 'Poppins';
+
+$header_font: 'Stack Sans Headline';
+
+body {
+  font-family: $para_font, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
   font-weight: 400;
-  strong {
-    font-weight: 500;
-  }
+  line-height: 1.618;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.002em;
+  word-spacing: 0.01em;
+  color: hsl(225, 6%, 28%);
+}
+
+strong {
+  font-weight: 700;
 }
 
 .h1,
@@ -20,6 +33,7 @@ h4,
 h5,
 h6 {
   line-height: 1.4;
-  font-family: $header_font;
+  font-family: $header_font, sans-serif;
   font-weight: 700;
+  color: hsl(240, 8%, 18%);
 }

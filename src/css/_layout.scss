@@ -1,9 +1,11 @@
+@use './mixins';
+
 html,
 body,
 #app {
   height: 100%;
 
-  @include media(medium) {
+  @include mixins.media(large) {
     overflow: hidden;
   }
 }
@@ -12,20 +14,16 @@ body,
   display: grid;
   overflow-y: auto;
 
-  @include media(medium) {
+  @include mixins.media(large) {
     grid-template-areas: 'header main';
     grid-template-columns: 12em 1fr;
   }
 }
 
-#header {
-
-}
-
 #main {
   height: 100%;
 
-  @include media(medium) {
+  @include mixins.media(large) {
     grid-area: main;
     overflow-y: auto;
   }
@@ -33,16 +31,14 @@ body,
   article {
     padding-bottom: calc(100vh - 1em);
     
-    @include media(medium) {
-      padding-top: 24vh;
+    @include mixins.media(large) {
+      padding-top: 21.6vh;
     }
-
-    section {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      & > * {
-        grid-column: 3 / span 8;
-      }
+    
+    section, nav {
+      width: 99%;
+      max-width: 500px;
+      margin: 0 auto;
     }
   }
 

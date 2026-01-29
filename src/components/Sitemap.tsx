@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { list as projectList } from './Projects';
-import getMarkdown from '../util/getMarkdown';
+import getMarkdown from '../data-utils/getMarkdown';
 
 // add xml to TSX
 declare global {
@@ -27,16 +27,16 @@ const locations: Location[] = [
   {
     loc: '/',
     priority: 1,
-    md: 'index'
+    md: 'index',
   },
   {
     loc: '/projects',
-    priority: 0.8
+    priority: 0.8,
   },
   ...projectList.map(({ id }) => ({
     loc: `/projects/${id}`,
-    priority: 0.8
-  }))
+    priority: 0.8,
+  })),
 ];
 
 const Sitemap = async () => {
@@ -63,13 +63,13 @@ const getModifiedDates = async () => {
     locations.map(async ({ loc, md }) => {
       // read static modified date from front matter
       const {
-        attributes: { modified_date }
+        attributes: { modified_date },
       } = await getMarkdown(md || loc);
 
       if (modified_date) {
         datesForMarkdown[loc] = modified_date;
       }
-    })
+    }),
   );
 
   return datesForMarkdown;

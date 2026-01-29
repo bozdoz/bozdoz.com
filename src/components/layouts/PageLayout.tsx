@@ -6,7 +6,7 @@ import Breadcrumbs, { Breadcrumb } from '../Breadcrumbs';
 export interface PageLayoutProps extends FrontMatterAttributes {
   header?: string;
   className?: string;
-  children?: React.ReactNodeArray;
+  children?: React.ReactNode;
   breadcrumbs?: Breadcrumb[];
 }
 
@@ -32,7 +32,7 @@ const PageLayout = (props: PageLayoutProps) => {
           <div
             className="header-image"
             style={{
-              backgroundImage: `url(${image})`
+              backgroundImage: `url(${image})`,
             }}
           />
         )}

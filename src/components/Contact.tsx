@@ -5,14 +5,14 @@ const contact_links = [
     href: 'mailto:ben@bozdoz.com?subject=Your%20Site',
     text: 'ben@bozdoz.com',
     pre_text: ' Email: ',
-    icon: 'envelope'
+    icon: 'envelope',
   },
   {
     href: 'https://www.linkedin.com/in/benjaminjdelong/',
     text: 'Benjamin DeLong',
     pre_text: ' LinkedIn: ',
-    icon: 'linkedin'
-  }
+    icon: 'linkedin',
+  },
 ];
 
 const Contact = () => (

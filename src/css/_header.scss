@@ -1,18 +1,31 @@
+@use './variables';
+@use './mixins';
+
 $header-padding: 0.4rem;
 
 #header {
+  position: sticky;
+  container-type: inline-size;
+  top: -22cqh;
   display: grid;
   grid-template-areas: 'img name'
   'img socials'
   'nav nav';
   background: var(--header-bg-color);
-  padding: calc(#{$header-padding} * #{$golden}) 0 $header-padding;
+  background: linear-gradient(to top right, rgb(7, 143, 255), rgb(115, 0, 255));
+  padding: calc(#{$header-padding} * #{variables.$golden}) 0 $header-padding;
+ 
+  /* Styles to apply when sticky parent is “stuck” */
+  @container scroll-state(stuck: top) {
+      background: lightgreen;
+      box-shadow: 0 4px 8px -2px rgb(0 0 0 / 0.5);
+  }
   
   a:focus {
     outline: 1px dashed white;
   }
 
-  @include media(medium) {
+  @include mixins.media(large) {
     grid-template-areas: 'img'
     'name'
     'nav'
@@ -28,7 +41,7 @@ $header-padding: 0.4rem;
     border-radius: 55% 45% 50% 55% / 60% 55% 50% 45%;
   }
 
-  @include media(medium) {
+  @include mixins.media(large) {
     justify-self: center;
   }
 }
@@ -81,7 +94,7 @@ $header-padding: 0.4rem;
     }
   }
 
-  @include media(medium) {
+  @include mixins.media(large) {
     flex-flow: column nowrap;
   }
 }

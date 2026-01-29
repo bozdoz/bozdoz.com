@@ -1,41 +1,27 @@
-import React from 'react';
-import { hydrate as render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { hydrateRoot } from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import InitialHTMLContext from './components/InitialHTMLContext';
 
-import App from './components/App';
-import './css/style.scss';
-import { GA_TRACKING_ID } from './data/site_variables';
+// grab initial html from script and delete
+const initialHTML = window.__INITIAL_HTML__;
+// document.querySelector('#initial-state')?.remove();
 
-const Client = () => (
-  <Router>
-    <App />
-  </Router>
+hydrateRoot(
+  document,
+  <InitialHTMLContext value={initialHTML}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </InitialHTMLContext>,
 );
 
-render(<Client />, document.getElementById('app'));
+console.log('NODE_ENV', process.env.NODE_ENV);
 
-// google analytics
-if (GA_TRACKING_ID) {
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag() {
-    window.dataLayer!.push(arguments);
-  };
+if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
+  const socket = new WebSocket(`ws://${window.location.host}/socket`);
 
-  window.gtag('js', new Date());
-  window.gtag('config', GA_TRACKING_ID);
-
-  window.addEventListener('hashchange', () => {
-    const hash = window.location.hash;
-    if (hash && hash !== '#') {
-      window.gtag!({
-        hash,
-        event: 'hashchange'
-      });
-    }
+  socket.addEventListener('message', () => {
+    window.location.reload();
   });
-}
-
-// hot reloading
-if (module.hot && process.env.NODE_ENV !== 'production') {
-  module.hot.accept();
 }

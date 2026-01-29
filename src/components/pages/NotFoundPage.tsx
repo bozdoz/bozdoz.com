@@ -1,18 +1,11 @@
-import React from 'react';
-
-import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 import Contact from '../Contact';
+import AsyncPage from '../AsyncPage';
 
-const NotFoundPage = (props: FrontMatterProps) => {
-  // passes 404 status to server in ServerTemplate.tsx
-  if (props.staticContext) {
-    props.staticContext.is404 = true;
-  }
-
+const NotFoundPage = () => {
   return (
-    <FrontMatter source="404" {...props}>
+    <AsyncPage source="404">
       <Contact />
-    </FrontMatter>
+    </AsyncPage>
   );
 };
 

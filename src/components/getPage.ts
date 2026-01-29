@@ -1,5 +1,4 @@
 import path from 'path';
-import axios from 'axios';
 
 export const cache: Record<string, FrontMatterObject> = {};
 
@@ -8,29 +7,37 @@ export const cache: Record<string, FrontMatterObject> = {};
  */
 export const getPage = async (
   page: string,
-  { token }: ReturnType<typeof axios['CancelToken']['source']>
+  signal: AbortSignal,
 ): Promise<FrontMatterObject | null> => {
   if (cache[page]) {
     return cache[page];
   }
 
+  // client rendering
+  const pathname = path.join('/', 'pages', `${page}`)
+  const url = globalThis.HOST ? `${HOST}${pathname}` : pathname;
+
+  console.log('getPage', { url })
+
   try {
-    const { data } = await axios.get<FrontMatterObject>(
-      path.join('/', 'pages', `${page}`),
+    const req = await fetch(
+      url,
       {
         headers: {
           'X-Requested-With': 'XMLHttpRequest'
         },
-        cancelToken: token
+        signal
       }
     );
+
+    const data = await req.json();
 
     cache[page] = data;
 
     return data;
   } catch (e) {
     // tslint:disable-next-line:no-console
-    console.error(e);
+    // console.error(e);
 
     return null;
   }

@@ -1,5 +1,5 @@
-$md: 55em;
-$lg: 72em;
+$md: 38em;
+$lg: 55em;
 
 @mixin media($res) {
   @if medium == $res {

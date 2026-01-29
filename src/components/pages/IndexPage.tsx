@@ -1,12 +1,11 @@
-import React from 'react';
-
+import AsyncPage from '../AsyncPage';
 import Contact from '../Contact';
-import FrontMatter, { FrontMatterProps } from '../FrontMatter';
 
-const IndexPage = (props: FrontMatterProps) => (
-  <FrontMatter source="index" {...props}>
+// TODO: AsyncPage source="index"
+const IndexPage = () => (
+  <AsyncPage source="index">
     <Contact />
-  </FrontMatter>
+  </AsyncPage>
 );
 
 export default IndexPage;

@@ -1,4 +1,4 @@
-import { RouteComponentProps, StaticContext } from 'react-router';
+import { RouteComponentProps, StaticContext } from 'react-router-dom';
 
 interface RouteContext extends StaticContext {
   page: FrontMatterObject;

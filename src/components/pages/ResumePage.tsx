@@ -1,9 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import resume from '../../data/resume';
 
-import FrontMatter, { FrontMatterProps } from '../FrontMatter';
+import AsyncPage from '../AsyncPage';
 
 interface HighlightProps {
   list: string[];
@@ -30,7 +29,7 @@ const ResumeSection = ({
   header,
   subheader,
   date,
-  bullets
+  bullets,
 }: ResumeSectionProps) => (
   <div>
     {header && <h4>{header}</h4>}
@@ -46,15 +45,15 @@ const ResumeSection = ({
   </div>
 );
 
-const ResumePage = (props: FrontMatterProps) => (
-  <FrontMatter className="resume-page" source="resume" {...props}>
+const ResumePage = () => (
+  <AsyncPage className="resume-page" source="resume">
     <div id="resume" className="container-fluid">
       <section className="table-row">
         <div className="section-title text-success">
           <h3>EXPERIENCE</h3>
         </div>
         <div className="section-content">
-          {resume.experience.map(exp => (
+          {resume.experience.map((exp) => (
             <ResumeSection key={exp.header} {...exp} />
           ))}
         </div>
@@ -64,7 +63,7 @@ const ResumePage = (props: FrontMatterProps) => (
           <h3>SKILLS</h3>
         </div>
         <div className="section-content">
-          {resume.skills.map(skill => (
+          {resume.skills.map((skill) => (
             <ResumeSection key={skill.header} {...skill} />
           ))}
         </div>
@@ -74,14 +73,14 @@ const ResumePage = (props: FrontMatterProps) => (
           <h3>PROJECTS</h3>
         </div>
         <div className="section-content">
-          {Object.keys(resume.projects).map(key => (
+          {Object.keys(resume.projects).map((key) => (
             <div key={key}>
               <h4>{key}</h4>
               <p>
-                {resume.projects[key].description}{' '}
+                {resume.projects[key]?.description}{' '}
                 <Link
                   className="badge badge-info"
-                  to={resume.projects[key].link}
+                  to={resume.projects[key]?.link || ''}
                 >
                   View Project
                 </Link>
@@ -99,7 +98,7 @@ const ResumePage = (props: FrontMatterProps) => (
         </div>
       </section>
     </div>
-  </FrontMatter>
+  </AsyncPage>
 );
 
 export default ResumePage;

@@ -1,50 +1,35 @@
-import React from 'react';
-import { Redirect } from 'react-router';
-import marked from 'marked';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
+  /** already parsed markdown */
   content: string;
-}
-
-interface State {
-  redirect?: string;
 }
 
 /**
  * It manipulates the HTML elements generated from markdown
  */
-class MarkDown extends React.Component<Props, State> {
-  container: HTMLElement | null;
-  constructor(props: Props) {
-    super(props);
-    this.state = {};
-  }
+const MarkDown = (props: Props) => {
+  const ref = useRef<HTMLElement>(null);
+  const [redirect, setRedirect] = useState('');
 
-  handleOnClick(href: string) {
-    this.setState({
-      redirect: href
-    });
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const host = new RegExp(`^https?://${window.location.host}`);
+    const container = ref.current;
 
-    /*
-		jest renderer doesn't create
-	 	this.container (apparently)
-	 	*/
-    if (!this.container) {
+    const handleOnClick = (val: string) => setRedirect(val);
+
+    if (!container) {
       return;
     }
 
     // change links to use react router
     // or open new tabs
-    this.container.querySelectorAll('a').forEach(a => {
+    container.querySelectorAll('a').forEach((a) => {
       if (a.href.match(host)) {
         // add redirect handler to local links
-        a.addEventListener('click', e => {
+        a.addEventListener('click', (e) => {
           e.preventDefault();
-          this.handleOnClick((e.target as typeof a).getAttribute('href')!);
+          handleOnClick((e.target as typeof a).getAttribute('href')!);
         });
       } else {
         // otherwise push to a new tab
@@ -63,7 +48,7 @@ class MarkDown extends React.Component<Props, State> {
     }
 
     // add links to headers
-    this.container.querySelectorAll('h1, h2, h3, h4, h5').forEach(header => {
+    container.querySelectorAll('h1, h2, h3, h4, h5').forEach((header) => {
       const anchor = document.createElement('a');
       anchor.className = `header-link`;
       anchor.href = `#${header.id}`;
@@ -71,7 +56,7 @@ class MarkDown extends React.Component<Props, State> {
       header.insertBefore(anchor, header.firstChild);
     });
 
-    this.container.querySelectorAll('img').forEach(img => {
+    container.querySelectorAll('img').forEach((img) => {
       // copy img alt text to title
       img.title = img.alt;
       // add a class to paragraphs with images for sizing
@@ -81,28 +66,20 @@ class MarkDown extends React.Component<Props, State> {
     });
 
     // make font awesome hidden to screen readers
-    this.container.querySelectorAll('i.fa').forEach(elem => {
+    container.querySelectorAll('i.fa').forEach((elem) => {
       elem.setAttribute('aria-hidden', 'true');
     });
-  }
+  }, []);
 
-  render() {
-    if (this.state.redirect) {
-      return <Redirect push to={this.state.redirect} />;
-    }
-
-    return (
-      <section
-        ref={a => {
-          this.container = a;
-        }}
-        className="container markdown"
-        dangerouslySetInnerHTML={{
-          __html: marked.parse(this.props.content)
-        }}
-      />
-    );
-  }
-}
+  return (
+    <section
+      ref={ref}
+      className="container markdown"
+      dangerouslySetInnerHTML={{
+        __html: props.content,
+      }}
+    />
+  );
+};
 
 export default MarkDown;

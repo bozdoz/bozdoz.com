@@ -1,3 +1,5 @@
+@use './variables';
+
 .page {
   --newline: 1.4em;
   padding: 0 1.2rem;
@@ -48,9 +50,9 @@
   }
 }
 
-$header-padding: 2.2rem;
+$header-padding: 4rem;
 
 .header-title {
   text-align: center;
-  padding: calc(#{$header-padding} * #{$golden}) 0 $header-padding;
+  padding: calc(#{$header-padding} * #{variables.$golden}) 0 $header-padding;
 }

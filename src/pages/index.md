@@ -1,6 +1,6 @@
 ---
 title: Full-Stack Software Engineer
-header: About Me
+header: About
 published_date: '2017-11-20'
 modified_date: '2022-11-20'
 ---

@@ -100,12 +100,11 @@ class FrontMatter extends React.Component<FrontMatterProps, State> {
 
     return (
       <PageLayout {...attributes} subtitle={subtitle} {...this.props}>
-        {description &&
-          show_description && (
-            <div className="page-description">
-              <p>{description}</p>
-            </div>
-          )}
+        {description && show_description && (
+          <div className="page-description">
+            <p>{description}</p>
+          </div>
+        )}
         {tags && <TagList tags={tags} />}
         {body && <MarkDown content={body} />}
         {this.props.children}

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 import Breadcrumbs from '../Breadcrumbs';
 
@@ -6,60 +6,43 @@ interface Props {
   className?: string;
 }
 
-interface State {
-  loading: boolean;
-}
+const LoadingPage = (props: Props) => {
+  const [loading, setLoading] = useState(false);
 
-class LoadingPage extends React.Component<Props, State> {
-  loading_timeout: number;
-
-  state: State = {
-    loading: false
-  };
-
-  componentDidMount() {
+  useEffect(() => {
     // set loading to true
     // if component has been mounted too long
-    this.loading_timeout = window.setTimeout(() => {
-      this.setState({
-        loading: true
-      });
+    const timeout = setTimeout(() => {
+      setLoading(true);
     }, 500);
+    clearTimeout(timeout);
+  });
+
+  let className = 'loading page';
+
+  if (props.className) {
+    className += ` ${props.className}`;
   }
 
-  componentWillUnmount() {
-    window.clearTimeout(this.loading_timeout);
+  if (!loading) {
+    // render blank page if
+    // load time is small enough
+    return <article className={className} />;
   }
 
-  render() {
-    const { loading } = this.state;
-
-    let className = 'loading page';
-
-    if (this.props.className) {
-      className += ` ${this.props.className}`;
-    }
-
-    if (!loading) {
-      // render blank page if
-      // load time is small enough
-      return <article className={className} />;
-    }
-
-    return (
-      <article className={className}>
-        <header>
-          <div className="header-image" />
-          <div className="header-title">
-            <h1>&nbsp;</h1>
-            <h2>&nbsp;</h2>
-          </div>
-        </header>
-        <Breadcrumbs />
-        <div className="container markdown">&nbsp;</div>
-      </article>
-    );
-  }
-}
+  return (
+    <article className={className}>
+      <header>
+        <div className="header-image" />
+        <div className="header-title">
+          <h1>&nbsp;</h1>
+          <h2>&nbsp;</h2>
+        </div>
+      </header>
+      <Breadcrumbs />
+      <div className="container markdown">&nbsp;</div>
+    </article>
+  );
+};
 
 export default LoadingPage;

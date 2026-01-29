@@ -4,7 +4,7 @@ import Brand from '../Brand';
 import MainNav from '../MainNav';
 
 interface Props {
-  children: JSX.Element[];
+  children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => (

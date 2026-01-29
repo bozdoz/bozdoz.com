@@ -10,3 +10,4 @@ logs
 docker-stack.yml
 .DS_Store
 .vscode/
+dist/
