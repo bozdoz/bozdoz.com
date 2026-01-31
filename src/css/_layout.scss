@@ -1,0 +1,48 @@
+@use './mixins';
+
+html,
+body,
+#app {
+  height: 100%;
+
+  @include mixins.media(large) {
+    overflow: hidden;
+  }
+}
+
+#app {
+  display: grid;
+  overflow-y: auto;
+
+  @include mixins.media(large) {
+    grid-template-areas: 'header main';
+    grid-template-columns: 12em 1fr;
+  }
+}
+
+#main {
+  height: 100%;
+
+  @include mixins.media(large) {
+    grid-area: main;
+    overflow-y: auto;
+  }
+
+  article {
+    padding-bottom: calc(100vh - 1em);
+    
+    @include mixins.media(large) {
+      padding-top: 21.6vh;
+    }
+    
+    section, nav {
+      width: 99%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

@@ -1,6 +1,7 @@
 ---
 title: Leaflet Map
 subtitle: A WordPress plugin for simple map shortcodes
+link: "https://wordpress.org/plugins/leaflet-map/"
 description: >
     A simple WordPress plugin for adding interactive Leaflet maps with shortcodes. Leaflet Map fully supports Geocoding addresses, adding Markers to maps, and adding every other 2D shape.
 tags:
@@ -9,13 +10,15 @@ tags:
     - WordPress
     - PHP
 image: /images/projects/leaflet-map/leaflet-map.jpg
+published_date: '2017-11-20'
+modified_date: '2020-04-17'
 ---
 
 ### What is it?
 
-This project took off after developing a WordPress site for [TEAL Architects](http://tealarchitects.com/).  They needed a contact page with their address, so I created **Leaflet Map** to create a map in a WordPress page. 
+This project took off after developing a WordPress site for [TEAL Architects](http://tealarchitects.com/). They needed a contact page with their address, so I created **Leaflet Map** to create a map in a WordPress page.
 
-It works with **Google Geocoding** to find addresses and create a map with the proper latitude and longitude.  An editor of a WordPress site could install the free plugin, and insert something as simple as this into a page:
+It works with **Google Geocoding** to find addresses and create a map with the proper latitude and longitude. An editor of a WordPress site could install the free plugin, and insert something as simple as this into a page:
 
 ```
 [leaflet-map address="Grey Street" zoom=15]
@@ -37,9 +40,9 @@ And a wild marker appears:
 
 ### Object-oriented Programming
 
-Before this project I did a handful of small websites in **PHP**, and a few **WordPress** sites, but I had never been this deep in both.  This was my first time learning about [**T_PAAMAYIM_NEKUDOTAYIM**](https://stackoverflow.com/questions/592322/php-expects-t-paamayim-nekudotayim#answer-592329), so I knew I was getting seriously deep in **PHP**.
+Before this project I did a handful of small websites in **PHP**, and a few **WordPress** sites, but I had never been this deep in both. This was my first time learning about [**T_PAAMAYIM_NEKUDOTAYIM**](https://stackoverflow.com/questions/592322/php-expects-t-paamayim-nekudotayim#answer-592329), so I knew I was getting seriously deep in **PHP**.
 
-I learned more practical things also: I learned how to do object-oriented programming in PHP.  I learned a bit about how classes worked (public, protected, and private variables), and how to `include` them to use them.  It was a bit different from what I was familiar with in **Python**.
+I learned more practical things also: I learned how to do object-oriented programming in PHP. I learned a bit about how classes worked (public, protected, and private variables), and how to `include` them to use them. It was a bit different from what I was familiar with in **Python**.
 
 I thought the project was getting too big, because I kept obliging many of the requests on the WordPress plugin support forum; and so I split up the plugin into separate classes, and tried to modularize as much as possible.
 
@@ -77,9 +80,9 @@ abstract class Leaflet_Shortcode {
 }
 ```
 
-This is the base shortcode class from which all other shortcodes extend.  All of the shortcodes have a `getHTML` method which passes the shortcode attributes and content, and generates HTML and inline **JavaScript**. Then all of the shortcodes are registered with WordPress in a simple for loop that passes each classname along with the public `'shortcode'` method. 
+This is the base shortcode class from which all other shortcodes extend. All of the shortcodes have a `getHTML` method which passes the shortcode attributes and content, and generates HTML and inline **JavaScript**. Then all of the shortcodes are registered with WordPress in a simple for loop that passes each classname along with the public `'shortcode'` method.
 
-It was fun learning about some of the ins and outs of **PHP** (although the Hebrew was a bit much).  It was nice to feel more comfortable writing **PHP**, and to learn of the **PHPDoc** commenting style. 
+It was fun learning about some of the ins and outs of **PHP** (although the Hebrew was a bit much). It was nice to feel more comfortable writing **PHP**, and to learn of the **PHPDoc** commenting style.
 
 ### Links
 

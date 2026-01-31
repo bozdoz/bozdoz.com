@@ -1,41 +1,27 @@
-import * as React from 'react';
-import { hydrate as render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { hydrateRoot } from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import InitialHTMLContext from './components/InitialHTMLContext';
 
-import App from './components/App';
-import './css/style.scss';
-import { GA_TRACKING_ID } from './data/site_variables';
+// grab initial html from script and delete
+const initialHTML = window.__INITIAL_HTML__;
+// document.querySelector('#initial-state')?.remove();
 
-const Client = () => (
-  <Router>
-    <App />
-  </Router>
+hydrateRoot(
+  document,
+  <InitialHTMLContext value={initialHTML}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </InitialHTMLContext>,
 );
 
-render(<Client />, document.getElementById('page'));
+console.log('NODE_ENV', process.env.NODE_ENV);
 
-// google analytics
-(win => {
-  win.dataLayer = win.dataLayer || [];
-  win.gtag = function gtag() {
-    win.dataLayer.push(arguments);
-  };
+if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
+  const socket = new WebSocket(`ws://${window.location.host}/socket`);
 
-  win.gtag('js', new Date());
-  win.gtag('config', GA_TRACKING_ID);
-
-  win.addEventListener('hashchange', function() {
-    var hash = win.location.hash;
-    if (hash && hash !== '#') {
-      win.gtag({
-        event: 'hashchange',
-        hash: hash
-      });
-    }
+  socket.addEventListener('message', () => {
+    window.location.reload();
   });
-})(window as any);
-
-// hot reloading
-if (module.hot && process.env.NODE_ENV !== 'production') {
-  module.hot.accept();
 }

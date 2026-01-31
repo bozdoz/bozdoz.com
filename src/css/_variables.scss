@@ -1,0 +1,31 @@
+$color-primary: #2069ac;
+$color-secondary: #b6eeff;
+
+$brand-hue: 300;
+$brand-saturation: 200;
+$brand-lightness: 100;
+$dark-grey: #29253d;
+$light-grey: hsl($brand-hue, 12%, 80%);
+
+$para-color: rgba(0, 0, 0, 0.75);
+
+$golden: 1.61803;
+$touch-target: 48px;
+
+// inferred variables
+$select-bg: $color-primary;
+$header-bg-color: $color-primary;
+
+:root {
+  --brand-hue: #{$brand-hue};
+  --brand-saturation: #{$brand-saturation};
+  --brand-lightness: #{$brand-lightness};
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+
+  --dark-grey: #{$dark-grey};
+  --light-grey: #{$light-grey};
+
+  --select-bg: #{$select-bg};
+  --header-bg-color: #{$header-bg-color};
+}

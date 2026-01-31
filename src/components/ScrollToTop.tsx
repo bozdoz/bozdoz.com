@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 /**
@@ -18,8 +18,9 @@ class ScrollToTop extends React.Component<RouteComponentProps<{}>> {
   }
 
   componentDidUpdate({ history }: RouteComponentProps<{}>) {
-    if (history.action === 'PUSH') {
+    if (history.action === 'PUSH' || history.action === 'REPLACE') {
       // new link goes to top
+      document.querySelector('#app')!.scrollTo(0, 0);
       document.querySelector('#main')!.scrollTo(0, 0);
       window.scrollTo(0, 0);
     }
