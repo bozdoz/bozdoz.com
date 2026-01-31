@@ -1,5 +1,4 @@
 import path from 'path';
-import { marked } from 'marked';
 
 const dir = process.env.NODE_ENV === 'production' ? 'dist' : path.join(__dirname, '..')
 
@@ -28,7 +27,8 @@ export const formatMarkdown = async (markdown: string): Promise<FrontMatterObjec
   if (fm) {
     Object.assign(attributes, Bun.YAML.parse(fm))
   }
-  const body = await marked.parse(rest.join('---\n'))
+
+  const body = Bun.markdown.html(rest.join('---\n'))
 
   return {
     attributes,
